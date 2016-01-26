@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/var/www/kidcrossing/views/user/_listchild.php</file>
+            <file>file:/var/www/kidcrossing/config/params.php</file>
+            <file>file:/var/www/kidcrossing/config/web.php</file>
+            <file>file:/var/www/kidcrossing/views/layouts/nav.php</file>
+            <file>file:/var/www/kidcrossing/web/index.php</file>
+            <file>file:/var/www/kidcrossing/views/user/_child.php</file>
+            <file>file:/var/www/kidcrossing/controllers/EventController.php</file>
+            <file>file:/var/www/kidcrossing/views/user/dashboard.php</file>
+            <file>file:/var/www/kidcrossing/controllers/UserController.php</file>
+            <file>file:/var/www/kidcrossing/models/UserSearch.php</file>
+        </group>
+    </open-files>
+</project-private>

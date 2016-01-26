@@ -1,0 +1,15 @@
+[submodule "vendor/yiisoft/yii2-bootstrap"]                                               
+  path = vendor/yiisoft/yii2-bootstrap                                       
+  url = https://github.com/yiisoft/yii2-bootstrap                              
+  ignore = dirty
+
+[submodule "vendor/yiisoft/yii2-jui"]                                               
+  path = vendor/yiisoft/yii2-jui                                  
+  url = https://github.com/yiisoft/yii2-jui                              
+  ignore = dirty
+
+[submodule "vendor/philippfrenzel/yii2fullcalendar"]
+  path = vendor/philippfrenzel/yii2fullcalendar
+  url = https://github.com/philippfrenzel/yii2fullcalendar
+  ignore = dirty
+
