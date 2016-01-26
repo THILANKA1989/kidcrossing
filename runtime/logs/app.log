@@ -40781,3 +40781,78 @@ $_SERVER = [
     'REQUEST_TIME_FLOAT' => 1453790694.121
     'REQUEST_TIME' => 1453790694
 ]
+2016-01-26 07:37:23 [127.0.0.1][1][vgrtaqlur7rj96v2i8nsvi3o56][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "gii".' in /var/www/kidcrossing/vendor/yiisoft/yii2/base/Module.php:461
+Stack trace:
+#0 /var/www/kidcrossing/vendor/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('gii', Array)
+#1 /var/www/kidcrossing/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /var/www/kidcrossing/web/index.php(12): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in /var/www/kidcrossing/vendor/yiisoft/yii2/web/Application.php:96
+Stack trace:
+#0 /var/www/kidcrossing/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/www/kidcrossing/web/index.php(12): yii\base\Application->run()
+#2 {main}
+2016-01-26 07:37:23 [127.0.0.1][1][vgrtaqlur7rj96v2i8nsvi3o56][info][application] $_COOKIE = [
+    'ci_session' => 'a:5:{s:10:\"session_id\";s:32:\"a1ede5f7ff7aee169fa8884e560f00c5\";s:10:\"ip_address\";s:9:\"127.0.0.1\";s:10:\"user_agent\";s:105:\"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36\";s:13:\"last_activity\";i:1451454881;s:9:\"user_data\";s:0:\"\";}919e36096d182299a7050a8d7eac3dd8'
+    'woocommerce_cart_hash' => '991e93748f170c7c8bbffe513ee011f8'
+    'festi_cart_for_woocommerce_storage' => '991e93748f170c7c8bbffe513ee011f8'
+    '__smToken' => 'xkAjob4gMSP5ZZHoTRSUePGd'
+    '__insp_wid' => '2145749667'
+    '__insp_nv' => 'true'
+    '__insp_ref' => 'd'
+    '__insp_targlpu' => 'http://localhost/rockerswitch/product/custom-rocker-switch-actuator/'
+    '__insp_targlpt' => 'Custom Actuator | Rocker Switch Pros'
+    '__insp_norec_sess' => 'true'
+    'bp-activity-oldestpage' => '1'
+    '__insp_slim' => '1451547795810'
+    '_ga' => 'GA1.1.252801083.1452070183'
+    'JSESSIONID' => '30978D993D0AC6C6B9879BE591470EE5'
+    'atlassian_xsrf_token' => 'BBLU-ET34-JN6U-2OQC|d0a92b035c4f807e31a075fa1693627d027b28f4|lout'
+    '_csrf' => 'a9a8e7c793cd837376961b028c676edd1aea70bd714c97776ee55dca608dc02ca:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"XvbwQZaJAKTPAZzDOFWleJ0zKkLa9Ybt\";}'
+    'PHPSESSID' => '82sb1gsl6p30l7fb8grejk4ob3'
+    '_identity' => 'c231785513ec2a46655f66ab429b2d34bed4f12e283639df5756c928cca24738a:2:{i:0;s:9:\"_identity\";i:1;s:46:\"[1,\"8u6q1pruY81je4SL4HHionNBKlir3Agu\",2592000]\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+]
+
+$_SERVER = [
+    'REDIRECT_REDIRECT_STATUS' => '200'
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.82 Safari/537.36'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.8,ms;q=0.6'
+    'HTTP_COOKIE' => 'ci_session=a%3A5%3A%7Bs%3A10%3A%22session_id%22%3Bs%3A32%3A%22a1ede5f7ff7aee169fa8884e560f00c5%22%3Bs%3A10%3A%22ip_address%22%3Bs%3A9%3A%22127.0.0.1%22%3Bs%3A10%3A%22user_agent%22%3Bs%3A105%3A%22Mozilla%2F5.0+%28X11%3B+Linux+x86_64%29+AppleWebKit%2F537.36+%28KHTML%2C+like+Gecko%29+Chrome%2F47.0.2526.106+Safari%2F537.36%22%3Bs%3A13%3A%22last_activity%22%3Bi%3A1451454881%3Bs%3A9%3A%22user_data%22%3Bs%3A0%3A%22%22%3B%7D919e36096d182299a7050a8d7eac3dd8; woocommerce_cart_hash=991e93748f170c7c8bbffe513ee011f8; festi_cart_for_woocommerce_storage=991e93748f170c7c8bbffe513ee011f8; __smToken=xkAjob4gMSP5ZZHoTRSUePGd; __insp_wid=2145749667; __insp_nv=true; __insp_ref=d; __insp_targlpu=http%3A%2F%2Flocalhost%2Frockerswitch%2Fproduct%2Fcustom-rocker-switch-actuator%2F; __insp_targlpt=Custom%20Actuator%20%7C%20Rocker%20Switch%20Pros; __insp_norec_sess=true; bp-activity-oldestpage=1; __insp_slim=1451547795810; _ga=GA1.1.252801083.1452070183; JSESSIONID=30978D993D0AC6C6B9879BE591470EE5; atlassian.xsrf.token=BBLU-ET34-JN6U-2OQC|d0a92b035c4f807e31a075fa1693627d027b28f4|lout; _csrf=a9a8e7c793cd837376961b028c676edd1aea70bd714c97776ee55dca608dc02ca%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XvbwQZaJAKTPAZzDOFWleJ0zKkLa9Ybt%22%3B%7D; PHPSESSID=82sb1gsl6p30l7fb8grejk4ob3; _identity=c231785513ec2a46655f66ab429b2d34bed4f12e283639df5756c928cca24738a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%228u6q1pruY81je4SL4HHionNBKlir3Agu%22%2C2592000%5D%22%3B%7D'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.10 (Ubuntu) Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.10 (Ubuntu)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/var/www'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/kidcrossing/web/index.php'
+    'REMOTE_PORT' => '56048'
+    'REDIRECT_URL' => '/kidcrossing/web/gii'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/kidcrossing/gii'
+    'SCRIPT_NAME' => '/kidcrossing/web/index.php'
+    'PHP_SELF' => '/kidcrossing/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1453793843.161
+    'REQUEST_TIME' => 1453793843
+]
