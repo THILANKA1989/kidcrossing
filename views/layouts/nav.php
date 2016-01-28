@@ -65,6 +65,7 @@ use yii\helpers\Html;
             'items' => [
                 ['label' => '<a href="#"><i class="fa fa-users"></i> <span>Family Members</span></a>', 'options' => ['class' => 'treeview family-members-btn', 'url' => '#'], 'items' => $links],
                 ['label' => '<i class="fa fa-home"></i> <span>Dashboard</span>', 'url' => ['/user/dashboard']],
+                ['label' => '<i class="fa fa-book"></i> <span>Journals</span>', 'url' => ['/journal']],
                 ['label' => '<i class="fa fa-calendar"></i> <span>Events</span>', 'url' => ['/event/index']],
                 //['label' => 'Contact', 'url' => ['/site/contact']],
                 Yii::$app->user->identity->level == 0 ? ['label' => '<i class="fa fa-users"></i> <span>Users</span>', 'url' => ['/user/index']] : '',
