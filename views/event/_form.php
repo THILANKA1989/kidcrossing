@@ -16,6 +16,8 @@ use yii\widgets\ActiveForm;
                 'id' => 'event-form',
                 'options' => ['class' => 'form'],
     ]);
+
+    $model->shared_with = json_decode($model->shared_with);
     ?>
 
     <?php //$form->field($model, 'user_id')->textInput() ?>
@@ -28,7 +30,7 @@ use yii\widgets\ActiveForm;
 
     <?php //echo $form->field($model, 'date')->textInput() ?>
 
-    <?= $form->field($model, 'shared_with')->listBox( ArrayHelper::map(Yii::$app->user->identity->findFamily(true)->all(), 'id', 'fullname'), ['multiple' => true] ) ?>
+    <?= $form->field($model, 'shared_with')->listBox( ArrayHelper::map(Yii::$app->user->identity->others, 'id', 'fullname'), ['multiple' => true] ) ?>
 
     <div class="form-group text-right">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

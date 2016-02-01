@@ -39,7 +39,7 @@ class Event extends \yii\db\ActiveRecord {
         return [
             [['user_id', 'title', 'description', 'venue', 'date', 'shared_with'], 'required'],
             [['user_id'], 'integer'],
-            [['description', 'shared_with'], 'string'],
+            [['description'], 'string'],
             [['date'], 'safe'],
             [['title', 'venue'], 'string', 'max' => 128]
         ];

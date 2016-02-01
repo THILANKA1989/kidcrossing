@@ -144,6 +144,13 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface {
     public function getMemberIds(){
         return yii\helpers\ArrayHelper::getColumn($this->findFamily()->all(), 'id');
     }
+    
+        
+    public function getOthers(){
+        //return $this->findFamily(true)->andWhere('id != :user_id',[':user_id' => $this->id])->all();
+        $parent_id = $this->parent_id == 0 ? $this->id : $this->parent_id;
+        return User::find()->where('(parent_id = :parent_id OR id = :parent_id)AND id != :user_id',[':parent_id' => $parent_id, ':user_id' => $this->id])->all();
+    }
     /**
      * @inheritdoc
      */

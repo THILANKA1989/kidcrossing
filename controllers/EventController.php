@@ -46,7 +46,7 @@ class EventController extends Controller {
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
-                    'events' => Event::find()->where(['user_id'=> Yii::$app->user->identity->memberIds])->all(),
+                    'events' => Event::find()->where(['user_id' => Yii::$app->user->identity->memberIds])->all(),
                     'searchModel' => $searchModel,
                     'dataProvider' => $dataProvider,
         ]);
@@ -78,8 +78,11 @@ class EventController extends Controller {
         $model = new Event();
         $model->user_id = Yii::$app->user->id;
         $model->date = $date;
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            //var_dump($model);
+            $model->shared_with = json_encode($model->shared_with);
+            if ($model->save())
+                return $this->redirect(['view', 'id' => $model->id]);
         } elseif (Yii::$app->request->isAjax) {
             return $this->renderAjax('_form', [
                         'model' => $model
