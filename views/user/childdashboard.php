@@ -6,6 +6,7 @@ use yii\helpers\Html;
 //use yii\bootstrap\Modal;
 use yii\widgets\ActiveForm;
 use yii\widgets\ListView;
+use app\models\Mood;
 /* @var $this yii\web\View */
 /* @var $model app\models\User */
 /* @var $model app\models\Profile */
@@ -17,22 +18,39 @@ $this->params['breadcrumbs'][] = $this->title;
 //echo Html::encode($this->journal);
 ?>
        <!-- Content Header (Page header) -->
-        <section class="content-header">
-          <h1>
-            Dashboard
-            <small>Summary of your Family</small>
-          </h1>
-          <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-            <li class="active">Here</li>
-          </ol>
-        </section>
+        
+ 
+       <!--<div class="background-white top-fixed-margin bordered-grey padding-large">
+            <div class="row moodbox">
+                
+                        <div class="col-xs-1"></div>
+                        <div class="col-xs-2">
+                             <a href="#" data-mood="Sad" class="mood"><img src="<?= Yii::$app->request->baseUrl ?>/img/moods/sad.png" width="70px" class="center-blocked"></a>
+                        </div>
+                        <div class="col-xs-2">
+                            <a href="#" data-mood="Excited" class="mood"><img src="<?= Yii::$app->request->baseUrl ?>/img/moods/excited.png" width="70px" class="center-blocked"></a>
+                        </div>
+                        <div class="col-xs-2">
+                            <a href="#" data-mood="Bored" class="mood"><img src="<?= Yii::$app->request->baseUrl ?>/img/moods/bored.png" width="70px" class="center-blocked"></a>
+                        </div>
+                        <div class="col-xs-2">
+                            <a href="#" data-mood="Happy" class="mood"><img src="<?= Yii::$app->request->baseUrl ?>/img/moods/happy.png" width="70px" class="center-blocked"></a>
+                        </div>
+                        <div class="col-xs-2">
+                            <a href="#" data-mood="Angry" class="mood"><img src="<?= Yii::$app->request->baseUrl ?>/img/moods/angry.png" width="70px" class="center-blocked"></a>
+                        </div>
+                        <div class="col-xs-1"></div>
+   
+          </div>
+       </div>-->
+        <?= $this->render('_mood', [
+        'model' => $moods,
+        ]) ?>
           <div class="row">
             <!-- column moods and parent profiles -->
             <div class="col-md-12">
               <div class="row">
-                <div class="col-md-12">
-                  <div class="moodbox background-white top-fixed-margin bordered-grey">
+                
                     <!--<ul class="custom-list-one pull-right moodlist">
                       <li class="pull-right"><a href="#" data-mood="Sad"><img src="dist/img/sad.png" height="70px"/></a></li>
                       <li class="pull-right"><a href="#" data-mood="Excited"><img src="dist/img/excited.png" height="70px"/></a></li>
@@ -40,25 +58,7 @@ $this->params['breadcrumbs'][] = $this->title;
                       <li class="pull-right"><a href="#" data-mood="Happy"><img src="dist/img/happy.png" height="70px"/></a></li>
                       <li class="pull-right"><a href="#" data-mood="Angry"><img src="dist/img/angry.png" height="70px"/></a></li>
                     </ul>-->
-                    <div class="row">
-                        <div class="col-xs-1"></div>
-                        <div class="col-xs-2">
-                             <a href="#" data-mood="Sad"><img src="dist/img/sad.png" height="70px"/></a>
-                        </div>
-                        <div class="col-xs-2">
-                            <a href="#" data-mood="Excited"><img src="dist/img/excited.png" height="70px"/></a>
-                        </div>
-                        <div class="col-xs-2">
-                            <a href="#" data-mood="Bored"><img src="dist/img/bored.png" height="70px"/></a>
-                        </div>
-                        <div class="col-xs-2">
-                            <a href="#" data-mood="Happy"><?= Html::img('images/moods/happy.png', ['class' => 'img-responsive'],['width'=>'90px']); ?></a>
-                        </div>
-                        <div class="col-xs-2">
-                            <a href="#" data-mood="Angry"><img src="dist/img/angry.png" height="70px"/></a>
-                        </div>
-                        <div class="col-xs-1"></div>
-                    </div>
+                    
                     <!-- display mode names -->
                     <div class="fundInfoContainer" data-fundId="1" style="display: none">
                         <p class="fonts-bold">You are Sad Today&nbsp;&nbsp;<a href="#" class="btn btn-success">Change now</a></p>
@@ -76,8 +76,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <p class="fonts-bold">You are Angry Today&nbsp;&nbsp;<a href="#" class="btn btn-success">Change now</a></p>
                     </div>
                     <!-- display mode names ends -->
-                  </div>
-                </div>
+               
                 <!--parent account panels -->
                  <!-- single user -->
                               <?= ListView::widget([
@@ -158,3 +157,13 @@ $this->params['breadcrumbs'][] = $this->title;
           </div>
               <!-- /.widget-user1 -->
         <!-- Main content -->
+
+<?php 
+//moods onclick action
+$this->registerJs("$('.mood').on('click',function(){
+    var moodType = $(this).data('mood');
+    $('.moodbox').hide('slow');
+});",
+        yii\web\View::POS_END,
+        'reg-moods');
+?>

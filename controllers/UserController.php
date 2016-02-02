@@ -305,11 +305,13 @@ class UserController extends Controller {
      * Display child dashboard by DTR
      */
      public function actionChild(){
-        //show journal data in view
-        $journal = new Journal();
-        //$model = new User();
+        $user = Yii::$app->user->id;
+        
+        //$model = new User();where(['category_id' => $id])->all()
+        
         $journalProvider = new ActiveDataProvider([
-            'query' => Journal::find()
+            'query' => Journal::find()->where(['user_id' => $user])->orderBy('date')->limit(3)
+            ,'pagination' => false,
         ]);    
         $DataProvider = new ActiveDataProvider([
             'query' => Yii::$app->user->identity->findParents(),
@@ -318,11 +320,12 @@ class UserController extends Controller {
             ],
         ]);
         //create mood
-        $model = new Mood();
+        $moods = new Mood();
        // VarDumper::dump($journalProvider, 10000, true); die();
         return $this->render('childdashboard', [
                     'dataProvider' => $DataProvider,
-                    'journalProvider' => $journalProvider
+                    'journalProvider' => $journalProvider,
+                    'moods' => $moods
                 ]);
      }
     /**

@@ -31,7 +31,7 @@ class Mood extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'mood', 'date', 'time'], 'required'],
+            [['user_id', 'mood', 'date'], 'required'],
             [['user_id'], 'integer'],
             [['date', 'time'], 'safe'],
             [['mood'], 'string', 'max' => 16]

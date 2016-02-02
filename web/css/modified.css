@@ -201,6 +201,11 @@ p{
 .moodbox ul li{
   margin-right:25px;
 }
+.background-white img:hover{
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+    transition: all 0.4s ease;
+}
 .moodbox span{
   width: 40%;
 }

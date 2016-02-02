@@ -61,14 +61,20 @@ class MoodController extends Controller
     public function actionCreate()
     {
         $model = new Mood();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
-        }
+        if ($model->load(Yii::$app->request->post())) {
+          $model->user_id = Yii::$app->user->getId();
+          $model->date = date('Y-d-m');
+          $model->time = date('Y-d-m h:i:s');
+           if ($model->save()) {  
+              Yii::$app->session->setFlash('success', 'Mood successfully Set.');
+             return $this->redirect(['user/child']);             
+           }else{
+               Yii::$app->session->setFlash('danger', 'Something Error');
+           }
+        } 
+        return $this->render('create', [
+            'model' => $model,
+        ]);
     }
 
     /**
