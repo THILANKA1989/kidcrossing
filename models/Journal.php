@@ -77,6 +77,13 @@ class Journal extends \yii\db\ActiveRecord
        else
        return "<span class='label label-success'>" . implode('</span> <span class="label label-success">', yii\helpers\ArrayHelper::getColumn($shared_users, 'fullname'))."</span>";
     }
+    /**
+     * get latest journal entry by DTR
+     */
+    public function latestJournal(){
+        $journal = Journal::find()->limit(3)->all();
+        return $journal;
+    }
     
     
     

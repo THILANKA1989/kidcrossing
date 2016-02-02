@@ -11,6 +11,9 @@ use app\models\Tempuser;
 use app\models\User;
 use app\models\UserSearch;
 use app\models\Profile;
+use app\models\Mood;
+use app\models\Journal;
+use app\models\JournalSearch;
 
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -34,10 +37,10 @@ class UserController extends Controller {
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout', 'index', 'view', 'profile', 'settings'],
+                'only' => ['logout', 'index', 'view', 'profile', 'settings','child'],
                 'rules' => [
                     [
-                        'actions' => ['logout', 'index', 'view', 'profile', 'settings'],
+                        'actions' => ['logout', 'index', 'view', 'profile', 'settings','child'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -297,7 +300,31 @@ class UserController extends Controller {
                     'dataProvider' => $DataProvider
         ]);
     }
-
+    
+    /**
+     * Display child dashboard by DTR
+     */
+     public function actionChild(){
+        //show journal data in view
+        $journal = new Journal();
+        //$model = new User();
+        $journalProvider = new ActiveDataProvider([
+            'query' => Journal::find()
+        ]);    
+        $DataProvider = new ActiveDataProvider([
+            'query' => Yii::$app->user->identity->findParents(),
+            'pagination' => [
+                'pageSize' => 20,
+            ],
+        ]);
+        //create mood
+        $model = new Mood();
+       // VarDumper::dump($journalProvider, 10000, true); die();
+        return $this->render('childdashboard', [
+                    'dataProvider' => $DataProvider,
+                    'journalProvider' => $journalProvider
+                ]);
+     }
     /**
      * Creates a new User model.
      * If creation is successful, the browser will be redirected to the 'view' page.
