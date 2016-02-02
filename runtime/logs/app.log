@@ -4241,3 +4241,913 @@ $_SERVER = [
     'REQUEST_TIME_FLOAT' => 1454393122.629
     'REQUEST_TIME' => 1454393122
 ]
+2016-02-02 07:10:12 [::1][6][doh84787991q19v3vbvhfi5ac7][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "user/dist/img/angry.png".' in C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\base\Module.php:461
+Stack trace:
+#0 C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('user/dist/img/a...', Array)
+#1 C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 C:\xampp\htdocs\kidcrossing\web\index.php(12): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\web\Application.php:96
+Stack trace:
+#0 C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 C:\xampp\htdocs\kidcrossing\web\index.php(12): yii\base\Application->run()
+#2 {main}
+2016-02-02 07:10:12 [::1][6][doh84787991q19v3vbvhfi5ac7][info][application] $_COOKIE = [
+    '_ga' => 'GA1.1.2042199133.1449549112'
+    '_csrf' => '6c47ccaee665154202a58f6c4616962be2aaf50fdb27f6944cc633ad714f14bba:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"CQ5GpNsMqMGp7sW7-4uf_QmdKHlsfrJf\";}'
+    'ci_session' => 'a:4:{s:10:\"session_id\";s:32:\"0e6fb1e3736756a23c0102c2f314f921\";s:10:\"ip_address\";s:3:\"::1\";s:10:\"user_agent\";s:108:\"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.97 Safari/537.36\";s:13:\"last_activity\";i:1454388024;}3323c0db576d2b99bc547f0dc5cd8969'
+    'PHPSESSID' => 'doh84787991q19v3vbvhfi5ac7'
+    '_identity' => '21049c69cf4582031db1bad5edfe25dc2e5d749263bb7353eb0f33bb4c7ebaaea:2:{i:0;s:9:\"_identity\";i:1;s:46:\"[6,\"DYSVMz4wjeMeTZMoeDHh6FQRopHAZtW9\",2592000]\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 6
+]
+
+$_SERVER = [
+    'REDIRECT_REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_REDIRECT_STATUS' => '200'
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT' => 'image/webp,image/*,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.97 Safari/537.36'
+    'HTTP_REFERER' => 'http://localhost/kidcrossing/user/child'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.8'
+    'HTTP_COOKIE' => '_ga=GA1.1.2042199133.1449549112; _csrf=6c47ccaee665154202a58f6c4616962be2aaf50fdb27f6944cc633ad714f14bba%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22CQ5GpNsMqMGp7sW7-4uf_QmdKHlsfrJf%22%3B%7D; ci_session=a%3A4%3A%7Bs%3A10%3A%22session_id%22%3Bs%3A32%3A%220e6fb1e3736756a23c0102c2f314f921%22%3Bs%3A10%3A%22ip_address%22%3Bs%3A3%3A%22%3A%3A1%22%3Bs%3A10%3A%22user_agent%22%3Bs%3A108%3A%22Mozilla%2F5.0+%28Windows+NT+6.1%3B+WOW64%29+AppleWebKit%2F537.36+%28KHTML%2C+like+Gecko%29+Chrome%2F48.0.2564.97+Safari%2F537.36%22%3Bs%3A13%3A%22last_activity%22%3Bi%3A1454388024%3B%7D3323c0db576d2b99bc547f0dc5cd8969; PHPSESSID=doh84787991q19v3vbvhfi5ac7; _identity=21049c69cf4582031db1bad5edfe25dc2e5d749263bb7353eb0f33bb4c7ebaaea%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B6%2C%22DYSVMz4wjeMeTZMoeDHh6FQRopHAZtW9%22%2C2592000%5D%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\Program Files\\Git\\mingw64\\bin;C:\\Program Files\\Git\\usr\\bin;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Users\\Shanika\\AppData\\Local\\atom\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.16 (Win32) OpenSSL/1.0.1p PHP/5.5.27 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.16 (Win32) OpenSSL/1.0.1p PHP/5.5.27'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/kidcrossing/web/index.php'
+    'REMOTE_PORT' => '52480'
+    'REDIRECT_URL' => '/kidcrossing/web/user/dist/img/angry.png'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/kidcrossing/user/dist/img/angry.png'
+    'SCRIPT_NAME' => '/kidcrossing/web/index.php'
+    'PHP_SELF' => '/kidcrossing/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1454393412.477
+    'REQUEST_TIME' => 1454393412
+]
+2016-02-02 07:10:12 [::1][6][doh84787991q19v3vbvhfi5ac7][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "user/images/moods/happy.png".' in C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\base\Module.php:461
+Stack trace:
+#0 C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('user/images/moo...', Array)
+#1 C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 C:\xampp\htdocs\kidcrossing\web\index.php(12): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\web\Application.php:96
+Stack trace:
+#0 C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 C:\xampp\htdocs\kidcrossing\web\index.php(12): yii\base\Application->run()
+#2 {main}
+2016-02-02 07:10:12 [::1][6][doh84787991q19v3vbvhfi5ac7][info][application] $_COOKIE = [
+    '_ga' => 'GA1.1.2042199133.1449549112'
+    '_csrf' => '6c47ccaee665154202a58f6c4616962be2aaf50fdb27f6944cc633ad714f14bba:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"CQ5GpNsMqMGp7sW7-4uf_QmdKHlsfrJf\";}'
+    'ci_session' => 'a:4:{s:10:\"session_id\";s:32:\"0e6fb1e3736756a23c0102c2f314f921\";s:10:\"ip_address\";s:3:\"::1\";s:10:\"user_agent\";s:108:\"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.97 Safari/537.36\";s:13:\"last_activity\";i:1454388024;}3323c0db576d2b99bc547f0dc5cd8969'
+    'PHPSESSID' => 'doh84787991q19v3vbvhfi5ac7'
+    '_identity' => '21049c69cf4582031db1bad5edfe25dc2e5d749263bb7353eb0f33bb4c7ebaaea:2:{i:0;s:9:\"_identity\";i:1;s:46:\"[6,\"DYSVMz4wjeMeTZMoeDHh6FQRopHAZtW9\",2592000]\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 6
+]
+
+$_SERVER = [
+    'REDIRECT_REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_REDIRECT_STATUS' => '200'
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT' => 'image/webp,image/*,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.97 Safari/537.36'
+    'HTTP_REFERER' => 'http://localhost/kidcrossing/user/child'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.8'
+    'HTTP_COOKIE' => '_ga=GA1.1.2042199133.1449549112; _csrf=6c47ccaee665154202a58f6c4616962be2aaf50fdb27f6944cc633ad714f14bba%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22CQ5GpNsMqMGp7sW7-4uf_QmdKHlsfrJf%22%3B%7D; ci_session=a%3A4%3A%7Bs%3A10%3A%22session_id%22%3Bs%3A32%3A%220e6fb1e3736756a23c0102c2f314f921%22%3Bs%3A10%3A%22ip_address%22%3Bs%3A3%3A%22%3A%3A1%22%3Bs%3A10%3A%22user_agent%22%3Bs%3A108%3A%22Mozilla%2F5.0+%28Windows+NT+6.1%3B+WOW64%29+AppleWebKit%2F537.36+%28KHTML%2C+like+Gecko%29+Chrome%2F48.0.2564.97+Safari%2F537.36%22%3Bs%3A13%3A%22last_activity%22%3Bi%3A1454388024%3B%7D3323c0db576d2b99bc547f0dc5cd8969; PHPSESSID=doh84787991q19v3vbvhfi5ac7; _identity=21049c69cf4582031db1bad5edfe25dc2e5d749263bb7353eb0f33bb4c7ebaaea%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B6%2C%22DYSVMz4wjeMeTZMoeDHh6FQRopHAZtW9%22%2C2592000%5D%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\Program Files\\Git\\mingw64\\bin;C:\\Program Files\\Git\\usr\\bin;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Users\\Shanika\\AppData\\Local\\atom\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.16 (Win32) OpenSSL/1.0.1p PHP/5.5.27 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.16 (Win32) OpenSSL/1.0.1p PHP/5.5.27'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/kidcrossing/web/index.php'
+    'REMOTE_PORT' => '52479'
+    'REDIRECT_URL' => '/kidcrossing/web/user/images/moods/happy.png'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/kidcrossing/user/images/moods/happy.png'
+    'SCRIPT_NAME' => '/kidcrossing/web/index.php'
+    'PHP_SELF' => '/kidcrossing/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1454393412.476
+    'REQUEST_TIME' => 1454393412
+]
+2016-02-02 07:10:12 [::1][6][doh84787991q19v3vbvhfi5ac7][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "user/dist/img/excited.png".' in C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\base\Module.php:461
+Stack trace:
+#0 C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('user/dist/img/e...', Array)
+#1 C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 C:\xampp\htdocs\kidcrossing\web\index.php(12): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\web\Application.php:96
+Stack trace:
+#0 C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 C:\xampp\htdocs\kidcrossing\web\index.php(12): yii\base\Application->run()
+#2 {main}
+2016-02-02 07:10:12 [::1][6][doh84787991q19v3vbvhfi5ac7][info][application] $_COOKIE = [
+    '_ga' => 'GA1.1.2042199133.1449549112'
+    '_csrf' => '6c47ccaee665154202a58f6c4616962be2aaf50fdb27f6944cc633ad714f14bba:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"CQ5GpNsMqMGp7sW7-4uf_QmdKHlsfrJf\";}'
+    'ci_session' => 'a:4:{s:10:\"session_id\";s:32:\"0e6fb1e3736756a23c0102c2f314f921\";s:10:\"ip_address\";s:3:\"::1\";s:10:\"user_agent\";s:108:\"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.97 Safari/537.36\";s:13:\"last_activity\";i:1454388024;}3323c0db576d2b99bc547f0dc5cd8969'
+    'PHPSESSID' => 'doh84787991q19v3vbvhfi5ac7'
+    '_identity' => '21049c69cf4582031db1bad5edfe25dc2e5d749263bb7353eb0f33bb4c7ebaaea:2:{i:0;s:9:\"_identity\";i:1;s:46:\"[6,\"DYSVMz4wjeMeTZMoeDHh6FQRopHAZtW9\",2592000]\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 6
+]
+
+$_SERVER = [
+    'REDIRECT_REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_REDIRECT_STATUS' => '200'
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT' => 'image/webp,image/*,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.97 Safari/537.36'
+    'HTTP_REFERER' => 'http://localhost/kidcrossing/user/child'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.8'
+    'HTTP_COOKIE' => '_ga=GA1.1.2042199133.1449549112; _csrf=6c47ccaee665154202a58f6c4616962be2aaf50fdb27f6944cc633ad714f14bba%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22CQ5GpNsMqMGp7sW7-4uf_QmdKHlsfrJf%22%3B%7D; ci_session=a%3A4%3A%7Bs%3A10%3A%22session_id%22%3Bs%3A32%3A%220e6fb1e3736756a23c0102c2f314f921%22%3Bs%3A10%3A%22ip_address%22%3Bs%3A3%3A%22%3A%3A1%22%3Bs%3A10%3A%22user_agent%22%3Bs%3A108%3A%22Mozilla%2F5.0+%28Windows+NT+6.1%3B+WOW64%29+AppleWebKit%2F537.36+%28KHTML%2C+like+Gecko%29+Chrome%2F48.0.2564.97+Safari%2F537.36%22%3Bs%3A13%3A%22last_activity%22%3Bi%3A1454388024%3B%7D3323c0db576d2b99bc547f0dc5cd8969; PHPSESSID=doh84787991q19v3vbvhfi5ac7; _identity=21049c69cf4582031db1bad5edfe25dc2e5d749263bb7353eb0f33bb4c7ebaaea%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B6%2C%22DYSVMz4wjeMeTZMoeDHh6FQRopHAZtW9%22%2C2592000%5D%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\Program Files\\Git\\mingw64\\bin;C:\\Program Files\\Git\\usr\\bin;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Users\\Shanika\\AppData\\Local\\atom\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.16 (Win32) OpenSSL/1.0.1p PHP/5.5.27 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.16 (Win32) OpenSSL/1.0.1p PHP/5.5.27'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/kidcrossing/web/index.php'
+    'REMOTE_PORT' => '52477'
+    'REDIRECT_URL' => '/kidcrossing/web/user/dist/img/excited.png'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/kidcrossing/user/dist/img/excited.png'
+    'SCRIPT_NAME' => '/kidcrossing/web/index.php'
+    'PHP_SELF' => '/kidcrossing/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1454393412.471
+    'REQUEST_TIME' => 1454393412
+]
+2016-02-02 07:10:12 [::1][6][doh84787991q19v3vbvhfi5ac7][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "user/dist/img/bored.png".' in C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\base\Module.php:461
+Stack trace:
+#0 C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('user/dist/img/b...', Array)
+#1 C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 C:\xampp\htdocs\kidcrossing\web\index.php(12): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\web\Application.php:96
+Stack trace:
+#0 C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 C:\xampp\htdocs\kidcrossing\web\index.php(12): yii\base\Application->run()
+#2 {main}
+2016-02-02 07:10:12 [::1][6][doh84787991q19v3vbvhfi5ac7][info][application] $_COOKIE = [
+    '_ga' => 'GA1.1.2042199133.1449549112'
+    '_csrf' => '6c47ccaee665154202a58f6c4616962be2aaf50fdb27f6944cc633ad714f14bba:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"CQ5GpNsMqMGp7sW7-4uf_QmdKHlsfrJf\";}'
+    'ci_session' => 'a:4:{s:10:\"session_id\";s:32:\"0e6fb1e3736756a23c0102c2f314f921\";s:10:\"ip_address\";s:3:\"::1\";s:10:\"user_agent\";s:108:\"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.97 Safari/537.36\";s:13:\"last_activity\";i:1454388024;}3323c0db576d2b99bc547f0dc5cd8969'
+    'PHPSESSID' => 'doh84787991q19v3vbvhfi5ac7'
+    '_identity' => '21049c69cf4582031db1bad5edfe25dc2e5d749263bb7353eb0f33bb4c7ebaaea:2:{i:0;s:9:\"_identity\";i:1;s:46:\"[6,\"DYSVMz4wjeMeTZMoeDHh6FQRopHAZtW9\",2592000]\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 6
+]
+
+$_SERVER = [
+    'REDIRECT_REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_REDIRECT_STATUS' => '200'
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT' => 'image/webp,image/*,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.97 Safari/537.36'
+    'HTTP_REFERER' => 'http://localhost/kidcrossing/user/child'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.8'
+    'HTTP_COOKIE' => '_ga=GA1.1.2042199133.1449549112; _csrf=6c47ccaee665154202a58f6c4616962be2aaf50fdb27f6944cc633ad714f14bba%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22CQ5GpNsMqMGp7sW7-4uf_QmdKHlsfrJf%22%3B%7D; ci_session=a%3A4%3A%7Bs%3A10%3A%22session_id%22%3Bs%3A32%3A%220e6fb1e3736756a23c0102c2f314f921%22%3Bs%3A10%3A%22ip_address%22%3Bs%3A3%3A%22%3A%3A1%22%3Bs%3A10%3A%22user_agent%22%3Bs%3A108%3A%22Mozilla%2F5.0+%28Windows+NT+6.1%3B+WOW64%29+AppleWebKit%2F537.36+%28KHTML%2C+like+Gecko%29+Chrome%2F48.0.2564.97+Safari%2F537.36%22%3Bs%3A13%3A%22last_activity%22%3Bi%3A1454388024%3B%7D3323c0db576d2b99bc547f0dc5cd8969; PHPSESSID=doh84787991q19v3vbvhfi5ac7; _identity=21049c69cf4582031db1bad5edfe25dc2e5d749263bb7353eb0f33bb4c7ebaaea%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B6%2C%22DYSVMz4wjeMeTZMoeDHh6FQRopHAZtW9%22%2C2592000%5D%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\Program Files\\Git\\mingw64\\bin;C:\\Program Files\\Git\\usr\\bin;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Users\\Shanika\\AppData\\Local\\atom\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.16 (Win32) OpenSSL/1.0.1p PHP/5.5.27 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.16 (Win32) OpenSSL/1.0.1p PHP/5.5.27'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/kidcrossing/web/index.php'
+    'REMOTE_PORT' => '52478'
+    'REDIRECT_URL' => '/kidcrossing/web/user/dist/img/bored.png'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/kidcrossing/user/dist/img/bored.png'
+    'SCRIPT_NAME' => '/kidcrossing/web/index.php'
+    'PHP_SELF' => '/kidcrossing/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1454393412.475
+    'REQUEST_TIME' => 1454393412
+]
+2016-02-02 07:10:12 [::1][6][doh84787991q19v3vbvhfi5ac7][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "user/dist/img/sad.png".' in C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\base\Module.php:461
+Stack trace:
+#0 C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('user/dist/img/s...', Array)
+#1 C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 C:\xampp\htdocs\kidcrossing\web\index.php(12): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\web\Application.php:96
+Stack trace:
+#0 C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 C:\xampp\htdocs\kidcrossing\web\index.php(12): yii\base\Application->run()
+#2 {main}
+2016-02-02 07:10:12 [::1][6][doh84787991q19v3vbvhfi5ac7][info][application] $_COOKIE = [
+    '_ga' => 'GA1.1.2042199133.1449549112'
+    '_csrf' => '6c47ccaee665154202a58f6c4616962be2aaf50fdb27f6944cc633ad714f14bba:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"CQ5GpNsMqMGp7sW7-4uf_QmdKHlsfrJf\";}'
+    'ci_session' => 'a:4:{s:10:\"session_id\";s:32:\"0e6fb1e3736756a23c0102c2f314f921\";s:10:\"ip_address\";s:3:\"::1\";s:10:\"user_agent\";s:108:\"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.97 Safari/537.36\";s:13:\"last_activity\";i:1454388024;}3323c0db576d2b99bc547f0dc5cd8969'
+    'PHPSESSID' => 'doh84787991q19v3vbvhfi5ac7'
+    '_identity' => '21049c69cf4582031db1bad5edfe25dc2e5d749263bb7353eb0f33bb4c7ebaaea:2:{i:0;s:9:\"_identity\";i:1;s:46:\"[6,\"DYSVMz4wjeMeTZMoeDHh6FQRopHAZtW9\",2592000]\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 6
+]
+
+$_SERVER = [
+    'REDIRECT_REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_REDIRECT_STATUS' => '200'
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT' => 'image/webp,image/*,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.97 Safari/537.36'
+    'HTTP_REFERER' => 'http://localhost/kidcrossing/user/child'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.8'
+    'HTTP_COOKIE' => '_ga=GA1.1.2042199133.1449549112; _csrf=6c47ccaee665154202a58f6c4616962be2aaf50fdb27f6944cc633ad714f14bba%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22CQ5GpNsMqMGp7sW7-4uf_QmdKHlsfrJf%22%3B%7D; ci_session=a%3A4%3A%7Bs%3A10%3A%22session_id%22%3Bs%3A32%3A%220e6fb1e3736756a23c0102c2f314f921%22%3Bs%3A10%3A%22ip_address%22%3Bs%3A3%3A%22%3A%3A1%22%3Bs%3A10%3A%22user_agent%22%3Bs%3A108%3A%22Mozilla%2F5.0+%28Windows+NT+6.1%3B+WOW64%29+AppleWebKit%2F537.36+%28KHTML%2C+like+Gecko%29+Chrome%2F48.0.2564.97+Safari%2F537.36%22%3Bs%3A13%3A%22last_activity%22%3Bi%3A1454388024%3B%7D3323c0db576d2b99bc547f0dc5cd8969; PHPSESSID=doh84787991q19v3vbvhfi5ac7; _identity=21049c69cf4582031db1bad5edfe25dc2e5d749263bb7353eb0f33bb4c7ebaaea%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B6%2C%22DYSVMz4wjeMeTZMoeDHh6FQRopHAZtW9%22%2C2592000%5D%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\Program Files\\Git\\mingw64\\bin;C:\\Program Files\\Git\\usr\\bin;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Users\\Shanika\\AppData\\Local\\atom\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.16 (Win32) OpenSSL/1.0.1p PHP/5.5.27 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.16 (Win32) OpenSSL/1.0.1p PHP/5.5.27'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/kidcrossing/web/index.php'
+    'REMOTE_PORT' => '52475'
+    'REDIRECT_URL' => '/kidcrossing/web/user/dist/img/sad.png'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/kidcrossing/user/dist/img/sad.png'
+    'SCRIPT_NAME' => '/kidcrossing/web/index.php'
+    'PHP_SELF' => '/kidcrossing/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1454393412.461
+    'REQUEST_TIME' => 1454393412
+]
+2016-02-02 07:10:34 [::1][-][-][error][yii\base\InvalidParamException] exception 'yii\base\InvalidParamException' with message 'The view file does not exist: C:\xampp\htdocs\kidcrossing\views\mood\index.php' in C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\base\View.php:226
+Stack trace:
+#0 C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\xampp\\htdocs...', Array, Object(app\controllers\MoodController))
+#1 C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\base\Controller.php(371): yii\base\View->render('index', Array, Object(app\controllers\MoodController))
+#2 C:\xampp\htdocs\kidcrossing\controllers\MoodController.php(41): yii\base\Controller->render('index', Array)
+#3 [internal function]: app\controllers\MoodController->actionIndex()
+#4 C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#5 C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('index', Array)
+#7 C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('mood/index', Array)
+#8 C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#9 C:\xampp\htdocs\kidcrossing\web\index.php(12): yii\base\Application->run()
+#10 {main}
+2016-02-02 07:10:34 [::1][-][-][info][application] $_COOKIE = [
+    '_ga' => 'GA1.1.2042199133.1449549112'
+    '_csrf' => '6c47ccaee665154202a58f6c4616962be2aaf50fdb27f6944cc633ad714f14bba:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"CQ5GpNsMqMGp7sW7-4uf_QmdKHlsfrJf\";}'
+    'ci_session' => 'a:4:{s:10:\"session_id\";s:32:\"0e6fb1e3736756a23c0102c2f314f921\";s:10:\"ip_address\";s:3:\"::1\";s:10:\"user_agent\";s:108:\"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.97 Safari/537.36\";s:13:\"last_activity\";i:1454388024;}3323c0db576d2b99bc547f0dc5cd8969'
+    'PHPSESSID' => 'alt1q9l74o9ceuorkujl5kpn91'
+    '_identity' => 'c59648e5a59a8ad2f2159eb51cbd4a5f8c5cc03c8c6f21e2418ffbd1ba43f41ca:2:{i:0;s:9:\"_identity\";i:1;s:46:\"[5,\"rhHdXwK6N9-5DymU5Fb_T_nJ3N4QwNAL\",2592000]\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_REDIRECT_STATUS' => '200'
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.97 Safari/537.36'
+    'HTTP_REFERER' => 'http://localhost/kidcrossing/'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.8'
+    'HTTP_COOKIE' => '_ga=GA1.1.2042199133.1449549112; _csrf=6c47ccaee665154202a58f6c4616962be2aaf50fdb27f6944cc633ad714f14bba%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22CQ5GpNsMqMGp7sW7-4uf_QmdKHlsfrJf%22%3B%7D; ci_session=a%3A4%3A%7Bs%3A10%3A%22session_id%22%3Bs%3A32%3A%220e6fb1e3736756a23c0102c2f314f921%22%3Bs%3A10%3A%22ip_address%22%3Bs%3A3%3A%22%3A%3A1%22%3Bs%3A10%3A%22user_agent%22%3Bs%3A108%3A%22Mozilla%2F5.0+%28Windows+NT+6.1%3B+WOW64%29+AppleWebKit%2F537.36+%28KHTML%2C+like+Gecko%29+Chrome%2F48.0.2564.97+Safari%2F537.36%22%3Bs%3A13%3A%22last_activity%22%3Bi%3A1454388024%3B%7D3323c0db576d2b99bc547f0dc5cd8969; PHPSESSID=alt1q9l74o9ceuorkujl5kpn91; _identity=c59648e5a59a8ad2f2159eb51cbd4a5f8c5cc03c8c6f21e2418ffbd1ba43f41ca%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B5%2C%22rhHdXwK6N9-5DymU5Fb_T_nJ3N4QwNAL%22%2C2592000%5D%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\Program Files\\Git\\mingw64\\bin;C:\\Program Files\\Git\\usr\\bin;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Users\\Shanika\\AppData\\Local\\atom\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.16 (Win32) OpenSSL/1.0.1p PHP/5.5.27 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.16 (Win32) OpenSSL/1.0.1p PHP/5.5.27'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/kidcrossing/web/index.php'
+    'REMOTE_PORT' => '52501'
+    'REDIRECT_URL' => '/kidcrossing/web/mood/index'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/kidcrossing/mood/index'
+    'SCRIPT_NAME' => '/kidcrossing/web/index.php'
+    'PHP_SELF' => '/kidcrossing/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1454393434.089
+    'REQUEST_TIME' => 1454393434
+]
+2016-02-02 07:11:08 [::1][6][10siq2mg75u3lvg0rtd1fo6tv1][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "index".' in C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\base\Module.php:461
+Stack trace:
+#0 C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('index', Array)
+#1 C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 C:\xampp\htdocs\kidcrossing\web\index.php(12): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\web\Application.php:96
+Stack trace:
+#0 C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 C:\xampp\htdocs\kidcrossing\web\index.php(12): yii\base\Application->run()
+#2 {main}
+2016-02-02 07:11:08 [::1][6][10siq2mg75u3lvg0rtd1fo6tv1][info][application] $_COOKIE = [
+    '_ga' => 'GA1.1.2042199133.1449549112'
+    '_csrf' => '6c47ccaee665154202a58f6c4616962be2aaf50fdb27f6944cc633ad714f14bba:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"CQ5GpNsMqMGp7sW7-4uf_QmdKHlsfrJf\";}'
+    'ci_session' => 'a:4:{s:10:\"session_id\";s:32:\"0e6fb1e3736756a23c0102c2f314f921\";s:10:\"ip_address\";s:3:\"::1\";s:10:\"user_agent\";s:108:\"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.97 Safari/537.36\";s:13:\"last_activity\";i:1454388024;}3323c0db576d2b99bc547f0dc5cd8969'
+    'PHPSESSID' => '10siq2mg75u3lvg0rtd1fo6tv1'
+    '_identity' => '21049c69cf4582031db1bad5edfe25dc2e5d749263bb7353eb0f33bb4c7ebaaea:2:{i:0;s:9:\"_identity\";i:1;s:46:\"[6,\"DYSVMz4wjeMeTZMoeDHh6FQRopHAZtW9\",2592000]\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 6
+]
+
+$_SERVER = [
+    'REDIRECT_REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_REDIRECT_STATUS' => '200'
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.97 Safari/537.36'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.8'
+    'HTTP_COOKIE' => '_ga=GA1.1.2042199133.1449549112; _csrf=6c47ccaee665154202a58f6c4616962be2aaf50fdb27f6944cc633ad714f14bba%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22CQ5GpNsMqMGp7sW7-4uf_QmdKHlsfrJf%22%3B%7D; ci_session=a%3A4%3A%7Bs%3A10%3A%22session_id%22%3Bs%3A32%3A%220e6fb1e3736756a23c0102c2f314f921%22%3Bs%3A10%3A%22ip_address%22%3Bs%3A3%3A%22%3A%3A1%22%3Bs%3A10%3A%22user_agent%22%3Bs%3A108%3A%22Mozilla%2F5.0+%28Windows+NT+6.1%3B+WOW64%29+AppleWebKit%2F537.36+%28KHTML%2C+like+Gecko%29+Chrome%2F48.0.2564.97+Safari%2F537.36%22%3Bs%3A13%3A%22last_activity%22%3Bi%3A1454388024%3B%7D3323c0db576d2b99bc547f0dc5cd8969; PHPSESSID=10siq2mg75u3lvg0rtd1fo6tv1; _identity=21049c69cf4582031db1bad5edfe25dc2e5d749263bb7353eb0f33bb4c7ebaaea%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B6%2C%22DYSVMz4wjeMeTZMoeDHh6FQRopHAZtW9%22%2C2592000%5D%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\Program Files\\Git\\mingw64\\bin;C:\\Program Files\\Git\\usr\\bin;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Users\\Shanika\\AppData\\Local\\atom\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.16 (Win32) OpenSSL/1.0.1p PHP/5.5.27 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.16 (Win32) OpenSSL/1.0.1p PHP/5.5.27'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/kidcrossing/web/index.php'
+    'REMOTE_PORT' => '52539'
+    'REDIRECT_URL' => '/kidcrossing/web/index'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/kidcrossing/index'
+    'SCRIPT_NAME' => '/kidcrossing/web/index.php'
+    'PHP_SELF' => '/kidcrossing/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1454393468.731
+    'REQUEST_TIME' => 1454393468
+]
+2016-02-02 07:11:12 [::1][6][10siq2mg75u3lvg0rtd1fo6tv1][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "index/gii".' in C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\base\Module.php:461
+Stack trace:
+#0 C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('index/gii', Array)
+#1 C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 C:\xampp\htdocs\kidcrossing\web\index.php(12): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\web\Application.php:96
+Stack trace:
+#0 C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 C:\xampp\htdocs\kidcrossing\web\index.php(12): yii\base\Application->run()
+#2 {main}
+2016-02-02 07:11:12 [::1][6][10siq2mg75u3lvg0rtd1fo6tv1][info][application] $_COOKIE = [
+    '_ga' => 'GA1.1.2042199133.1449549112'
+    '_csrf' => '6c47ccaee665154202a58f6c4616962be2aaf50fdb27f6944cc633ad714f14bba:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"CQ5GpNsMqMGp7sW7-4uf_QmdKHlsfrJf\";}'
+    'ci_session' => 'a:4:{s:10:\"session_id\";s:32:\"0e6fb1e3736756a23c0102c2f314f921\";s:10:\"ip_address\";s:3:\"::1\";s:10:\"user_agent\";s:108:\"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.97 Safari/537.36\";s:13:\"last_activity\";i:1454388024;}3323c0db576d2b99bc547f0dc5cd8969'
+    'PHPSESSID' => '10siq2mg75u3lvg0rtd1fo6tv1'
+    '_identity' => '21049c69cf4582031db1bad5edfe25dc2e5d749263bb7353eb0f33bb4c7ebaaea:2:{i:0;s:9:\"_identity\";i:1;s:46:\"[6,\"DYSVMz4wjeMeTZMoeDHh6FQRopHAZtW9\",2592000]\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 6
+]
+
+$_SERVER = [
+    'REDIRECT_REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_REDIRECT_STATUS' => '200'
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.97 Safari/537.36'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.8'
+    'HTTP_COOKIE' => '_ga=GA1.1.2042199133.1449549112; _csrf=6c47ccaee665154202a58f6c4616962be2aaf50fdb27f6944cc633ad714f14bba%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22CQ5GpNsMqMGp7sW7-4uf_QmdKHlsfrJf%22%3B%7D; ci_session=a%3A4%3A%7Bs%3A10%3A%22session_id%22%3Bs%3A32%3A%220e6fb1e3736756a23c0102c2f314f921%22%3Bs%3A10%3A%22ip_address%22%3Bs%3A3%3A%22%3A%3A1%22%3Bs%3A10%3A%22user_agent%22%3Bs%3A108%3A%22Mozilla%2F5.0+%28Windows+NT+6.1%3B+WOW64%29+AppleWebKit%2F537.36+%28KHTML%2C+like+Gecko%29+Chrome%2F48.0.2564.97+Safari%2F537.36%22%3Bs%3A13%3A%22last_activity%22%3Bi%3A1454388024%3B%7D3323c0db576d2b99bc547f0dc5cd8969; PHPSESSID=10siq2mg75u3lvg0rtd1fo6tv1; _identity=21049c69cf4582031db1bad5edfe25dc2e5d749263bb7353eb0f33bb4c7ebaaea%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B6%2C%22DYSVMz4wjeMeTZMoeDHh6FQRopHAZtW9%22%2C2592000%5D%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\Program Files\\Git\\mingw64\\bin;C:\\Program Files\\Git\\usr\\bin;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Users\\Shanika\\AppData\\Local\\atom\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.16 (Win32) OpenSSL/1.0.1p PHP/5.5.27 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.16 (Win32) OpenSSL/1.0.1p PHP/5.5.27'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/kidcrossing/web/index.php'
+    'REMOTE_PORT' => '52540'
+    'REDIRECT_URL' => '/kidcrossing/web/index/gii'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/kidcrossing/index/gii'
+    'SCRIPT_NAME' => '/kidcrossing/web/index.php'
+    'PHP_SELF' => '/kidcrossing/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1454393472.492
+    'REQUEST_TIME' => 1454393472
+]
+2016-02-02 07:14:34 [::1][6][10siq2mg75u3lvg0rtd1fo6tv1][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "web/gii".' in C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\base\Module.php:461
+Stack trace:
+#0 C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('web/gii', Array)
+#1 C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 C:\xampp\htdocs\kidcrossing\web\index.php(12): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\web\Application.php:96
+Stack trace:
+#0 C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 C:\xampp\htdocs\kidcrossing\web\index.php(12): yii\base\Application->run()
+#2 {main}
+2016-02-02 07:14:34 [::1][6][10siq2mg75u3lvg0rtd1fo6tv1][info][application] $_COOKIE = [
+    '_ga' => 'GA1.1.2042199133.1449549112'
+    '_csrf' => '6c47ccaee665154202a58f6c4616962be2aaf50fdb27f6944cc633ad714f14bba:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"CQ5GpNsMqMGp7sW7-4uf_QmdKHlsfrJf\";}'
+    'ci_session' => 'a:4:{s:10:\"session_id\";s:32:\"0e6fb1e3736756a23c0102c2f314f921\";s:10:\"ip_address\";s:3:\"::1\";s:10:\"user_agent\";s:108:\"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.97 Safari/537.36\";s:13:\"last_activity\";i:1454388024;}3323c0db576d2b99bc547f0dc5cd8969'
+    'PHPSESSID' => '10siq2mg75u3lvg0rtd1fo6tv1'
+    '_identity' => '21049c69cf4582031db1bad5edfe25dc2e5d749263bb7353eb0f33bb4c7ebaaea:2:{i:0;s:9:\"_identity\";i:1;s:46:\"[6,\"DYSVMz4wjeMeTZMoeDHh6FQRopHAZtW9\",2592000]\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 6
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.97 Safari/537.36'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.8'
+    'HTTP_COOKIE' => '_ga=GA1.1.2042199133.1449549112; _csrf=6c47ccaee665154202a58f6c4616962be2aaf50fdb27f6944cc633ad714f14bba%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22CQ5GpNsMqMGp7sW7-4uf_QmdKHlsfrJf%22%3B%7D; ci_session=a%3A4%3A%7Bs%3A10%3A%22session_id%22%3Bs%3A32%3A%220e6fb1e3736756a23c0102c2f314f921%22%3Bs%3A10%3A%22ip_address%22%3Bs%3A3%3A%22%3A%3A1%22%3Bs%3A10%3A%22user_agent%22%3Bs%3A108%3A%22Mozilla%2F5.0+%28Windows+NT+6.1%3B+WOW64%29+AppleWebKit%2F537.36+%28KHTML%2C+like+Gecko%29+Chrome%2F48.0.2564.97+Safari%2F537.36%22%3Bs%3A13%3A%22last_activity%22%3Bi%3A1454388024%3B%7D3323c0db576d2b99bc547f0dc5cd8969; PHPSESSID=10siq2mg75u3lvg0rtd1fo6tv1; _identity=21049c69cf4582031db1bad5edfe25dc2e5d749263bb7353eb0f33bb4c7ebaaea%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B6%2C%22DYSVMz4wjeMeTZMoeDHh6FQRopHAZtW9%22%2C2592000%5D%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\Program Files\\Git\\mingw64\\bin;C:\\Program Files\\Git\\usr\\bin;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Users\\Shanika\\AppData\\Local\\atom\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.16 (Win32) OpenSSL/1.0.1p PHP/5.5.27 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.16 (Win32) OpenSSL/1.0.1p PHP/5.5.27'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/kidcrossing/web/index.php'
+    'REMOTE_PORT' => '52589'
+    'REDIRECT_URL' => '/kidcrossing/web/gii'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/kidcrossing/web/gii'
+    'SCRIPT_NAME' => '/kidcrossing/web/index.php'
+    'PHP_SELF' => '/kidcrossing/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1454393674.646
+    'REQUEST_TIME' => 1454393674
+]
+2016-02-02 07:15:02 [::1][6][10siq2mg75u3lvg0rtd1fo6tv1][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "index.php".' in C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\base\Module.php:461
+Stack trace:
+#0 C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('index.php', Array)
+#1 C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 C:\xampp\htdocs\kidcrossing\web\index.php(12): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\web\Application.php:96
+Stack trace:
+#0 C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 C:\xampp\htdocs\kidcrossing\web\index.php(12): yii\base\Application->run()
+#2 {main}
+2016-02-02 07:15:02 [::1][6][10siq2mg75u3lvg0rtd1fo6tv1][info][application] $_GET = [
+    'r' => 'gii'
+]
+
+$_COOKIE = [
+    '_ga' => 'GA1.1.2042199133.1449549112'
+    '_csrf' => '6c47ccaee665154202a58f6c4616962be2aaf50fdb27f6944cc633ad714f14bba:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"CQ5GpNsMqMGp7sW7-4uf_QmdKHlsfrJf\";}'
+    'ci_session' => 'a:4:{s:10:\"session_id\";s:32:\"0e6fb1e3736756a23c0102c2f314f921\";s:10:\"ip_address\";s:3:\"::1\";s:10:\"user_agent\";s:108:\"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.97 Safari/537.36\";s:13:\"last_activity\";i:1454388024;}3323c0db576d2b99bc547f0dc5cd8969'
+    'PHPSESSID' => '10siq2mg75u3lvg0rtd1fo6tv1'
+    '_identity' => '21049c69cf4582031db1bad5edfe25dc2e5d749263bb7353eb0f33bb4c7ebaaea:2:{i:0;s:9:\"_identity\";i:1;s:46:\"[6,\"DYSVMz4wjeMeTZMoeDHh6FQRopHAZtW9\",2592000]\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 6
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.97 Safari/537.36'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.8'
+    'HTTP_COOKIE' => '_ga=GA1.1.2042199133.1449549112; _csrf=6c47ccaee665154202a58f6c4616962be2aaf50fdb27f6944cc633ad714f14bba%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22CQ5GpNsMqMGp7sW7-4uf_QmdKHlsfrJf%22%3B%7D; ci_session=a%3A4%3A%7Bs%3A10%3A%22session_id%22%3Bs%3A32%3A%220e6fb1e3736756a23c0102c2f314f921%22%3Bs%3A10%3A%22ip_address%22%3Bs%3A3%3A%22%3A%3A1%22%3Bs%3A10%3A%22user_agent%22%3Bs%3A108%3A%22Mozilla%2F5.0+%28Windows+NT+6.1%3B+WOW64%29+AppleWebKit%2F537.36+%28KHTML%2C+like+Gecko%29+Chrome%2F48.0.2564.97+Safari%2F537.36%22%3Bs%3A13%3A%22last_activity%22%3Bi%3A1454388024%3B%7D3323c0db576d2b99bc547f0dc5cd8969; PHPSESSID=10siq2mg75u3lvg0rtd1fo6tv1; _identity=21049c69cf4582031db1bad5edfe25dc2e5d749263bb7353eb0f33bb4c7ebaaea%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B6%2C%22DYSVMz4wjeMeTZMoeDHh6FQRopHAZtW9%22%2C2592000%5D%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\Program Files\\Git\\mingw64\\bin;C:\\Program Files\\Git\\usr\\bin;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Users\\Shanika\\AppData\\Local\\atom\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.16 (Win32) OpenSSL/1.0.1p PHP/5.5.27 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.16 (Win32) OpenSSL/1.0.1p PHP/5.5.27'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/kidcrossing/web/index.php'
+    'REMOTE_PORT' => '52601'
+    'REDIRECT_QUERY_STRING' => 'r=gii'
+    'REDIRECT_URL' => '/kidcrossing/index.php'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=gii'
+    'REQUEST_URI' => '/kidcrossing/index.php?r=gii'
+    'SCRIPT_NAME' => '/kidcrossing/web/index.php'
+    'PHP_SELF' => '/kidcrossing/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1454393702.777
+    'REQUEST_TIME' => 1454393702
+]
+2016-02-02 07:18:09 [::1][6][10siq2mg75u3lvg0rtd1fo6tv1][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "index.php".' in C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\base\Module.php:461
+Stack trace:
+#0 C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('index.php', Array)
+#1 C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 C:\xampp\htdocs\kidcrossing\web\index.php(12): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\web\Application.php:96
+Stack trace:
+#0 C:\xampp\htdocs\kidcrossing\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 C:\xampp\htdocs\kidcrossing\web\index.php(12): yii\base\Application->run()
+#2 {main}
+2016-02-02 07:18:09 [::1][6][10siq2mg75u3lvg0rtd1fo6tv1][info][application] $_GET = [
+    'r' => 'gii'
+]
+
+$_COOKIE = [
+    '_ga' => 'GA1.1.2042199133.1449549112'
+    '_csrf' => '6c47ccaee665154202a58f6c4616962be2aaf50fdb27f6944cc633ad714f14bba:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"CQ5GpNsMqMGp7sW7-4uf_QmdKHlsfrJf\";}'
+    'ci_session' => 'a:4:{s:10:\"session_id\";s:32:\"0e6fb1e3736756a23c0102c2f314f921\";s:10:\"ip_address\";s:3:\"::1\";s:10:\"user_agent\";s:108:\"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.97 Safari/537.36\";s:13:\"last_activity\";i:1454388024;}3323c0db576d2b99bc547f0dc5cd8969'
+    'PHPSESSID' => '10siq2mg75u3lvg0rtd1fo6tv1'
+    '_identity' => '21049c69cf4582031db1bad5edfe25dc2e5d749263bb7353eb0f33bb4c7ebaaea:2:{i:0;s:9:\"_identity\";i:1;s:46:\"[6,\"DYSVMz4wjeMeTZMoeDHh6FQRopHAZtW9\",2592000]\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 6
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.97 Safari/537.36'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.8'
+    'HTTP_COOKIE' => '_ga=GA1.1.2042199133.1449549112; _csrf=6c47ccaee665154202a58f6c4616962be2aaf50fdb27f6944cc633ad714f14bba%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22CQ5GpNsMqMGp7sW7-4uf_QmdKHlsfrJf%22%3B%7D; ci_session=a%3A4%3A%7Bs%3A10%3A%22session_id%22%3Bs%3A32%3A%220e6fb1e3736756a23c0102c2f314f921%22%3Bs%3A10%3A%22ip_address%22%3Bs%3A3%3A%22%3A%3A1%22%3Bs%3A10%3A%22user_agent%22%3Bs%3A108%3A%22Mozilla%2F5.0+%28Windows+NT+6.1%3B+WOW64%29+AppleWebKit%2F537.36+%28KHTML%2C+like+Gecko%29+Chrome%2F48.0.2564.97+Safari%2F537.36%22%3Bs%3A13%3A%22last_activity%22%3Bi%3A1454388024%3B%7D3323c0db576d2b99bc547f0dc5cd8969; PHPSESSID=10siq2mg75u3lvg0rtd1fo6tv1; _identity=21049c69cf4582031db1bad5edfe25dc2e5d749263bb7353eb0f33bb4c7ebaaea%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B6%2C%22DYSVMz4wjeMeTZMoeDHh6FQRopHAZtW9%22%2C2592000%5D%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\Program Files\\Git\\mingw64\\bin;C:\\Program Files\\Git\\usr\\bin;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Users\\Shanika\\AppData\\Local\\atom\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.16 (Win32) OpenSSL/1.0.1p PHP/5.5.27 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.16 (Win32) OpenSSL/1.0.1p PHP/5.5.27'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/kidcrossing/web/index.php'
+    'REMOTE_PORT' => '52679'
+    'REDIRECT_QUERY_STRING' => 'r=gii'
+    'REDIRECT_URL' => '/kidcrossing/index.php'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=gii'
+    'REQUEST_URI' => '/kidcrossing/index.php?r=gii'
+    'SCRIPT_NAME' => '/kidcrossing/web/index.php'
+    'PHP_SELF' => '/kidcrossing/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1454393889.796
+    'REQUEST_TIME' => 1454393889
+]
