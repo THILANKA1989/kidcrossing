@@ -93,6 +93,9 @@ body {
         transform: translate(230px, 0);
     }
 }
+pre{
+    display: none !important;
+}
 .content-wrapper,
 .right-side {
     min-height: 100%;

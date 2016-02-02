@@ -140,6 +140,14 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface {
         $result = User::find()->where('parent_id = :parent_id',[':parent_id' => $parent_id]);
         return $withParent ? $result->orWhere('id = :user_id',[':user_id' => $parent_id]) : $result;
     }
+    /**
+     * @return array parents - DTR
+     */
+    public function findParents() {
+        $family = $this->findFamily(true);
+        $result = $family->andWhere('level != 3');
+        return $result;
+    }
 
     public function getMemberIds(){
         return yii\helpers\ArrayHelper::getColumn($this->findFamily()->all(), 'id');
@@ -170,7 +178,6 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface {
     }
 
     /**
-     * 
      * @param type $insert
      */
     public function beforeSave($insert) {
