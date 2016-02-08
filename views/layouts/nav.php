@@ -34,10 +34,10 @@ use yii\helpers\Html;
                 $members = Yii::$app->user->identity->findFamily()->all();
                 if ($members):
                     foreach ($members as $member):
-                        $links[] = ['label' => '<i class="fa fa-home"></i> <span>' . $member->fullname . '</span>', 'url' => ['/user/family', 'id' => $member->id]]
+                        $links[] = ['label' => '<i class="fa fa-home"></i> <span>' . $member->fullname . '</span>', 'url' => Yii::$app->user->identity->level == 3 ? ['/user/', 'id' => $member->id] : ['/user/family', 'id' => $member->id]]
                         ?>
                         <div class="col-xs-3 small-padded-div">
-                            <a href="<?= Url::toRoute(['user/family', 'id' => $member->id]) ?>"><img src="<?= Url::to($member->avatar) ?>" class="img-middle user-square img-small-thumb image" alt="<?= $member->fullname ?>"></a>
+                            <a href="<?= Yii::$app->user->identity->level == 3 ? Url::toRoute(['user/view/', 'id' => $member->id]): Url::toRoute(['user/family', 'id' => $member->id]) ?>"><img src="<?= Url::to($member->avatar) ?>" class="img-middle user-square img-small-thumb image" alt="<?= $member->fullname ?>"></a>
                         </div>
                         <?php
                     endforeach;

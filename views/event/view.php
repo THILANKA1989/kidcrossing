@@ -43,7 +43,10 @@ $this->params['breadcrumbs'][] = $this->title;
             ['attribute' => 'user.fullname',
                 'label' => 'Created by',
             ],
-            'shared_with:ntext',
+             ['attribute' => 'sharedwith',
+                            'label' => 'Shared With',
+                            'format' => 'raw',
+                        ],
         ],
     ])
     ?>

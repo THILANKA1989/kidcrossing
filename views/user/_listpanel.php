@@ -7,6 +7,8 @@ use yii\helpers\Html;
 ?>
 <div class="col-md-12">
     <p class="fonts-bold padset-left color-blue">
-        <?= $model->entry; ?>
+    <p class="color-blue fonts-bold"><?= Html::a(" $model->entry", ['journal/'.$model->id]); ?>
+        <span class="label label-success pull-right"><?= count($model->comments) ?> Comments</span>
+    </p>
     </p>
 </div>

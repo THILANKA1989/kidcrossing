@@ -80,11 +80,9 @@ class Journal extends \yii\db\ActiveRecord
     /**
      * get latest journal entry by DTR
      */
-    public function latestJournal(){
-        $journal = Journal::find()->limit(3)->all();
+    public function latestJournal($user_id){
+        $journal = Journal::find()->where(['user_id' => $user_id])->orderBy(['date'=> SORT_DESC])->limit(3);
         return $journal;
     }
-    
-    
-    
+
 }

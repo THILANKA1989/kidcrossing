@@ -1,11 +1,12 @@
 <?php
 
 use yii\helpers\Html;
-//use yii\grid\GridView;
+use yii\grid\GridView;
 //use yii\helpers\Url;
 //use yii\bootstrap\Modal;
 use yii\widgets\ActiveForm;
 use yii\widgets\ListView;
+use yii\widgets\Pjax;
 use app\models\Mood;
 /* @var $this yii\web\View */
 /* @var $model app\models\User */
@@ -18,12 +19,10 @@ $this->params['breadcrumbs'][] = $this->title;
 //echo Html::encode($this->journal);
 ?>
        <!-- Content Header (Page header) -->
-        
- 
-       <!--<div class="background-white top-fixed-margin bordered-grey padding-large">
-            <div class="row moodbox">
+
+
                 
-                        <div class="col-xs-1"></div>
+                        <!--<div class="col-xs-1"></div>
                         <div class="col-xs-2">
                              <a href="#" data-mood="Sad" class="mood"><img src="<?= Yii::$app->request->baseUrl ?>/img/moods/sad.png" width="70px" class="center-blocked"></a>
                         </div>
@@ -39,13 +38,34 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="col-xs-2">
                             <a href="#" data-mood="Angry" class="mood"><img src="<?= Yii::$app->request->baseUrl ?>/img/moods/angry.png" width="70px" class="center-blocked"></a>
                         </div>
-                        <div class="col-xs-1"></div>
+                        <div class="col-xs-1"></div>-->
+                               <?= $this->render('_mood', [
+									'model' => $moods,
+								]) ?>        
    
-          </div>
-       </div>-->
-        <?= $this->render('_mood', [
-        'model' => $moods,
-        ]) ?>
+       <div class="background-white top-fixed-margin bordered-grey padding-large">
+            
+            <?php 
+            $count = (5-Mood::find()->where(['user_id' => Yii::$app->user->getId(), 'date' => date("Y-m-d")])->count());
+            $count == 1 ? $entry_label = "Entry" : $entry_label = "Entries";
+            
+            Pjax::begin(['id'=>'moodbox','class' => 'moodbox'])?>
+              <?php if($count != 5){  ?>
+            	<?= GridView::widget([
+                    'dataProvider' => $moodsProvider,
+                    'columns' => [
+                        'mood',
+                    ],
+                     'caption'=> "<span class='label label-danger font-small'>".$count."</span>"." "."<span class='font-small color-bule'>".$entry_label." remaining"."</span>",
+                     'options' => ['class'=>'moodbox-table'],
+                     'emptyText' => '',
+                ]); ?>
+                     <?php } ?>
+            <?php Pjax::end() ?>	
+  
+       </div>
+
+
           <div class="row">
             <!-- column moods and parent profiles -->
             <div class="col-md-12">
@@ -158,12 +178,3 @@ $this->params['breadcrumbs'][] = $this->title;
               <!-- /.widget-user1 -->
         <!-- Main content -->
 
-<?php 
-//moods onclick action
-$this->registerJs("$('.mood').on('click',function(){
-    var moodType = $(this).data('mood');
-    $('.moodbox').hide('slow');
-});",
-        yii\web\View::POS_END,
-        'reg-moods');
-?>

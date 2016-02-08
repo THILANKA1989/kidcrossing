@@ -41,14 +41,15 @@ class EventController extends Controller {
      * Lists all Event models.
      * @return mixed
      */
-    public function actionIndex() {
-        $searchModel = new EventSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+    public function actionIndex($id = null) {
+        $id = $id == null ? Yii::$app->user->id : $id;
+        //$searchModel = new EventSearch();
+        //$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
-                    'events' => Event::find()->where(['user_id' => Yii::$app->user->identity->memberIds])->all(),
-                    'searchModel' => $searchModel,
-                    'dataProvider' => $dataProvider,
+                    'events' => Event::find()->where('FIND_IN_SET('.$id. ',"shared_with")>=0')->orWhere('user_id='.$id)->all(),
+                    //'searchModel' => $searchModel,
+                    //'dataProvider' => $dataProvider,
         ]);
     }
 
@@ -80,7 +81,7 @@ class EventController extends Controller {
         $model->date = $date;
         if ($model->load(Yii::$app->request->post())) {
             //var_dump($model);
-            $model->shared_with = json_encode($model->shared_with);
+            $model->shared_with = implode(',',$model->shared_with);
             if ($model->save())
                 return $this->redirect(['view', 'id' => $model->id]);
         } elseif (Yii::$app->request->isAjax) {
@@ -103,7 +104,9 @@ class EventController extends Controller {
     public function actionUpdate($id) {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) ) {     
+            $model->shared_with = implode(',',$model->shared_with);
+            if($model->save())
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [

@@ -37,8 +37,8 @@ use yii\helpers\Html;
         </div>
         
         <div class="box-small-container center-blocked padset-bottom-large">
-            <?= Html::a(Yii::t('app', 'Edit Profile'), ['family', 'id'=>$model->id], ['class' => 'btn btn-info btn-large pull-left']) ?>
-            <a href="#" class="btn btn-info btn-danger pull-right">Edit Color</a>
+            <?= Html::a(Yii::t('app', 'Edit Profile'), ['family', 'id'=>$model->id], ['class' => 'btn btn-info btn-large center-blocked']) ?>
+            <!--<a href="#" class="btn btn-info btn-danger pull-right">Edit Color</a>-->
         </div>
 
     </div>

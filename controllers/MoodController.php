@@ -2,13 +2,16 @@
 
 namespace app\controllers;
 
+use app\models\User;
 use Yii;
 use app\models\Mood;
 use app\models\MoodSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
+use yii\data\ActiveDataProvider;
 /**
  * MoodController implements the CRUD actions for Mood model.
  */
@@ -17,6 +20,17 @@ class MoodController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['create', 'index', 'view', 'update', 'delete'],
+                'rules' => [
+                    [
+                        'actions' => ['create', 'index', 'view', 'update', 'delete'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -32,11 +46,11 @@ class MoodController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new MoodSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
+        $dataProvider = new ActiveDataProvider([
+            'query' => Yii::$app->user->identity->findFamily(false),
+            'pagination' => false,
+        ]);
         return $this->render('index', [
-            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
@@ -48,8 +62,16 @@ class MoodController extends Controller
      */
     public function actionView($id)
     {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
+        $model= User::findOne($id); 
+        $date = date("Y-m-d");
+        //var_dump($model->percentageMonthly); die();
+        $moodProvider = new ActiveDataProvider([
+            'query' => Mood::find()->select('mood')->where(['user_id' => $id,'date'=> $date])->orderBy(['date'=> SORT_DESC,'time' => SORT_DESC])->limit(1),
+            'pagination' => false,
+        ]);    
+      return $this->render('view', [
+            'model' => $model,
+            'moodProvider' => $moodProvider,
         ]);
     }
 
@@ -61,19 +83,26 @@ class MoodController extends Controller
     public function actionCreate()
     {
         $model = new Mood();
-        if ($model->load(Yii::$app->request->post())) {
+        $date = date("Y-m-d");
+        if ($model->load(Yii::$app->request->post()) && Mood::find()->where(['user_id' => Yii::$app->user->getId(), 'date' => $date])->count() < 5) {
           $model->user_id = Yii::$app->user->getId();
-          $model->date = date('Y-d-m');
-          $model->time = date('Y-d-m h:i:s');
-           if ($model->save()) {  
-              Yii::$app->session->setFlash('success', 'Mood successfully Set.');
-             return $this->redirect(['user/child']);             
+          $model->date = date('Y-m-d');
+          $model->time = date('Y-m-d h:i:s');
+          
+           if ($model->save()) {
+             //Yii::$app->session->setFlash('success', 'Mood successfully Set.');
+             //return $this->redirect(['user/child']); 
+            
+             echo "<div class='mood-title'>"."You are ".$model->mood." Now"."<span class='font-small pull-right label label-danger'>".(5-Mood::find()->where(['user_id' => Yii::$app->user->getId(), 'date' => date("Y-m-d")])->count())."</span>"."</div>";
            }else{
                Yii::$app->session->setFlash('danger', 'Something Error');
            }
+        }else{
+              echo "You are out of entries";
         } 
-        return $this->render('create', [
+        return $this->renderAjax('create', [
             'model' => $model,
+        	
         ]);
     }
 
@@ -124,4 +153,6 @@ class MoodController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
+
 }

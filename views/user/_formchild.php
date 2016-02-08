@@ -14,8 +14,8 @@ use yii\bootstrap\ActiveForm;
         </div>
 
         <div class="panel-body">
-            <h4 class="color-blue">Please fill out the following fields to create an account for your child</h4>
-
+            <h4 class="color-blue">Please fill out the following fields to create an account for your child <?= !$model->isNewRecord ? Html::a(Yii::t('app', 'Add new'), ['user/family'], ['class' => 'btn btn-info btn-large pull-right']): ''  ?> </h4>
+            
             <?php
             $form = ActiveForm::begin([
                         'id' => 'child-form',

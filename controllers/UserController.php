@@ -9,9 +9,9 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\Tempuser;
 use app\models\User;
+use app\models\Mood;
 use app\models\UserSearch;
 use app\models\Profile;
-use app\models\Mood;
 use app\models\Journal;
 use app\models\JournalSearch;
 
@@ -306,11 +306,14 @@ class UserController extends Controller {
      */
      public function actionChild(){
         $user = Yii::$app->user->id;
+        //$model = new User();
         
-        //$model = new User();where(['category_id' => $id])->all()
-        
+        $moodsProvider = new ActiveDataProvider([
+        		'query' => Mood::find()->select('mood')->where(['user_id'=> $user])->orderBy(['date'=> SORT_DESC,'time'=>SORT_DESC])->limit(1),
+        		'pagination' => false,
+        		]);
         $journalProvider = new ActiveDataProvider([
-            'query' => Journal::find()->where(['user_id' => $user])->orderBy('date')->limit(3)
+            'query' => Journal::latestJournal($user)
             ,'pagination' => false,
         ]);    
         $DataProvider = new ActiveDataProvider([
@@ -319,14 +322,20 @@ class UserController extends Controller {
                 'pageSize' => 20,
             ],
         ]);
+        //get number 
         //create mood
         $moods = new Mood();
-       // VarDumper::dump($journalProvider, 10000, true); die();
-        return $this->render('childdashboard', [
-                    'dataProvider' => $DataProvider,
-                    'journalProvider' => $journalProvider,
-                    'moods' => $moods
-                ]);
+       //VarDumper::dump($moodsProvider, 10000, true); die();
+        if(Yii::$app->user->identity->level == 3){
+            return $this->render('childdashboard', [
+                        'dataProvider' => $DataProvider,
+                        'journalProvider' => $journalProvider,
+                        'moodsProvider' => $moodsProvider,
+                        'moods' => $moods,
+                    ]);
+        }else{
+            throw new \yii\web\NotFoundHttpException();
+        }
      }
     /**
      * Creates a new User model.

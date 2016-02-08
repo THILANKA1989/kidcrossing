@@ -5,6 +5,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+use yii\helpers\Html;
 ?>
 <div class="col-md-6"><!-- single user -->
                   <!-- Widget: user widget style 1 -->
@@ -46,15 +47,16 @@
                         <p class="color-grey padset-left"><a href="#">Come home early!</a></p>
                       </div>
                     </div><!-- photos semiwidget ends -->
-                     <!-- messages semiwidget -->
+                     <!-- Events semiwidget -->
                     <div class="col-md-12 semiwidget-white">
-                      <h4 class="color-blue cancel-margin heading-strip-grey">New Events (3)</h4>
-                      <div class="panel-white">
-                        <p class="color-grey padset-left"><a href="#">Our family reunion</a></p>
-                        <p class="color-grey padset-left"><a href="#">Are you ready for birthday party</a></p>
-                        <p class="color-grey padset-left"><a href="#">Campfire</a></p>
-                      </div>
-                    </div><!-- photos semiwidget ends -->
+                        <h4 class="color-blue cancel-margin heading-strip-grey">New Events (3)</h4>
+                          <?php  
+                            $i = 0;    
+                            foreach ($model->events as $model) {
+                                echo "<p class='color-blue fonts-bold'>".Html::a(" $model->title", ['event/'])."</p>";
+                                if(++$i >2){ break;}
+                            }?>
+                    </div><!-- events semiwidget ends -->
                     <!-- messages semiwidget ends -->
                      <!-- photos semiwidget -->
                     <div class="col-md-12 semiwidget-grey">

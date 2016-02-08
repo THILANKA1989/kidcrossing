@@ -66,6 +66,15 @@ class Event extends \yii\db\ActiveRecord {
     public function getUser() {
         return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
+    
+    public function getSharedWith($withoutWrapper=false)
+    {
+       $shared_users = User::find()->where(['id'=> explode(",",$this->shared_with)])->all();
+       if($withoutWrapper)
+          return  implode(', ', yii\helpers\ArrayHelper::getColumn($shared_users, 'fullname'));
+       else
+       return "<span class='label label-success'>" . implode('</span> <span class="label label-success">', yii\helpers\ArrayHelper::getColumn($shared_users, 'fullname'))."</span>";
+    }
 
 
 }

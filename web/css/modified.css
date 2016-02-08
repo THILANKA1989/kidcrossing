@@ -83,6 +83,17 @@ p{
 }
 /* ##Box Model */
 /* ###Boxes */
+#moodbox{
+    font-size: 34px;
+    color: #F39C12;
+    text-align: center;
+    border: 1px solid #f4f4f4;
+    transition: all 0.5s ease;
+}
+#moodbox caption{
+    margin-top: -18px;
+    margin-left: 10px;
+}
 .flex-changed{
 	display: flex !important;
 }
@@ -97,8 +108,13 @@ p{
 }
 .family-members-div{
 	padding: 10px;
-  border-top: 1px solid #ECF0F5;
-  border-bottom: 1px solid #ECF0F5;
+  background-color:#64625F;
+}
+.style-box{
+    background-color: #f3f3f3;
+    padding-left: 40px;
+    padding-right: 40px;
+    border: 1px solid #ddd;
 }
 .small-padded-div{
 	padding: 10px;
@@ -362,6 +378,7 @@ p{
 .custom-list-two{
 	color: #35B5BA;
 	font-size: 18px;
+        padding-left: 0px;
 }
 /* ## Slider */
 .thumb-slider{
@@ -793,7 +810,10 @@ p{
   background: #fff;
   box-shadow: 0 1px 4px 0 rgba(0,0,0,.37);
 }
-
+#clients{
+    width:100% !important;
+    height: 500px !important;
+}
   .colorpicker-2x .colorpicker-saturation {
         width: 200px;
         height: 200px;
@@ -860,7 +880,7 @@ p{
     background-color: #fff !important;
 }
 .main-sidebar, .wrapper {
-    background-color:#35B5BA !important;
+    background-color:#1E282C !important;
 }
 .skin-blue .sidebar a {
     color: #FFFFFF !important;
@@ -922,4 +942,117 @@ p{
 }
 .grey-card ::-webkit-scrollbar-thumb:window-inactive {
   background: rgba(255,0,0,0.4); 
+}
+input[value="sad"]:after{
+    content: url('../web/img/moods/sad.png');
+    height: 10px !important;
+    width: 10px !important;
+    cursor: pointer;
+    visibility: visible !important;
+}
+
+input[value="happy"]:after{
+    content: url('../web/img/moods/happy.png');
+    height: 10px !important;
+    width: 10px !important;
+    cursor: pointer;
+    visibility: visible !important;
+}
+
+input[value="excited"]:after{
+    content: url('../web/img/moods/excited.png');
+    height: 10px !important;
+    width: 10px !important;
+    cursor: pointer;
+    visibility: visible !important;
+}
+
+input[value="angry"]:after{
+    content: url('../web/img/moods/angry.png');
+    height: 10px !important;
+    width: 10px !important;
+    cursor: pointer;
+    visibility: visible !important;
+}
+
+input[value="bored"]:after{
+    content: url('../web/img/moods/bored.png');
+    height: 10px !important;
+    width: 10px !important;
+    cursor: pointer;
+    visibility: visible !important;
+}
+
+#mood-mood input[type="radio"]{
+    /* margin: 3px 0 0; */
+    margin-left: 100px;
+    margin-top: 1px \9;
+    margin-bottom: 43px;
+    line-height: normal;
+    transition: all 0.4s ease;
+    visibility: hidden;
+}
+
+#mood-mood input[type="radio"]:hover,#mood-mood input[type="radio"]:focus,#mood-mood input[type="radio"]:checked{
+    transform: scale(1.2);
+}
+
+#mood-mood label{
+    color: transparent;
+}
+.field-mood-mood .control-label{
+    display: none;
+}
+#moodbox .summary, #moodbox .grid-view thead{
+    display: none;
+}
+
+#submit_mood{
+    display: none;
+}
+.mood-form{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.mood-form #Mood{
+    margin-left: -100px;
+}
+
+#w0 table{
+    margin-bottom: 0px !important;
+}
+
+.caption{
+    color: #fff;
+}
+
+.card-grey h4 .grid-view thead{
+    display: none !important;
+}
+.card-grey h4 .grid-view tbody td{
+    color: #F39C12 !important;
+}
+.card-grey h4 .summary{
+    display: none !important;
+}
+
+
+.empty{
+    color: #F39C12 !important;
+}
+
+.moodbox-table td:before{
+    content: "You are ";
+}
+.moodbox-table td:after{
+    content: " Now";
+}
+.moodbox-table th{
+    display: none;
+}
+
+#moodbox .mood-title span{
+    margin-top: 15px;
+    margin-right: 10px;
 }
