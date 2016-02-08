@@ -31,3 +31,6 @@ config/db.php
 
 #Runtime
 runtime
+
+#uploads
+web/uploads/
