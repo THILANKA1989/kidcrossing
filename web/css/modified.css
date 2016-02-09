@@ -1022,6 +1022,9 @@ input[value="bored"]:after{
 #w0 table{
     margin-bottom: 0px !important;
 }
+#w0 .table tbody tr{
+    text-transform: capitalize;
+}
 
 .caption{
     color: #fff;
@@ -1051,7 +1054,6 @@ input[value="bored"]:after{
 .moodbox-table th{
     display: none;
 }
-
 #moodbox .mood-title span{
     margin-top: 15px;
     margin-right: 10px;

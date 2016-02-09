@@ -4,7 +4,7 @@
 /* @var $model app\models\Journal */
 
 use yii\helpers\Html;
-
+use app\models\Mood;
 
 $mood = Mood::percentageMonthly($model->id);
 ?>

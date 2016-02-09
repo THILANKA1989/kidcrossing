@@ -66,7 +66,7 @@ class MoodController extends Controller
         $date = date("Y-m-d");
         //var_dump($model->percentageMonthly); die();
         $moodProvider = new ActiveDataProvider([
-            'query' => Mood::find()->select('mood')->where(['user_id' => $id,'date'=> $date])->orderBy(['date'=> SORT_DESC,'time' => SORT_DESC])->limit(1),
+            'query' => Mood::find()->select('mood')->where(['user_id' => $id])->orderBy(['date'=> SORT_DESC,'time' => SORT_DESC])->limit(1),
             'pagination' => false,
         ]);    
       return $this->render('view', [
