@@ -7,7 +7,10 @@
  */
 use yii\helpers\Html;
 ?>
-<div class="col-md-6"><!-- single user -->
+<?php
+count(Yii::$app->user->identity->findParents()) == 2 ? $column = "col-md-6" :  $column = "col-md-12"; 
+?>
+<div class="<?= $column?>"><!-- single user -->
                   <!-- Widget: user widget style 1 -->
                   <div class="box box-widget widget-user">
                     <!-- Emoji for widget -->

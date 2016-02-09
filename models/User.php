@@ -74,6 +74,9 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface {
     public function getEvents(){
         return $this->hasMany(Event::className(), ['user_id' => 'id']);
     }
+    public function getJournals(){
+        return $this->hasMany(Journal::className(), ['user_id' => 'id','shared_with' => 'id']);
+    }
     /**
      * @inheritdoc
      */
