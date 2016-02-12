@@ -59,6 +59,7 @@ class Mood extends \yii\db\ActiveRecord
     {
         return $this->hasOne(['id' => 'user_id'], User::className());
     }
+    
     /**
      *  MOODS - get percenatges of moods for a month for a user - DTR
      */
@@ -124,6 +125,12 @@ class Mood extends \yii\db\ActiveRecord
      */
     public function getCurrentMood($id){
         return self::find()->select('mood')->where(['user_id'=> $id])->orderBy(['date'=> SORT_DESC, 'time'=> SORT_DESC ])->one();
+    }
+    /*
+     * get moods between dates in filter
+     */
+    public static function getMoodsBetweenDates($lower, $upper,$user_id = null){
+        return Mood::find()->where(['and', 'date >= $lower', 'date <= $upper',['user_id' => $user_id]])->all();
     }
     
 }

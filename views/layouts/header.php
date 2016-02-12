@@ -3,6 +3,15 @@
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\helpers\Url;
+use app\models\Notification;
+use yii\helpers\Html;
+use yii\widgets\ActiveForm;
+
+$notification = new Notification();
+$events = Notification::find()->where(['type'=> 'event','status'=> 0,'shared_id'=> Yii::$app->user->id])->orderBy(['date'=> SORT_DESC])->all();
+$journals = Notification::find()->where(['type'=> 'journal','status'=> 0,'shared_id'=> Yii::$app->user->id])->orderBy(['date'=> SORT_DESC])->all();
+$number_new_events = count($events);
+$number_new_journals = count($journals);
 ?>
 <!-- Main Header -->
 <header class="main-header">
@@ -60,27 +69,72 @@ use yii\helpers\Url;
                         <li class="footer"><a href="#">See All Messages</a></li>
                     </ul>
                 </li><!-- /.messages-menu -->
-
+                <!-- journals Menu -->
                 <!-- Notifications Menu -->
                 <li class="dropdown notifications-menu">
                     <!-- Menu toggle button -->
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-calendar"></i>
-                        <span class="label label-warning">10</span>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="calendar_notify">
+                        <i class="fa fa-list-ol"></i>
+                        <span class="label label-warning"><?=$number_new_journals ?></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li class="header">You have 10 notifications</li>
+                        <li class="header">You have <?=$number_new_journals ?> Events</li>
                         <li>
                             <!-- Inner Menu: contains the notifications -->
+                           
                             <ul class="menu">
-                                <li><!-- start notification -->
-                                    <a href="#">
-                                        <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                                    </a>
-                                </li><!-- end notification -->
+                                 <?php foreach($journals as $journal){ ?>
+                                    <li>
+                                    <div class="row panel-footer padding-top-sm">
+                                    <a href="<?= Url::toRoute([$journal->type.'/view/','id' => $journal->type_id,'notify' => $journal->id ]) ?>" class="alerted">
+                                      <div class="col-xs-3">
+                                             <img src="<?= $journal->user->profile->image ? '../uploads/avatar/' . $journal->user->profile->image : '../img/avatar.png' ?>" class="img-circle" width="50px" height="50px"/>
+                                          </div>
+                                        <div class="col-xs-9">
+                                            <p class="fonts-bold color-blue cancel-margin"><?= $journal->description ?></p><span class="font-small"><?= $journal->date ?></span>
+                                            <p class="font-small"><?= "By ".$journal->user->fullname;?></p>
+                                        </div>
+                                    </div></a>
+                                    
+                                    </li><!-- end notification -->
+                                <?php }?>
                             </ul>
                         </li>
-                        <li class="footer"><a href="#">View all</a></li>
+                        <li class="footer"><a href="<?=Url::toRoute(['/notification/index'])  ?>">View all</a></li>
+                    </ul>
+                </li>
+                <!-- journals menu -->
+                <!-- Events Menu -->
+                <li class="dropdown notifications-menu">
+                    <!-- Menu toggle button -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="calendar_notify">
+                        <i class="fa fa-calendar"></i>
+                        <span class="label label-warning"><?=$number_new_events ?></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="header">You have <?=$number_new_events ?> Events</li>
+                        <li>
+                            <!-- Inner Menu: contains the notifications -->
+                           
+                            <ul class="menu">
+                                 <?php foreach($events as $event){ ?>
+                                    <li>
+                                    <div class="row panel-footer padding-top-sm">
+                                    <a href="<?= Url::toRoute([$event->type.'/view/','id' => $event->type_id,'notify' => $event->id ])?>" class="alerted">
+                                      <div class="col-xs-3">
+                                             <img src="<?= $event->user->profile->image ? '../uploads/avatar/' . $event->user->profile->image : '../img/avatar.png' ?>" class="img-circle" width="50px" height="50px"/>
+                                          </div>
+                                        <div class="col-xs-9">
+                                            <p class="fonts-bold color-blue cancel-margin"><?= $event->description ?></p><span class="font-small"><?= $event->date ?></span>
+                                            <p class="font-small"><?= "By ".$event->user->fullname;?></p>
+                                        </div>
+                                    </div></a>
+                                    
+                                    </li><!-- end notification -->
+                                <?php }?>
+                            </ul>
+                        </li>
+                        <li class="footer"><a href="<?=Url::toRoute(['/notification/index'])  ?>">View all</a></li>
                     </ul>
                 </li>
 
@@ -97,3 +151,4 @@ use yii\helpers\Url;
         </div>
     </nav>
 </header>
+

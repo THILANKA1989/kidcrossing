@@ -31,7 +31,7 @@ use yii\helpers\Html;
         <div class="family-members-div background-blue other-members" id="members-div">
             <div class="row">
                 <?php
-                $members = Yii::$app->user->identity->findFamily()->all();
+                $members = Yii::$app->user->identity->others;
                 if ($members):
                     foreach ($members as $member):
                         $links[] = ['label' => '<i class="fa fa-home"></i> <span>' . $member->fullname . '</span>', 'url' => Yii::$app->user->identity->level == 3 ? ['/user/', 'id' => $member->id] : ['/user/family', 'id' => $member->id]]

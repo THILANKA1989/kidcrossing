@@ -15,11 +15,13 @@ class MoodSearch extends Mood
     /**
      * @inheritdoc
      */
+    public $start_date;
+    public $end_date;
     public function rules()
     {
         return [
             [['id', 'user_id'], 'integer'],
-            [['mood', 'date', 'time'], 'safe'],
+            [['mood', 'date', 'time','start_date','end_date'], 'safe'],
         ];
     }
 
@@ -41,10 +43,13 @@ class MoodSearch extends Mood
      */
     public function search($params)
     {
+        
         $query = Mood::find();
-
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => [
+                'pagesize' => 8,
+            ],
         ]);
 
         $this->load($params);
@@ -63,7 +68,8 @@ class MoodSearch extends Mood
         ]);
 
         $query->andFilterWhere(['like', 'mood', $this->mood]);
-
+        $query->andFilterWhere(['>=', 'date', $this->start_date])
+      ->andFilterWhere(['<=', 'date', $this->end_date]);
         return $dataProvider;
     }
 }

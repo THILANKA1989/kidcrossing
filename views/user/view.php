@@ -62,7 +62,17 @@ $this->params['breadcrumbs'][] = $this->title;
         */?>
             <h4 class="heading-strip-orange color-white font-large fonts-bold text-center"><?= $model->fullname;  ?></h4>
             <div class="user-block padding-large">
-                <p class="color-blue fonts-bold font-medium margin-left-large background-grey">Role:&nbsp;&nbsp;<?= $model->role ?></p>
+                <p class="color-blue fonts-bold font-medium margin-left-large background-grey">Role:&nbsp;&nbsp;<?php if($model->role == "Owner" && Yii::$app->user->identity->level == 3){
+                             echo "Parent";
+                }else if(Yii::$app->user->identity->level != 3 && $model->role == "Owner"){
+                            echo "Partner";
+                }else if(Yii::$app->user->identity->level != 3 && $model->role == "Child"){
+                            echo "Child";
+                }else if(Yii::$app->user->identity->level == 3 && $model->role == "Child"){
+                            echo "Sibling";
+                }else{
+                            echo "Member";
+                } ?></p>
                 <p class="color-blue fonts-bold font-medium margin-left-large">Mobile:&nbsp;&nbsp;<?= $model->profile->mobile ? $model->profile->mobile : 'Not Entered yet'; ?></p>
                 <p class="color-blue fonts-bold font-medium margin-left-large background-grey">Street:&nbsp;&nbsp;<?= $model->profile->street; ?></p>
                  <p class="color-blue fonts-bold font-medium margin-left-large">Area:&nbsp;&nbsp;<?= $model->profile->area; ?></p>

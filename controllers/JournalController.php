@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Journal;
+use app\models\Notification;
 use app\models\JournalSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -63,19 +64,31 @@ class JournalController extends Controller
      * @return mixed
      */
     public function actionView($id)
-    {
-         $searchModel = new JournalSearch();
+    {   
+       
+        
+        //var_dump($notify); die(); 
+        $searchModel = new JournalSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $model = $this->findModel($id);
         $comment = new \app\models\Comment();
         $comment->user_id = \Yii::$app->user->id;
         $comment->journal_id = $id;
         
+        
         $query =  Comment::find()
                 ->where(['journal_id' => $id]);
         $commentProvider = new ActiveDataProvider([            	
             'query' => $query,
         ]);
+        if(Yii::$app->request->get('notify')){
+            $getid = Yii::$app->request->get('notify');
+            //$notification = new Notification();
+            $notify = Notification::findOne(['type_id' => $id,'id' => $getid,'shared_id' => Yii::$app->user->id]);
+            $notify->status = 1;
+            $notify->save();
+        }
+            
         
         if ($comment->load(Yii::$app->request->post()) ){
                 $comment->time = date('Y-m-d H:i:s');
@@ -122,6 +135,7 @@ class JournalController extends Controller
      */
     public function actionCreate()
     {
+        
         $model = new Journal();
         $model->date = Yii::$app->formatter->asDate('today', 'long');
         $model->user_id = Yii::$app->user->id;
@@ -129,8 +143,26 @@ class JournalController extends Controller
         
         if ($model->load(Yii::$app->request->post()) ){            
             $model->shared_with =  implode(',',$model->shared_with);            
-            if($model->save())
-                
+            if($model->save()){
+                $sharedWith = explode(',',$model->shared_with);
+                $notify = array();
+                for($i=0;$i<sizeof($sharedWith);$i++){
+                    $notify[$i] = new Notification();
+                    $notify[$i]->date = date("Y-m-d h:i:s");
+                    $notify[$i]->shared_id = (int)$sharedWith[$i];
+                    $notify[$i]->type_id = $model->id;
+                    $notify[$i]->description = $model->entry;
+                    $notify[$i]->type = Yii::$app->controller->id;
+                    $notify[$i]->user_id = Yii::$app->user->id;
+                    $notify[$i]->status = 0;
+                    
+                    if($notify[$i]->save()){
+                        if($i>0){
+                            $notify[$i]->id++;
+                        }
+                    }
+                }   
+            } 
                 Yii::$app->session->setFlash('success', 'Journal successfully posted.');
                 return $this->redirect(['index']);
         }else if(Yii::$app->request->isAjax){
@@ -142,8 +174,10 @@ class JournalController extends Controller
             return $this->render('create', [
                 'model' => $model,
             ]);
+            }
         }
-    }
+    
+    
 
     /**
      * Updates an existing Journal model.

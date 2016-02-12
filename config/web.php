@@ -8,6 +8,7 @@ $config = [
     'bootstrap' => ['log'],
     //'defaultRoute' => 'user',
     'modules' => [
+        
     ],
     'components' => [
         'request' => [

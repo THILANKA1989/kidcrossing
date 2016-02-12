@@ -7,6 +7,7 @@ use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use app\models\Event;
 use app\models\EventSearch;
+use app\models\Notification;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
@@ -59,6 +60,12 @@ class EventController extends Controller {
      * @return mixed
      */
     public function actionView($id) {
+        if(Yii::$app->request->get('notify')){
+            $getid = Yii::$app->request->get('notify');
+            $notify = Notification::findOne(['type_id' => $id,'id' => $getid,'shared_id' => Yii::$app->user->id]);
+            $notify->status = 1;
+            $notify->save();
+        }   
         if (Yii::$app->request->isAjax) {
             return $this->renderAjax('view', [
                         'model' => $this->findModel($id)
@@ -77,12 +84,32 @@ class EventController extends Controller {
      */
     public function actionCreate($date) {
         $model = new Event();
+
         $model->user_id = Yii::$app->user->id;
         $model->date = $date;
         if ($model->load(Yii::$app->request->post())) {
             //var_dump($model);
             $model->shared_with = implode(',',$model->shared_with);
-            if ($model->save())
+            if ($model->save()){
+                $notify = array();
+                $sharedWith = explode(',',$model->shared_with);
+                for($i=0;$i<sizeof($sharedWith);$i++){
+                    $notify[$i] = new Notification();
+                    $notify[$i]->date = date("Y-m-d h:i:s");
+                    $notify[$i]->shared_id = (int)$sharedWith[$i];
+                    $notify[$i]->type_id = $model->id;
+                    $notify[$i]->description = $model->title;
+                    $notify[$i]->type = Yii::$app->controller->id;
+                    $notify[$i]->user_id = Yii::$app->user->id;
+                    $notify[$i]->status = 0;
+                    
+                    if($notify[$i]->save()){
+                        if($i>0){
+                            $notify[$i]->id++;
+                        }
+                    }
+                }
+            }
                 return $this->redirect(['view', 'id' => $model->id]);
         } elseif (Yii::$app->request->isAjax) {
             return $this->renderAjax('_form', [

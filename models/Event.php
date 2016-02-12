@@ -66,6 +66,9 @@ class Event extends \yii\db\ActiveRecord {
     public function getUser() {
         return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
+    public function getShared() {
+        return $this->shared_with;
+    }
     
     public function getSharedWith($withoutWrapper=false)
     {
@@ -75,6 +78,17 @@ class Event extends \yii\db\ActiveRecord {
        else
        return "<span class='label label-success'>" . implode('</span> <span class="label label-success">', yii\helpers\ArrayHelper::getColumn($shared_users, 'fullname'))."</span>";
     }
-
-
+     /**
+     * Get events only shared
+     */
+    public function sharedChecker($model){
+        $id = Yii::$app->user->id;
+        $shared_users = User::find()->where(['id'=> explode(",",'shared_with'),'id'=>$model]);
+        if (in_array($id , [4,6,7])){
+                   $success = true;
+               }else{
+                   $success = false;
+               }
+        return $success;
+    }
 }

@@ -8,24 +8,43 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="mood-search">
+<div class="mood-search row">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
+    <?php // $form->field($model, 'id') ?>
+    <div class="form-group col-md-4">
+        <?= $form->field($model, 'user_id') ?>
+    </div>    
+    <?php // $form->field($model, 'mood') ?>
+     <div class='col-md-3'><?=
+            $form->field($model, 'start_date')->widget(\yii\jui\DatePicker::classname(), [
+            'dateFormat' => 'yyyy-MM-dd',
+            'options' => ['class' => 'form-control'],
+            'clientOptions' => [
+                'changeYear' => true,
+                'changeMonth' => true,
+                'maxDate' => '+0d',
+            ],
+        ]) ?></div>
+    <?php // $form->field($model, 'mood') ?>
+     <div class='col-md-3'><?=
+            $form->field($model, 'end_date')->widget(\yii\jui\DatePicker::classname(), [
+            'dateFormat' => 'yyyy-MM-dd',
+            'options' => ['class' => 'form-control'],
+            'clientOptions' => [
+                'changeYear' => true,
+                'changeMonth' => true,
+                'maxDate' => '+0d',
+            ],
+        ]) ?></div>
+    <?php // $form->field($model, 'time') ?>
 
-    <?= $form->field($model, 'user_id') ?>
-
-    <?= $form->field($model, 'mood') ?>
-
-    <?= $form->field($model, 'date') ?>
-
-    <?= $form->field($model, 'time') ?>
-
-    <div class="form-group">
+    <div class="form-group col-md-2 search-submit-mood">
+        <p>&nbsp;</p>
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
         <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
     </div>

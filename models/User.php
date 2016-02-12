@@ -72,10 +72,13 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface {
     }
 
     public function getEvents(){
-        return $this->hasMany(Event::className(), ['user_id' => 'id']);
+        return $this->hasMany(Event::className(), ['user_id' => 'id','shared_with' => 'id']);
     }
     public function getJournals(){
         return $this->hasMany(Journal::className(), ['user_id' => 'id','shared_with' => 'id']);
+    }
+    public function getNotifications(){
+        return $this->hasMany(Notification::className(), ['user_id' => 'id']);
     }
     /**
      * @inheritdoc
@@ -197,67 +200,25 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface {
             $this->password = Yii::$app->security->generatePasswordHash($this->password);
             return true;
         }
+      
         return false;
     }
-    
-    /**
-     *  MOODS - get percenatges of moods for a month for a user - DTR
-     */
-    
-    /**
-     * get count of single mood
-     */
-    public function getMoodCount($mood,$month = null){
-        
-        if($month != null){
-            $year = date("Y");
-            $query = Mood::find()->where('user_id = :user_id AND MONTH(date) =  :month AND YEAR(date) = :year',[':user_id' => $this->id,':month'=> $month,':year' => $year]);
-            return $mood=='all' ? $query->count() : $query->andWhere('mood = :mood',[':mood'=>$mood])->count(); 
-        }else{
-            $query = Mood::find()->where('user_id = :user_id AND date = CURDATE()',[':user_id' => $this->id]);
-            return $mood=='all' ? $query->count() : $query->andWhere('mood = :mood',[':mood'=>$mood])->count(); 
-        }
+   /**
+    * Join for newsfeed
+    */
+    public function newsFeed($news){
+        $events = Event::find()->joinWith('user')->orderBy(['date' => SORT_DESC])->all();
+        $journals = Journal::find()->joinWith('user')->orderBy(['date' => SORT_DESC])->all();
+        //$activities = Activity::find()->joinWith('user')->orderBy('date')->all();
+       if($news == 'events'){
+           return $events;
+       }else if($news == 'journals'){// if($news == 'journals'){
+           return $journals;
+       }//else{
+          // return $activities;
+       //}
     }
     
-    public function getPercentageMonthly(){
-        //var_dump($this->user); die(); 
-        $month = date("m");
-        $querytotal = $this->getMoodCount('all',$month) == 0 ? 1 : $this->getMoodCount('all',$month);
-        return [
-            'sad' => round(($this->getMoodCount('Sad',$month)/$querytotal)*100,1),
-            'happy' => round(($this->getMoodCount('Happy',$month)/$querytotal)*100,1),
-            'bored' => round(($this->getMoodCount('Bored',$month)/$querytotal)*100,1),
-            'excited' => round(($this->getMoodCount('Excited',$month)/$querytotal)*100,1),
-            'angry' => round(($this->getMoodCount('Angry',$month)/$querytotal)*100,1)
-        ];
-    }
-
-    /**
-     * get percenatges of happiness for a month for a user - DTR
-     */
-    public function happyPercentage(){
-        $month = array(1,2,3,4,5,6,7,8,9,10,11,12);
-        $monthly = array();
-        for($i=0;$i<sizeof($month); $i++){
-            $total_january = $this->getMoodCount('all',$month[$i]) == 0 ? 1 : $this->getMoodCount('all',$month[$i]);
-        
-            $happy_january = $this->getMoodCount('Happy',$month[$i]);
-            $january = round(($happy_january/$total_january)*100,1);
-            array_push($monthly,$january);
-        }
-        //var_dump($monthly); die();
-        return $monthly;
-    }
-    
-    /**
-     * get happy percentage current day - DTR
-     */
-    public function getPercentageToday(){
-        $total_today = $this->getMoodCount('all') == 0 ? 1 : $this->getMoodCount('all');
-        $happy_today = $this->getMoodCount('Happy');
-        $today_percentage = round(($happy_today/$total_today)*100,1);
-        return $today_percentage;
-    }
-    
+  
 
 }

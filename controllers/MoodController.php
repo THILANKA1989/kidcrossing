@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\models\User;
 use Yii;
 use app\models\Mood;
+use app\models\Notification;
 use app\models\MoodSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -45,14 +46,30 @@ class MoodController extends Controller
      * @return mixed
      */
     public function actionIndex()
-    {
-        $dataProvider = new ActiveDataProvider([
+    {   
+        $model = new Mood();
+        $searchModel = new MoodSearch();
+        $searchProvider = $searchModel->search(Yii::$app->request->queryParams);
+         $dataProvider = new ActiveDataProvider([
             'query' => Yii::$app->user->identity->findFamily(false),
             'pagination' => false,
         ]);
-        return $this->render('index', [
-            'dataProvider' => $dataProvider,
-        ]);
+        
+        if (Yii::$app->request->isPjax) {
+            return $this->renderPartial('index', [
+                'dataProvider' => $dataProvider,
+                'searchModel' => $searchModel,
+                'searchProvider' => $searchProvider,
+                'model' => $model,
+            ]);
+        } else {
+            return $this->render('index', [
+                'dataProvider' => $dataProvider,
+                'searchModel' => $searchModel,
+                'searchProvider' => $searchProvider,
+                'model' => $model,
+            ]);
+        }
     }
 
     /**
@@ -64,6 +81,9 @@ class MoodController extends Controller
     {
         $model= User::findOne($id); 
         $date = date("Y-m-d");
+        $updateNotify = $connection	->createCommand()
+			->update('notification', ['status' => 1], 'type_id ='.$id)
+			->execute();
         //var_dump($model->percentageMonthly); die();
         $moodProvider = new ActiveDataProvider([
             'query' => Mood::find()->select('mood')->where(['user_id' => $id])->orderBy(['date'=> SORT_DESC,'time' => SORT_DESC])->limit(1),
@@ -72,6 +92,7 @@ class MoodController extends Controller
       return $this->render('view', [
             'model' => $model,
             'moodProvider' => $moodProvider,
+            'updateNotify' => $updateNotify,
         ]);
     }
 
