@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'user_id',
-            'imoji',
+            'emoji',
             'assigned_to:ntext',
             'date',
         ],

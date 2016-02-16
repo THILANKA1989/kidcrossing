@@ -19,7 +19,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'user_id') ?>
 
-    <?= $form->field($model, 'imoji') ?>
+    <?= $form->field($model, 'emoji') ?>
 
     <?= $form->field($model, 'assigned_to') ?>
 

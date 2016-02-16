@@ -1,6 +1,6 @@
 <?php
 
-namespace app\models;
+namespace app\controllers;
 
 use Yii;
 use app\models\Wishlist;
@@ -61,10 +61,21 @@ class WishlistController extends Controller
     public function actionCreate()
     {
         $model = new Wishlist();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
+        $model->user_id = Yii::$app->user->id;
+        $model->status = 0;
+        $model->date = date('Y-m-d h:i:s');
+        $model->assigned_to =  implode(',',$model->assigned_to); 
+        if ($model->load(Yii::$app->request->post()) ){              
+            if($model->save()){
+                Yii::$app->NotificationSaver->notify($model->title,$model->id,$model->user->id,Yii::$app->user->id,Yii::$app->controller->id,$model->assigned_to);
+                Yii::$app->session->setFlash('success', 'Item successfully posted.');
+            } 
+        return $this->redirect(['index']);
+        }else if(Yii::$app->request->isAjax){
+            return $this->renderAjax('_form',[
+                    'model' => $model
+            ]);
+        }else {
             return $this->render('create', [
                 'model' => $model,
             ]);

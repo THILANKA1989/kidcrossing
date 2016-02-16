@@ -105,12 +105,12 @@ class MoodController extends Controller
           $model->user_id = Yii::$app->user->getId();
           $model->date = date('Y-m-d');
           $model->time = date('Y-m-d h:i:s');
-          
            if ($model->save()) {
              //Yii::$app->session->setFlash('success', 'Mood successfully Set.');
-             //return $this->redirect(['user/child']); 
-            
+             //return $this->redirect(['user/child']);  
+               
              echo "<div class='mood-title'>"."You are ".$model->mood." Now"."<span class='font-small pull-right label label-danger'>".(5-Mood::find()->where(['user_id' => Yii::$app->user->getId(), 'date' => date("Y-m-d")])->count())."</span>"."</div>";
+
            }else{
                Yii::$app->session->setFlash('danger', 'Something Error');
            }
@@ -119,8 +119,9 @@ class MoodController extends Controller
         } 
         return $this->renderAjax('create', [
             'model' => $model,
-        	
         ]);
+
+       
     }
 
     /**

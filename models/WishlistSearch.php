@@ -18,8 +18,8 @@ class WishlistSearch extends Wishlist
     public function rules()
     {
         return [
-            [['id', 'user_id', 'imoji'], 'integer'],
-            [['assigned_to', 'date'], 'safe'],
+            [['id', 'user_id'], 'integer'],
+            [['emoji', 'assigned_to', 'date'], 'safe'],
         ];
     }
 
@@ -58,11 +58,11 @@ class WishlistSearch extends Wishlist
         $query->andFilterWhere([
             'id' => $this->id,
             'user_id' => $this->user_id,
-            'imoji' => $this->imoji,
             'date' => $this->date,
         ]);
 
-        $query->andFilterWhere(['like', 'assigned_to', $this->assigned_to]);
+        $query->andFilterWhere(['like', 'emoji', $this->emoji])
+            ->andFilterWhere(['like', 'assigned_to', $this->assigned_to]);
 
         return $dataProvider;
     }

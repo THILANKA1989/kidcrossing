@@ -28,7 +28,12 @@ class NotificationSaver extends Component {
                     }
                 }
             }else{
-               //get parents ids to an array
+               $sharedWith = array();
+               $parents = Yii::$app->user->identity->findParents()->all();
+               foreach($parents as $parent){
+                   array_push($sharedWith,(string)$parent->id);
+               }
+               //var_dump($sharedWith); die();
             }
                 $notify = array();
                 for($i=0;$i<sizeof($sharedWith);$i++){

@@ -68,6 +68,7 @@ use yii\helpers\Html;
                 ['label' => '<i class="fa fa-book"></i> <span>Journals</span>', 'url' => ['/journal']],
                 ['label' => '<i class="fa fa-calendar"></i> <span>Events</span>', 'url' => ['/event/index']],
                 Yii::$app->user->identity->level != 3 ? ['label' => '<i class="fa fa-smile-o"></i> <span>Moods</span>', 'url' => ['/mood/index']] : '' ,
+                ['label' => '<i class="fa fa-smile-o"></i> <span>WishList</span>', 'url' => ['/wishlist/index']],
                 //['label' => 'Contact', 'url' => ['/site/contact']],
                 Yii::$app->user->identity->level == 0 ? ['label' => '<i class="fa fa-users"></i> <span>Users</span>', 'url' => ['/user/index']] : '',
             ],

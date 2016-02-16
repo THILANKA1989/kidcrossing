@@ -9,8 +9,11 @@ use Yii;
  *
  * @property integer $id
  * @property integer $user_id
- * @property integer $imoji
+ * @property string $title
+ * @property string $event
+ * @property string $emoji
  * @property string $assigned_to
+ * @property integer $status
  * @property string $date
  *
  * @property User $user
@@ -31,10 +34,11 @@ class Wishlist extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'imoji', 'assigned_to', 'date'], 'required'],
-            [['user_id', 'imoji'], 'integer'],
-            [['assigned_to'], 'string'],
-            [['date'], 'safe']
+            [['user_id', 'title', 'event', 'emoji', 'assigned_to', 'status', 'date'], 'required'],
+            [['user_id', 'status'], 'integer'],
+            [['date'], 'safe'],
+            [['title', 'event', 'emoji'], 'string', 'max' => 65],
+            [['user_id'], 'unique']
         ];
     }
 
@@ -46,8 +50,11 @@ class Wishlist extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'user_id' => 'User ID',
-            'imoji' => 'Imoji',
-            'assigned_to' => 'Assigned To',
+            'title' => 'Title',
+            'event' => 'Event',
+            'emoji' => 'Emoji',
+            'assigned_to' => 'Assign To',
+            'status' => 'Status',
             'date' => 'Date',
         ];
     }
