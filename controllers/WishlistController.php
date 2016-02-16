@@ -8,7 +8,7 @@ use app\models\WishlistSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use yii\data\ActiveDataProvider;
 /**
  * WishlistController implements the CRUD actions for Wishlist model.
  */
@@ -32,9 +32,15 @@ class WishlistController extends Controller
      */
     public function actionIndex()
     {
+        $model = new Wishlist();
         $searchModel = new WishlistSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
+        $searchProvider = $searchModel->search(Yii::$app->request->queryParams);
+         $dataProvider = new ActiveDataProvider([
+           'query' => \app\models\Wishlist::find()->where(['user_id' => Yii::$app->user->id])->orderBy(['id'=> SORT_DESC]),
+           'pagination' => [
+                'pageSize' => 7,
+    ],
+        ]);
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
