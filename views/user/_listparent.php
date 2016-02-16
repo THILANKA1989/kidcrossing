@@ -32,6 +32,7 @@ count(Yii::$app->user->identity->findParents()) == 2 ? $column = "col-md-6" :  $
                         <div class="col-sm-4 border-right">
                           <div class="description-block">
                             <h5 class="description-header"><?= $model->fullname ?></h5>
+                            <p class="text-center"> <?= $model->profile->label ?> </p>
                           </div>
                         </div>
                         <!-- /.col -->

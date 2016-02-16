@@ -234,10 +234,12 @@ p{
     margin-bottom: 20px;
 }
 .moodbox{
-  display: inline-flex;
-  width:100%;
-  height:auto;
-  padding: 10px;
+    display: inline-flex;
+    width: 100%;
+    height: auto;
+    /* padding: 10px; */
+    padding-top: 0px !important;
+    padding-bottom: 30px;
 }
 .moodbox ul{
   width: 100%;
@@ -783,7 +785,7 @@ p{
 
 /* color picker */
 
-
+/* #Additional */
 #colorpicker {
     height: 256px;
     border-radius: 4px;
@@ -973,12 +975,17 @@ p{
 .grey-card ::-webkit-scrollbar-thumb:window-inactive {
   background: rgba(255,0,0,0.4); 
 }
+/* ##moodform #*/
 input[value="sad"]:after{
     content: url('../web/img/moods/sad.png');
     height: 10px !important;
     width: 10px !important;
     cursor: pointer;
     visibility: visible !important;
+    /* padding-top: 17px !important; */
+    margin-top: 20px !important;
+    position: absolute;
+    margin-left: 3px;
 }
 
 input[value="happy"]:after{
@@ -987,14 +994,22 @@ input[value="happy"]:after{
     width: 10px !important;
     cursor: pointer;
     visibility: visible !important;
+    /* padding-top: 17px !important; */
+    margin-top: 20px !important;
+    position: absolute;
+    margin-left: 7px;
 }
 
-input[value="excited"]:after{
+input[value="excited"]:after {
     content: url('../web/img/moods/excited.png');
     height: 10px !important;
     width: 10px !important;
     cursor: pointer;
     visibility: visible !important;
+    /* padding-top: 17px !important; */
+    margin-top: 20px !important;
+    position: absolute;
+    margin-left: 7px;
 }
 
 input[value="angry"]:after{
@@ -1003,6 +1018,10 @@ input[value="angry"]:after{
     width: 10px !important;
     cursor: pointer;
     visibility: visible !important;
+    /* padding-top: 17px !important; */
+    margin-top: 20px !important;
+    position: absolute;
+    margin-left: 7px;
 }
 
 input[value="bored"]:after{
@@ -1011,6 +1030,25 @@ input[value="bored"]:after{
     width: 10px !important;
     cursor: pointer;
     visibility: visible !important;
+    /* padding-top: 17px !important; */
+    margin-top: 20px !important;
+    position: absolute;
+    margin-left: 7px;
+}
+
+input[value="bored"]:after{
+    content: url('../web/img/moods/bored.png');
+    height: 10px !important;
+    width: 10px !important;
+    cursor: pointer;
+    visibility: visible !important;
+}
+
+input[value="bored"]:hover:before{
+    content: "Bored";
+    color: black;
+    font-size: 24px;
+    position: absolute;
 }
 
 #mood-mood input[type="radio"]{
@@ -1028,7 +1066,7 @@ input[value="bored"]:after{
 }
 
 #mood-mood label{
-    color: transparent;
+    color: orange;
 }
 .field-mood-mood .control-label{
     display: none;
@@ -1051,7 +1089,7 @@ input[value="bored"]:after{
 .mood-form #Mood{
     margin-left: -100px;
 }
-
+/* ##Custom Gridview styles */
 #w0 table{
     margin-bottom: 0px !important;
 }
