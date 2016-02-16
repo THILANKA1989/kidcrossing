@@ -85,11 +85,13 @@ class Notification extends \yii\db\ActiveRecord
         $events = Notification::find()->where(['type'=> $type,'status'=> 0,'shared_id'=> Yii::$app->user->id])->orderBy(['date'=> SORT_DESC])->all();
         $journals = Notification::find()->where(['type'=> $type,'status'=> 0,'shared_id'=> Yii::$app->user->id])->orderBy(['date'=> SORT_DESC])->all();
         $comments = Notification::find()->where(['type'=> $type,'status'=> 0,'shared_id'=> Yii::$app->user->id ])->orderBy(['date'=> SORT_DESC])->all();
+        $wishlists = Notification::find()->where(['type'=> $type,'status'=> 0,'shared_id'=> Yii::$app->user->id ])->orderBy(['date'=> SORT_DESC])->all();
         
         return [
             'events' => $events,
             'journals' => $journals,
             'comments' => $comments,
+            'wishlists' => $wishlists,
         ];
     }
     

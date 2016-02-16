@@ -38,7 +38,6 @@ class Wishlist extends \yii\db\ActiveRecord
             [['user_id', 'status'], 'integer'],
             [['date'], 'safe'],
             [['title', 'event', 'emoji'], 'string', 'max' => 65],
-            [['user_id'], 'unique']
         ];
     }
 
@@ -53,7 +52,7 @@ class Wishlist extends \yii\db\ActiveRecord
             'title' => 'Title',
             'event' => 'Event',
             'emoji' => 'Emoji',
-            'assigned_to' => 'Assign To',
+            'assigned_to' => 'Assigned To',
             'status' => 'Status',
             'date' => 'Date',
         ];

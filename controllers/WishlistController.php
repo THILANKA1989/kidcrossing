@@ -64,8 +64,9 @@ class WishlistController extends Controller
         $model->user_id = Yii::$app->user->id;
         $model->status = 0;
         $model->date = date('Y-m-d h:i:s');
-        $model->assigned_to =  implode(',',$model->assigned_to); 
-        if ($model->load(Yii::$app->request->post()) ){              
+        if ($model->load(Yii::$app->request->post()) ){   
+            $model->assigned_to =  implode(',',$model->assigned_to); 
+            //var_dump($model); die();
             if($model->save()){
                 Yii::$app->NotificationSaver->notify($model->title,$model->id,$model->user->id,Yii::$app->user->id,Yii::$app->controller->id,$model->assigned_to);
                 Yii::$app->session->setFlash('success', 'Item successfully posted.');

@@ -8,7 +8,7 @@ use yii\helpers\ArrayHelper;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 <div class="box box-primary">
-    <div class="box-body no-padding">
+    <div class="box-body">
 <div class="wishlist-form">
 
     <?php $form = ActiveForm::begin([
@@ -24,7 +24,7 @@ use yii\helpers\ArrayHelper;
     
     <?= $form->field($model, 'event')->textInput(['rows' => 4]) ?>
     
-    <?= $form->field($model, 'assigned_to')->listBox( ArrayHelper::map(Yii::$app->user->identity->findParents()->all(), 'id', 'fullname'), ['multiple' => false] ) ?>
+    <?= $form->field($model, 'assigned_to')->listBox( ArrayHelper::map(Yii::$app->user->identity->findParents()->all(), 'id', 'fullname'), ['multiple' => true] ) ?>
 
 
     <div class="form-group">

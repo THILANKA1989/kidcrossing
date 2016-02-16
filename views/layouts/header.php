@@ -10,11 +10,12 @@ use yii\widgets\ActiveForm;
 $events = Notification::getUserNotifications('event')['events'];
 $journals = Notification::getUserNotifications('journal')['journals'];
 $comments = Notification::getUserNotifications('comment')['comments'];
+$wishlist = Notification::getUserNotifications('wishlist')['wishlists'];
 //var_dump($journals); die();
 $number_new_events = Notification::notificationCount($events);
 $number_new_journals = Notification::notificationCount($journals);
 $number_new_comments = Notification::notificationCount($comments);
-
+$number_new_wishlists = Notification::notificationCount($wishlist);
 
 ?>
 <!-- Main Header -->
@@ -157,11 +158,11 @@ $number_new_comments = Notification::notificationCount($comments);
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="calendar_notify">
                         <i class="fa fa-globe"></i>
                         <?php if($number_new_comments != 0){ ?>
-                        <span class="label label-warning"><?=$number_new_comments ?></span>
+                        <span class="label label-warning"><?=$number_new_comments+$number_new_wishlists ?></span>
                         <?php } ?>
                     </a>
                     <ul class="dropdown-menu">
-                        <li class="header">Your shared content has <?=$number_new_comments ?> new Comments</li>
+                        <li class="header">Your shared content has <?= $number_new_comments+$number_new_wishlists ?> new Notifications</li>
                         <li>
                             <!-- Inner Menu: contains the notifications -->
                            
