@@ -81,9 +81,6 @@ class MoodController extends Controller
     {
         $model= User::findOne($id); 
         $date = date("Y-m-d");
-        $updateNotify = $connection	->createCommand()
-			->update('notification', ['status' => 1], 'type_id ='.$id)
-			->execute();
         //var_dump($model->percentageMonthly); die();
         $moodProvider = new ActiveDataProvider([
             'query' => Mood::find()->select('mood')->where(['user_id' => $id])->orderBy(['date'=> SORT_DESC,'time' => SORT_DESC])->limit(1),
@@ -92,7 +89,6 @@ class MoodController extends Controller
       return $this->render('view', [
             'model' => $model,
             'moodProvider' => $moodProvider,
-            'updateNotify' => $updateNotify,
         ]);
     }
 

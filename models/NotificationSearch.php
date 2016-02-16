@@ -41,7 +41,7 @@ class NotificationSearch extends Notification
      */
     public function search($params)
     {
-        $query = Notification::find();
+        $query = Notification::find()->where(['shared_id' => Yii::$app->user->id]);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,

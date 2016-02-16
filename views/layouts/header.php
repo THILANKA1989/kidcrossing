@@ -7,11 +7,15 @@ use app\models\Notification;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
-$notification = new Notification();
-$events = Notification::find()->where(['type'=> 'event','status'=> 0,'shared_id'=> Yii::$app->user->id])->orderBy(['date'=> SORT_DESC])->all();
-$journals = Notification::find()->where(['type'=> 'journal','status'=> 0,'shared_id'=> Yii::$app->user->id])->orderBy(['date'=> SORT_DESC])->all();
-$number_new_events = count($events);
-$number_new_journals = count($journals);
+$events = Notification::getUserNotifications('event')['events'];
+$journals = Notification::getUserNotifications('journal')['journals'];
+$comments = Notification::getUserNotifications('comment')['comments'];
+//var_dump($journals); die();
+$number_new_events = Notification::notificationCount($events);
+$number_new_journals = Notification::notificationCount($journals);
+$number_new_comments = Notification::notificationCount($comments);
+
+
 ?>
 <!-- Main Header -->
 <header class="main-header">
@@ -75,15 +79,20 @@ $number_new_journals = count($journals);
                     <!-- Menu toggle button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="calendar_notify">
                         <i class="fa fa-list-ol"></i>
+                        <?php if($number_new_journals != 0){ ?>
                         <span class="label label-warning"><?=$number_new_journals ?></span>
+                        <?php }?>
                     </a>
                     <ul class="dropdown-menu">
-                        <li class="header">You have <?=$number_new_journals ?> Events</li>
+                        <li class="header">Members Shared <?=$number_new_journals ?> Journals with you</li>
                         <li>
                             <!-- Inner Menu: contains the notifications -->
                            
                             <ul class="menu">
                                  <?php foreach($journals as $journal){ ?>
+                                 <?php if($journal->user->id == Yii::$app->user->id ){
+                                        continue;
+                                    } ?>
                                     <li>
                                     <div class="row panel-footer padding-top-sm">
                                     <a href="<?= Url::toRoute([$journal->type.'/view/','id' => $journal->type_id,'notify' => $journal->id ]) ?>" class="alerted">
@@ -109,7 +118,9 @@ $number_new_journals = count($journals);
                     <!-- Menu toggle button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="calendar_notify">
                         <i class="fa fa-calendar"></i>
+                        <?php if($number_new_events != 0){ ?>
                         <span class="label label-warning"><?=$number_new_events ?></span>
+                        <?php } ?>
                     </a>
                     <ul class="dropdown-menu">
                         <li class="header">You have <?=$number_new_events ?> Events</li>
@@ -118,6 +129,9 @@ $number_new_journals = count($journals);
                            
                             <ul class="menu">
                                  <?php foreach($events as $event){ ?>
+                                 <?php if($event->user->id == Yii::$app->user->id ){
+                                        continue;
+                                    } ?>
                                     <li>
                                     <div class="row panel-footer padding-top-sm">
                                     <a href="<?= Url::toRoute([$event->type.'/view/','id' => $event->type_id,'notify' => $event->id ])?>" class="alerted">
@@ -137,6 +151,49 @@ $number_new_journals = count($journals);
                         <li class="footer"><a href="<?=Url::toRoute(['/notification/index'])  ?>">View all</a></li>
                     </ul>
                 </li>
+                <!-- global notifications -->
+                <li class="dropdown notifications-menu">
+                    <!-- Menu toggle button -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="calendar_notify">
+                        <i class="fa fa-globe"></i>
+                        <?php if($number_new_comments != 0){ ?>
+                        <span class="label label-warning"><?=$number_new_comments ?></span>
+                        <?php } ?>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="header">Your shared content has <?=$number_new_comments ?> new Comments</li>
+                        <li>
+                            <!-- Inner Menu: contains the notifications -->
+                           
+                            <ul class="menu">
+                                 <?php foreach($comments as $comment){ ?>
+                                    <?php if($comment->user->id == Yii::$app->user->id ){
+                                        continue;
+                                    } ?>
+                                    <?php if($comment->type == 'comment'){
+                                            $type = 'journal';
+                                    } ?>
+                                    <li>
+                                    <div class="row panel-footer padding-top-sm">
+                                    <a href="<?= Url::toRoute([$type.'/view/','id' => $comment->type_id,'global' => $comment->type ]) ?>" class="alerted">
+                                      <div class="col-xs-3">
+                                             <img src="<?= $comment->user->profile->image ? '../uploads/avatar/' . $comment->user->profile->image : '../img/avatar.png' ?>" class="img-circle" width="50px" height="50px"/>
+                                          </div>
+                                        <div class="col-xs-9">
+                                            <p class="fonts-bold color-blue cancel-margin"><?= $comment->user->fullname ?> has commented on a Journal</p><span class="font-small"><?= $comment->date ?></span>
+                                            <p class="font-small"><?= "By ".$comment->user->fullname;?></p>
+                                        </div>
+                                    </div></a>
+                                    
+                                    </li><!-- end notification -->
+                                <?php }?>
+                            </ul>
+                        </li>
+                        <li class="footer"><a href="<?=Url::toRoute(['/notification/index'])  ?>">View all</a></li>
+                    </ul>
+                </li>
+                <!-- journals menu -->
+                <!-- global notifications end -->
 
                 <!-- Control Sidebar Toggle Button -->
                 <li>

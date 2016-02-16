@@ -81,5 +81,32 @@ class Notification extends \yii\db\ActiveRecord
         return Notification::find()->where(['type_id'=>$type_id,'id'=>$id])->all();
     }
     
+    public function getUserNotifications($type = null){
+        $events = Notification::find()->where(['type'=> $type,'status'=> 0,'shared_id'=> Yii::$app->user->id])->orderBy(['date'=> SORT_DESC])->all();
+        $journals = Notification::find()->where(['type'=> $type,'status'=> 0,'shared_id'=> Yii::$app->user->id])->orderBy(['date'=> SORT_DESC])->all();
+        $comments = Notification::find()->where(['type'=> $type,'status'=> 0,'shared_id'=> Yii::$app->user->id ])->orderBy(['date'=> SORT_DESC])->all();
+        
+        return [
+            'events' => $events,
+            'journals' => $journals,
+            'comments' => $comments,
+        ];
+    }
+    
+    public function notificationCount($notification){
+        $counter = 0;
+        for($i=0;$i<sizeof($notification);$i++){
+            if($notification[$i]->user->id == Yii::$app->user->id ){
+                continue;
+            }
+            $counter++;
+        }
+        return $counter;
+    }
+    
+    public function enterNotification(){
+        
+    }
+    
     
 }

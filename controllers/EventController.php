@@ -91,24 +91,7 @@ class EventController extends Controller {
             //var_dump($model);
             $model->shared_with = implode(',',$model->shared_with);
             if ($model->save()){
-                $notify = array();
-                $sharedWith = explode(',',$model->shared_with);
-                for($i=0;$i<sizeof($sharedWith);$i++){
-                    $notify[$i] = new Notification();
-                    $notify[$i]->date = date("Y-m-d h:i:s");
-                    $notify[$i]->shared_id = (int)$sharedWith[$i];
-                    $notify[$i]->type_id = $model->id;
-                    $notify[$i]->description = $model->title;
-                    $notify[$i]->type = Yii::$app->controller->id;
-                    $notify[$i]->user_id = Yii::$app->user->id;
-                    $notify[$i]->status = 0;
-                    
-                    if($notify[$i]->save()){
-                        if($i>0){
-                            $notify[$i]->id++;
-                        }
-                    }
-                }
+                Yii::$app->NotificationSaver->notify($model->title,$model->id,$model->user->id,$model->user->id,Yii::$app->controller->id,$model->shared_with);
             }
                 return $this->redirect(['view', 'id' => $model->id]);
         } elseif (Yii::$app->request->isAjax) {

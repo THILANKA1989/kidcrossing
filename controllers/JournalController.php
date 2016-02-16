@@ -88,12 +88,50 @@ class JournalController extends Controller
             $notify->status = 1;
             $notify->save();
         }
+        if(Yii::$app->request->get('global')){
+            $getid = Yii::$app->request->get('global');
+            //$notification = new Notification();
+            $notify = Notification::find()->where(['type_id' => $id,'type' => $getid,'shared_id' => Yii::$app->user->id, 'status' => 0])->all();
+            for($i=0;$i<sizeof($notify);$i++){
+                $notify[$i]->status = 1;
+                $notify[$i]->save();
+            }
+        }
             
         
         if ($comment->load(Yii::$app->request->post()) ){
                 $comment->time = date('Y-m-d H:i:s');
                 
-            if($comment->save()){                
+            if($comment->save()){   
+                //create notification record - DTR
+                $sharedWith = explode(',',$model->shared_with);
+                $count = 0;
+                for($j=0;$j<sizeof($sharedWith);$j++){
+                    if($sharedWith[$j] != $model->user->id){
+                        $count++;
+                    }
+                    if($count == sizeof($sharedWith)){
+                        array_push($sharedWith,(string)$model->user->id);
+                    }
+                }
+                $notify = array();
+                for($i=0;$i<sizeof($sharedWith);$i++){
+                    $notify[$i] = new Notification();
+                    $notify[$i]->date = $comment->time;
+                    $notify[$i]->shared_id = (int)$sharedWith[$i];
+                    $notify[$i]->type_id = $model->id;
+                    $notify[$i]->description = $comment->comment;
+                    $notify[$i]->type = 'comment';
+                    $notify[$i]->user_id = Yii::$app->user->id;
+                    $notify[$i]->status = 0;
+                    
+                    if($notify[$i]->save()){
+                        if($i>0){
+                            $notify[$i]->id++;
+                        }
+                    }
+                } //end of notification record entry 
+                
                 Yii::$app->session->setFlash('success', 'Comment posted successfully.');
                 return $this->render('view', [
                     'model' => $model,
@@ -144,8 +182,17 @@ class JournalController extends Controller
         if ($model->load(Yii::$app->request->post()) ){            
             $model->shared_with =  implode(',',$model->shared_with);            
             if($model->save()){
+                //create notification record - DTR
                 $sharedWith = explode(',',$model->shared_with);
-                $notify = array();
+               $count = 0;
+                for($j=0;$j<sizeof($sharedWith);$j++){
+                    if($sharedWith[$j] != $model->user->id){
+                        $count++;
+                    }
+                    if($count == sizeof($sharedWith)){
+                        array_push($sharedWith,(string)$model->user->id);
+                    }
+                }
                 for($i=0;$i<sizeof($sharedWith);$i++){
                     $notify[$i] = new Notification();
                     $notify[$i]->date = date("Y-m-d h:i:s");
@@ -155,13 +202,14 @@ class JournalController extends Controller
                     $notify[$i]->type = Yii::$app->controller->id;
                     $notify[$i]->user_id = Yii::$app->user->id;
                     $notify[$i]->status = 0;
-                    
+       
                     if($notify[$i]->save()){
                         if($i>0){
                             $notify[$i]->id++;
                         }
                     }
-                }   
+                } //end of notification record entry 
+
             } 
                 Yii::$app->session->setFlash('success', 'Journal successfully posted.');
                 return $this->redirect(['index']);

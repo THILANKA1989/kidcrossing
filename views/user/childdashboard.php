@@ -56,7 +56,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'columns' => [
                         'mood',
                     ],
-                     'caption'=> "<span class='label label-danger font-small'>".$count."</span>"." "."<span class='font-small color-bule'>".$entry_label." remaining"."</span>",
+                     'caption'=> "<span class='label label-danger font-small'>".$count."</span>"." "."<span class='font-small color-bule'>".$entry_label." remaining today"."</span>",
                      'options' => ['class'=>'moodbox-table'],
                      'emptyText' => '',
                 ]); ?>

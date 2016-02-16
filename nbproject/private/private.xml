@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/xampp/htdocs/kidcrossing/views/layouts/header.php</file>
             <file>file:/C:/xampp/htdocs/kidcrossing/views/mood/update.php</file>
             <file>file:/C:/xampp/htdocs/kidcrossing/views/mood/view.php</file>
             <file>file:/C:/xampp/htdocs/kidcrossing/views/user/_listpanel.php</file>
@@ -14,7 +15,6 @@
             <file>file:/C:/xampp/htdocs/kidcrossing/models/Mood.php</file>
             <file>file:/C:/xampp/htdocs/kidcrossing/models/MoodSearch.php</file>
             <file>file:/C:/xampp/htdocs/kidcrossing/views/user/_listparent.php</file>
-            <file>file:/C:/xampp/htdocs/kidcrossing/views/user/_listevent.php</file>
             <file>file:/C:/xampp/htdocs/kidcrossing/web/css/modified.css</file>
             <file>file:/C:/xampp/htdocs/kidcrossing/views/journal/view.php</file>
             <file>file:/C:/xampp/htdocs/kidcrossing/views/user/childdashboard.php</file>
@@ -22,6 +22,7 @@
             <file>file:/C:/xampp/htdocs/kidcrossing/models/Journal.php</file>
             <file>file:/C:/xampp/htdocs/kidcrossing/models/Event.php</file>
             <file>file:/C:/xampp/htdocs/kidcrossing/views/wishlist/view.php</file>
+            <file>file:/C:/xampp/htdocs/kidcrossing/controllers/JournalController.php</file>
             <file>file:/C:/xampp/htdocs/kidcrossing/views/user/_listchild.php</file>
             <file>file:/C:/xampp/htdocs/kidcrossing/views/mood/index.php</file>
             <file>file:/C:/xampp/htdocs/kidcrossing/controllers/SiteController.php</file>
