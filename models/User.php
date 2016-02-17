@@ -81,7 +81,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface {
         return $this->hasMany(Notification::className(), ['user_id' => 'id']);
     }
      public function getWishlists(){
-        return $this->hasMany(Event::className(), ['user_id' => 'id']);
+        return $this->hasMany(Wishlist::className(), ['user_id' => 'id']);
     }
     /**
      * @inheritdoc

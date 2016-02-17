@@ -65,4 +65,21 @@ class Wishlist extends \yii\db\ActiveRecord
     {
         return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
+    
+    /**
+     * get user profile image
+     */
+    public function getAssignedUser($id){
+        $user = User::findOne(['id' => $id]);
+        return $user->profile->image ? '../uploads/avatar/' . $user->profile->image : '../img/avatar.png';
+    }
+    
+    /**
+     * get user fullimage
+     */
+    public function getAssignedFullname($id){
+        $user = User::findOne(['id' => $id]);
+         return $user->profile ? $user->profile->first_name . ' ' . $user->profile->last_name : '';
+    }
+    
 }

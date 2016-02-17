@@ -31,9 +31,14 @@ class WishlistController extends Controller
      * @return mixed
      */
     public function actionIndex()
-    {
-          $searchModel = new WishlistSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+    {   $model = Wishlist::find()->orderBy(['id'=> SORT_DESC])->all();
+        $searchModel = new WishlistSearch();
+        $dataProvider =  new ActiveDataProvider([
+           'query' => Yii::$app->user->identity->findFamily(false),
+           'pagination' => [
+                'pageSize' => 8,
+    ],
+        ]);
         
         
         return $this->render('index', [
@@ -104,15 +109,17 @@ class WishlistController extends Controller
      */
     public function actionUpdate($id)
     {
+        //var_dump($id); die();
         $model = $this->findModel($id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        $model->status = 1;
+        if ( $model->save()) {
+            echo "<i class='pull-right color-green fa fa-check fa-2x align-v-middle'></i>";
         } else {
-            return $this->render('update', [
+            echo "error";
+        }
+        return $this->renderAjax('update', [
                 'model' => $model,
             ]);
-        }
     }
 
     /**
