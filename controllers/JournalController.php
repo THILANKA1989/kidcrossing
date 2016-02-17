@@ -77,25 +77,7 @@ class JournalController extends Controller
         $commentProvider = new ActiveDataProvider([            	
             'query' => $query,
         ]);
-        
-        if(Yii::$app->request->get('notify')){
-            $getid = Yii::$app->request->get('notify');
-            //$notification = new Notification();
-            $notify = Notification::findOne(['type_id' => $id,'id' => $getid,'shared_id' => Yii::$app->user->id]);
-            $notify->status = 1;
-            $notify->save();
-        }
-        
-        if(Yii::$app->request->get('global')){
-            $getid = Yii::$app->request->get('global');
-            //$notification = new Notification();
-            $notify = Notification::find()->where(['type_id' => $id,'type' => $getid,'shared_id' => Yii::$app->user->id, 'status' => 0])->all();
-            for($i=0;$i<sizeof($notify);$i++){
-                $notify[$i]->status = 1;
-                $notify[$i]->save();
-            }
-        }
-            
+        Yii::$app->NotificationSaver->viewer($id);
         
         if ($comment->load(Yii::$app->request->post()) ){
                 $comment->time = date('Y-m-d H:i:s');

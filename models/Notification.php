@@ -84,31 +84,36 @@ class Notification extends \yii\db\ActiveRecord
     public function getUserNotifications($type = null){
         $events = Notification::find()->where(['type'=> $type,'status'=> 0,'shared_id'=> Yii::$app->user->id])->orderBy(['date'=> SORT_DESC])->all();
         $journals = Notification::find()->where(['type'=> $type,'status'=> 0,'shared_id'=> Yii::$app->user->id])->orderBy(['date'=> SORT_DESC])->all();
-        $comments = Notification::find()->where(['type'=> $type,'status'=> 0,'shared_id'=> Yii::$app->user->id ])->orderBy(['date'=> SORT_DESC])->all();
-        $wishlists = Notification::find()->where(['type'=> $type,'status'=> 0,'shared_id'=> Yii::$app->user->id ])->orderBy(['date'=> SORT_DESC])->all();
         
         return [
             'events' => $events,
             'journals' => $journals,
-            'comments' => $comments,
-            'wishlists' => $wishlists,
         ];
     }
     
-    public function notificationCount($notification){
+    public function notificationCount($notification, $counts = false){
         $counter = 0;
-        for($i=0;$i<sizeof($notification);$i++){
+      if($counts == false){
+          for($i=0;$i<sizeof($notification);$i++){
             if($notification[$i]->user->id == Yii::$app->user->id ){
                 continue;
             }
             $counter++;
-        }
+          }
+      }else{
+          for($i=0;$i<sizeof($notification);$i++){
+            if($notification[$i]->user->id == Yii::$app->user->id || $notification[$i]->type == 'journal' || $notification[$i]->type == 'event'){
+                continue;
+            }
+            $counter++;
+          }
+      }
+        
         return $counter;
     }
     
-    public function enterNotification(){
-        
+    public function getGlobalNotifications(){
+         return Notification::find()->where(['status'=> 0,'shared_id'=> Yii::$app->user->id ])->orderBy(['date'=> SORT_DESC])->all();
     }
-    
-    
+  
 }

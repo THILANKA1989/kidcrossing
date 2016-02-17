@@ -32,15 +32,10 @@ class WishlistController extends Controller
      */
     public function actionIndex()
     {
-        $model = new Wishlist();
-        $searchModel = new WishlistSearch();
-        $searchProvider = $searchModel->search(Yii::$app->request->queryParams);
-         $dataProvider = new ActiveDataProvider([
-           'query' => \app\models\Wishlist::find()->where(['user_id' => Yii::$app->user->id])->orderBy(['id'=> SORT_DESC]),
-           'pagination' => [
-                'pageSize' => 7,
-    ],
-        ]);
+          $searchModel = new WishlistSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        
+        
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -54,8 +49,20 @@ class WishlistController extends Controller
      */
     public function actionView($id)
     {
+        
+        $model = new Wishlist();
+        $searchModel = new WishlistSearch();
+        $searchProvider = $searchModel->search(Yii::$app->request->queryParams);
+         $dataProvider = new ActiveDataProvider([
+           'query' => \app\models\Wishlist::find()->where(['user_id' => $id])->orderBy(['id'=> SORT_DESC]),
+           'pagination' => [
+                'pageSize' => 8,
+    ],
+        ]);
+        Yii::$app->NotificationSaver->viewer($id); 
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
         ]);
     }
 
@@ -77,7 +84,7 @@ class WishlistController extends Controller
                 Yii::$app->NotificationSaver->notify($model->title,$model->id,$model->user->id,Yii::$app->user->id,Yii::$app->controller->id,$model->assigned_to);
                 Yii::$app->session->setFlash('success', 'Item successfully posted.');
             } 
-        return $this->redirect(['index']);
+        return $this->redirect(['wishlist/view/'.Yii::$app->user->id]);
         }else if(Yii::$app->request->isAjax){
             return $this->renderAjax('_form',[
                     'model' => $model

@@ -9,13 +9,11 @@ use yii\widgets\ActiveForm;
 
 $events = Notification::getUserNotifications('event')['events'];
 $journals = Notification::getUserNotifications('journal')['journals'];
-$comments = Notification::getUserNotifications('comment')['comments'];
-$wishlist = Notification::getUserNotifications('wishlist')['wishlists'];
+$global = Notification::getGlobalNotifications();
 //var_dump($journals); die();
 $number_new_events = Notification::notificationCount($events);
 $number_new_journals = Notification::notificationCount($journals);
-$number_new_comments = Notification::notificationCount($comments);
-$number_new_wishlists = Notification::notificationCount($wishlist);
+$number_global = Notification::notificationCount($global,true);
 
 ?>
 <!-- Main Header -->
@@ -157,32 +155,50 @@ $number_new_wishlists = Notification::notificationCount($wishlist);
                     <!-- Menu toggle button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="calendar_notify">
                         <i class="fa fa-globe"></i>
-                        <?php if($number_new_comments != 0){ ?>
-                        <span class="label label-warning"><?=$number_new_comments+$number_new_wishlists ?></span>
+                        <?php if($number_global != 0){ ?>
+                        <span class="label label-warning"><?=$number_global ?></span>
                         <?php } ?>
                     </a>
                     <ul class="dropdown-menu">
-                        <li class="header">Your shared content has <?= $number_new_comments+$number_new_wishlists ?> new Notifications</li>
+                        <li class="header">Your shared content has <?= $number_global ?> new Notifications</li>
                         <li>
                             <!-- Inner Menu: contains the notifications -->
                            
                             <ul class="menu">
-                                 <?php foreach($comments as $comment){ ?>
-                                    <?php if($comment->user->id == Yii::$app->user->id ){
+                                 <?php foreach($global as $global){ ?>
+                                    <?php if($global->user->id == Yii::$app->user->id ){
                                         continue;
                                     } ?>
-                                    <?php if($comment->type == 'comment'){
+                                 <?php if($global->type == 'journal' || $global->type == 'event' ){
+                                        continue;
+                                    } ?>
+                                    <?php
+                                    if($global->type == 'comment'){
                                             $type = 'journal';
+                                    }else{
+                                        $type = $global->type;
                                     } ?>
                                     <li>
                                     <div class="row panel-footer padding-top-sm">
-                                    <a href="<?= Url::toRoute([$type.'/view/','id' => $comment->type_id,'global' => $comment->type ]) ?>" class="alerted">
+                                    <a href="<?= $global->type == 'wishlist' ? Url::toRoute([$type.'/view/','id' => $global->user_id,'wishlist' => $global->type ]): Url::toRoute([$type.'/view/','id' => $global->type_id,'global' => $global->type ]) ?>" class="alerted">
                                       <div class="col-xs-3">
-                                             <img src="<?= $comment->user->profile->image ? '../uploads/avatar/' . $comment->user->profile->image : '../img/avatar.png' ?>" class="img-circle" width="50px" height="50px"/>
+                                             <img src="<?= $global->user->profile->image ? '../uploads/avatar/' . $global->user->profile->image : '../img/avatar.png' ?>" class="img-circle" width="50px" height="50px"/>
                                           </div>
                                         <div class="col-xs-9">
-                                            <p class="fonts-bold color-blue cancel-margin"><?= $comment->user->fullname ?> has commented on a Journal</p><span class="font-small"><?= $comment->date ?></span>
-                                            <p class="font-small"><?= "By ".$comment->user->fullname;?></p>
+                                            <p class="fonts-bold color-blue cancel-margin"><?= $global->user->fullname ?> has 
+                                                <?php 
+                                                    if($global->type == 'comment'){
+                                                        echo "Commented on a Journal";
+                                                    }else if($global->type == 'wishlist' ){
+                                                        echo "Added a wishlist Item";
+                                                    }else if($global->type == 'activity'){
+                                                        echo "added an Activity";
+                                                    }else{
+                                                        echo "More";
+                                                    }
+                                                ?>
+                                            </p><span class="font-small"><?= $global->date ?></span>
+                                            <p class="font-small"><?= "By ".$global->user->fullname;?></p>
                                         </div>
                                     </div></a>
                                     

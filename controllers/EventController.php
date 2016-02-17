@@ -60,12 +60,7 @@ class EventController extends Controller {
      * @return mixed
      */
     public function actionView($id) {
-        if(Yii::$app->request->get('notify')){
-            $getid = Yii::$app->request->get('notify');
-            $notify = Notification::findOne(['type_id' => $id,'id' => $getid,'shared_id' => Yii::$app->user->id]);
-            $notify->status = 1;
-            $notify->save();
-        }   
+        Yii::$app->NotificationSaver->viewer($id);
         if (Yii::$app->request->isAjax) {
             return $this->renderAjax('view', [
                         'model' => $this->findModel($id)

@@ -6,6 +6,7 @@ use yii\base\Component;
 use yii\base\InvalidConfigException;
 
 class NotificationSaver extends Component {
+    
     public function notify($description,$type_id,$id,$user_id,$type,$shared_id = null){
         /*
          * $description ---> enter the title or entry of model
@@ -52,6 +53,37 @@ class NotificationSaver extends Component {
                         }
                     }
                 } //end of notification record entry 
+    }
+    
+    public function viewer($id){
+        
+        if(Yii::$app->request->get('notify')){
+            $getid = Yii::$app->request->get('notify');
+            //$notification = new Notification();
+            $notify = Notification::findOne(['type_id' => $id,'id' => $getid,'shared_id' => Yii::$app->user->id]);
+            $notify->status = 1;
+            $notify->save();
+        }
+        if(Yii::$app->request->get('global')){
+            $getid = Yii::$app->request->get('global');
+            //$notification = new Notification();
+            $notify = Notification::find()->where(['type_id' => $id,'type' => $getid,'shared_id' => Yii::$app->user->id, 'status' => 0])->all();
+            for($i=0;$i<sizeof($notify);$i++){
+                $notify[$i]->status = 1;
+                $notify[$i]->save();
+            }
+        }
+         if(Yii::$app->request->get('wishlist')){
+            $getid = Yii::$app->request->get('wishlist');
+            //$notification = new Notification();
+            $notify = \app\models\Notification::find()->where(['user_id' => $id,'type' => $getid,'shared_id' => Yii::$app->user->id, 'status' => 0])->all();
+            //var_dump($notify); die();
+            for($i=0;$i<sizeof($notify);$i++){
+                $notify[$i]->status = 1;
+                $notify[$i]->save();
+            }
+        }
+        
     }
 }
 
