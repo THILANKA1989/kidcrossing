@@ -1181,3 +1181,10 @@ input[value="bored"]:hover:before{
     background:rgb(63, 156, 170);
     opacity: 0.3 !important;
 }
+
+/* ##Emoticon Div */
+div#emoticons img {
+    margin: 5px;
+    border: 1px solid #ddd;
+    padding: 2px;
+}

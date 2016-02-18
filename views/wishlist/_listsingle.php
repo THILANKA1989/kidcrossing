@@ -43,15 +43,16 @@ use yii\helpers\Html;
                <div class="panel-scroller-box">
                 <?php 
                 $i = 0;
-                $count = 1;
-                foreach($model->wishlists as $model){ 
+                $count = 1; 
+                foreach(array_reverse($model->wishlists) as $model){ 
+
                     if ($i++ > 4) break;
                                   $count++;
                  ?>
      
                  <div class="wishlist-panel semiwidget-grey <?= $count % 2 != 0 ? 'background-white' : 'background-grey' ?>"><!-- single item starts -->
                   <div class="col-xs-8">
-                    <img src="http://vignette4.wikia.nocookie.net/egamia/images/5/53/Xbox_logo_64.png/revision/latest?cb=20080106084355" class="img-thumbnail pull-left img-fixed-small align-v-middle"/>
+                    <img src="<?= $model->getEmoticon($model->emoji); ?>" class="img-thumbnail pull-left img-fixed-small align-v-middle"/>
                      <div class="left-padset">
                         <h4 class="color-blue left-padset"><?=$model->title ?></h4>
                         <p class="font-small left-padset">for <?=$model->event ?></p>

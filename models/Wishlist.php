@@ -82,4 +82,8 @@ class Wishlist extends \yii\db\ActiveRecord
          return $user->profile ? $user->profile->first_name . ' ' . $user->profile->last_name : '';
     }
     
+    public function getEmoticon($emo){
+        return "/kidcrossing/img/emoji/".$emo.".png";
+    }
+    
 }
