@@ -8,7 +8,7 @@
 use yii\helpers\Html;
 ?>
 
-    <?php //if(count($model->wishlists) != 0){ ?>
+    <?php if(count($model->wishlists) != 0){ ?>
         <div class="col-md-4"><!-- single user -->
               <!-- Widget: user widget style 1 -->
               <div class="box box-widget widget-user">
@@ -79,5 +79,5 @@ use yii\helpers\Html;
                 </div>
               </div>
               <!-- /.widget-user1 -->
-    <?php// } ?>
+    <?php } ?>
 
