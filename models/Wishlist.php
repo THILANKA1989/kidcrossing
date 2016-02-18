@@ -66,6 +66,15 @@ class Wishlist extends \yii\db\ActiveRecord
         return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
     
+        
+    public function getId() {
+        return $this->id;
+    }
+    
+    public function getTitle() {
+        return $this->title;
+    }
+    
     /**
      * get user profile image
      */
@@ -85,5 +94,13 @@ class Wishlist extends \yii\db\ActiveRecord
     public function getEmoticon($emo){
         return "/kidcrossing/img/emoji/".$emo.".png";
     }
+    
+    /*
+     * Get last wishlist item
+     */
+    public function getLastWish($id){
+        return Wishlist::find()->where(['user_id' => $id])->orderBy(['date' => SORT_DESC])->limit(1);
+    }
+
     
 }

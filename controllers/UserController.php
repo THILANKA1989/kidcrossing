@@ -306,7 +306,7 @@ class UserController extends Controller {
      */
      public function actionChild(){
         $user = Yii::$app->user->id;
-        //$model = new User();
+        $model = User::findOne($user);
         
         $moodsProvider = new ActiveDataProvider([
         		'query' => Mood::find()->select('mood')->where(['user_id'=> $user])->orderBy(['date'=> SORT_DESC,'time'=>SORT_DESC])->limit(1),
@@ -332,6 +332,7 @@ class UserController extends Controller {
                         'journalProvider' => $journalProvider,
                         'moodsProvider' => $moodsProvider,
                         'moods' => $moods,
+                        'model' => $model,
                     ]);
         }else{
             throw new \yii\web\NotFoundHttpException();

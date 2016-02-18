@@ -13,7 +13,7 @@ use app\models\Mood;
 /* @var $model app\models\Profile */
 /* @var $form ActiveForm */
 
-
+//var_dump($model->wishlists); die();
 $this->title = 'Child Dashboard';
 $this->params['breadcrumbs'][] = $this->title;
 //echo Html::encode($this->journal);
@@ -111,20 +111,28 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
             <div class="col-md-6">
                 
+                <?php 
+                $i= 0;
+                foreach(array_reverse($model->wishlists) as $wishlist){ 
+                    
+                    if ($i++ > 0) break;
+                                  $count++;
+                 ?>
                 <!-- wishlist -->
                   <div class="col-md-12 semiwidget-white bordered-white bordered-grey">
                       <h4 class="color-white cancel-margin heading-strip-orange">Your Latest Wish</h4>
                       <div class="row">
                         <div class="col-xs-4">
-                          <img class="thumbnail center-blocked top-fixed-margin" src="http://www.pricenfees.com/wp-content/uploads/2015/07/Turtle-Beach-Ear-Force-Stealth-500P-Premium-Fully-Wireless-Gaming-Headset-with-DTS-HeadphoneX-7.1-Surround-Sound-for-PlayStation-4-PlayStation-3-90x90.jpg">
+                          <img class="thumbnail center-blocked top-fixed-margin" src="<?= $wishlist->getEmoticon($wishlist->emoji) ?>">
                         </div>
                         <div class="col-xs-8 card-grey">
-                        <h4 class="color-blue fonts-bold">Gaming Headphone Apple.</h4>
-                        <p class="color-black">From Dad</p>
+                        <h4 class="color-blue fonts-bold"><?= $wishlist->title  ?></h4>
+                        <p class="color-black">From <?= $wishlist->getAssignedFullname(Yii::$app->user->id) ?></p>
                         <a href="#" class="btn btn-danger">Add New +</a>
                       </div>
                     </div>
                   </div><!-- wishlist semiwidget ends -->
+                <?php } ?>
                     <!-- photobox -->
                  <!-- photos semiwidget -->
                     <div class="col-md-12 semiwidget-white bordered-grey top-fixed-margin">
