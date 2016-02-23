@@ -76,6 +76,14 @@ class Rating extends \yii\db\ActiveRecord
         //var_dump($count);
         //var_dump((int)$count/$number);
         //die();
-        return $number != 0 ? $count/(float)$number : 0;
+        return $number != 0 ? floor(($count/(float)$number)*2)/2 : 0;
+    }
+    
+    public function countEntered($id,$aid){
+        return count(Rating::find()->where(['user_id'=>$id,'activity_id'=> $aid])->all()) > 0 ? true : false;
+    }
+    
+    public function getRate(){
+        return $this->rate;
     }
 }

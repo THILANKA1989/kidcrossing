@@ -22,22 +22,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 <p class="text-center"><?= $model->description ?></p>
             </div>
         </div>
-        <div class="col-md-12 background-white"><p class="color-blue text-aqua">Rate this!</p></div>
+        <div class="col-md-12 background-white"><h3 class="color-blue text-aqua text-center">Current Rating</h3></div>
          <div class="rating-box pull-right box box-primary padding-small">
-                        
-                        <?php $form = ActiveForm::begin([
-                            'action' => '@web/rating/create',
-                            'id' => 'rateform'.$model->id,
-                        ]); ?>
-                         <?= StarRating::widget([
-                                'name' => 'rating'.$model->id,
-                                'value' => \app\models\Rating::averageRating($model->id),
-                                'disabled' => false
-                            ]); ?>
-                          <?php echo   $form->field($rating, 'user_id',['options' => ['value'=> Yii::$app->user->id] ])->hiddenInput()->label(false); ?>
-                          <?php echo   $form->field($rating, 'activity_id',['options' => ['value'=> $model->id] ])->hiddenInput()->label(false); ?>
-                        <?php ActiveForm::end(); ?>
-                    </div>
+             <h1 class="font-large color-green text-center"><?= $rate->averageRating($model->id); ?>/5</h1>         
+         </div>
     </div>
    <div class="col-md-6">
     <div class="box box-primary">

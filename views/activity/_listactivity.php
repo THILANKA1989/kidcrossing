@@ -20,19 +20,20 @@ $user =Yii::$app->user->id;
                     </div>
                     <div class="rating-box">
                         
-                        <?php $form = ActiveForm::begin([
+                        <?php
+                        $form = ActiveForm::begin([
                             'action' => '@web/rating/create',
                             'id' => 'rateform'.$model->id,
                         ]); ?>
                          <?= StarRating::widget([
                                 'name' => 'Rating[rate]',
                                 'value' => Rating::averageRating($model->id) == 0 ? 0 : Rating::averageRating($model->id),
-                                'disabled' => false,
+                                'disabled' => Rating::countEntered(Yii::$app->user->id,$model->id),
                                 'id' => 'rateinput'.$model->id
        
                             ]); ?>
-                          <?php echo   $form->field($rating, 'user_id',['options' => ['value'=> Yii::$app->user->id] ])->hiddenInput()->label(false); ?>
-                          <?php echo   $form->field($rating, 'activity_id',['options' => ['value'=> $model->id] ])->hiddenInput()->label(false); ?>
+                          <?php echo Html::hiddenInput('Rating[activity_id]', $model->id); ?>
+                        <?php  //var_dump($model->id); die(); ?>
                         <?php ActiveForm::end(); ?>
                         <p class="text-center color-blue bordered-top-grey padset-top">Added by <?=$model->user->fullname?></p>
                     </div>
@@ -43,8 +44,8 @@ $user =Yii::$app->user->id;
 $this->registerJs(
    "$('#rateform".$model->id." input#rateinput".$model->id."').rating().on('rating.clear', function(event) {
         }).on('rating.change', function(event, value, caption) {
-            //alert(value);
-             $(this).val(value);
+            alert(value);
+             $('#rateform".$model->id." input#rateinput".$model->id."').val(value);
             $('form#rateform".$model->id."').submit();
             $(this).rating('refresh', {disabled:true, showClear:false});
         });

@@ -62,14 +62,16 @@ class RatingController extends Controller
     {
         $model = new Rating();
         
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            $model->user_id = Yii::$app->user->id;
             //return $this->redirect(['view', 'id' => $model->id]);
-            echo "saved";
+            $model->save();
         } else {
-            return $this->renderAjax('create', [
+          
+        }
+          return $this->renderAjax('create', [
                 'model' => $model,
             ]);
-        }
     }
 
     /**

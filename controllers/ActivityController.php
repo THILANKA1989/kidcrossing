@@ -57,9 +57,11 @@ class ActivityController extends Controller
      */
     public function actionView($id)
     {
+        $rate = new \app\models\Rating();
         Yii::$app->NotificationSaver->viewer($id);
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'rate' => $rate,
         ]);
     }
 
