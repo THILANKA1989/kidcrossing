@@ -83,6 +83,9 @@ p{
 }
 /* ##Box Model */
 /* ###Boxes */
+.padding-lg{
+    padding: 35px;
+}
 .panel-scroller-box{
     height: 430px;
     overflow-y: overlay;
@@ -249,8 +252,8 @@ p{
 }
 
 .star-rating .caption {
-    padding-left: 0px;
-    width: 180px;
+    /* padding-left: 0px; */
+    /* width: 180px; */
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -1187,4 +1190,12 @@ div#emoticons img {
     margin: 5px;
     border: 1px solid #ddd;
     padding: 2px;
+}
+
+.field-rating-rate label{
+    display: none;
+}
+
+.star-rating .caption label{
+    display: none;
 }

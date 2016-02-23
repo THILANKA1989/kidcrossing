@@ -34,7 +34,7 @@ class ActivityController extends Controller
     {
         $searchModel = new ActivitySearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        
+        $rating = new \app\models\Rating();
          $activityProvider = new ActiveDataProvider([
             'query' => Activity::find()->orderBy(['id' => SORT_DESC]),
              'pagination' => [
@@ -46,6 +46,7 @@ class ActivityController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'activityProvider' => $activityProvider,
+            'rating' => $rating,
         ]);
     }
 

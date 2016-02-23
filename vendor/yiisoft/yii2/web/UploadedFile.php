@@ -233,4 +233,26 @@ class UploadedFile extends Object
             ]);
         }
     }
+    
+     public function uploadImage() {
+        // get the uploaded file instance. for multiple file uploads
+        // the following data will return an array (you may need to use
+        // getInstances method)
+        $image = UploadedFile::getInstance($this, 'image');
+
+        // if no image was uploaded abort the upload
+        if (empty($image)) {
+            return false;
+        }
+
+        // store the source file name
+        $this->filename = $image->name;
+        $ext = end((explode(".", $image->name)));
+
+        // generate a unique file name
+        $this->avatar = Yii::$app->security->generateRandomString().".{$ext}";
+
+        // the uploaded image instance
+        return $image;
+    }
 }

@@ -83,8 +83,11 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface {
      public function getWishlists(){
         return $this->hasMany(Wishlist::className(), ['user_id' => 'id']);
     }
-     public function getActivities(){
+    public function getActivities(){
         return $this->hasMany(Activity::className(), ['user_id' => 'id']);
+    }
+    public function getRatings(){
+        return $this->hasMany(Rating::className(), ['user_id' => 'id']);
     }
     /**
      * @inheritdoc

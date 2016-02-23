@@ -72,6 +72,7 @@ use yii\helpers\Html;
                 ['label' => '<i class="fa fa-calendar"></i> <span>Activity</span>', 'url' => ['/activity/index']],
                 //['label' => 'Contact', 'url' => ['/site/contact']],
                 Yii::$app->user->identity->level == 0 ? ['label' => '<i class="fa fa-users"></i> <span>Users</span>', 'url' => ['/user/index']] : '',
+                ['label' => '<i class="fa fa-calendar"></i> <span>Photos</span>', 'url' => ['/photos/index']],
             ],
             'submenuTemplate' => "\n<ul class='treeview-menu'>\n{items}\n</ul>\n",
         ]);

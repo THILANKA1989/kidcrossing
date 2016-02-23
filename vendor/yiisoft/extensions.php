@@ -283,4 +283,22 @@ return array (
       '@kartik/touchspin' => $vendorDir . '/kartik-v/yii2-widget-touchspin',
     ),
   ),
+  'kartik-v/yii2-date-range' => 
+  array (
+    'name' => 'kartik-v/yii2-date-range',
+    'version' => '1.6.6.0',
+    'alias' => 
+    array (
+      '@kartik/daterange' => $vendorDir . '/kartik-v/yii2-date-range',
+    ),
+  ),
+  '2amigos/yii2-gallery-widget' => 
+  array (
+    'name' => '2amigos/yii2-gallery-widget',
+    'version' => '1.0.2.0',
+    'alias' => 
+    array (
+      '@dosamigos/gallery' => $vendorDir . '/2amigos/yii2-gallery-widget/src',
+    ),
+  ),
 );
