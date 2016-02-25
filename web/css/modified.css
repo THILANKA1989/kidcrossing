@@ -84,8 +84,11 @@ p{
 /* ##Box Model */
 /* ###Boxes */
 .setted-height{
-    height: 350px;
+    height: 300px;
     overflow: hidden;
+    padding-bottom: 10px;
+    background-color: #fff;
+    border-bottom: 10px solid #fff;
 }
 .gallery-item img{
     max-width: 180px !important;

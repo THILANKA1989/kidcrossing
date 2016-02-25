@@ -44,7 +44,7 @@ $user =Yii::$app->user->id;
 $this->registerJs(
    "$('#rateform".$model->id." input#rateinput".$model->id."').rating().on('rating.clear', function(event) {
         }).on('rating.change', function(event, value, caption) {
-            alert(value);
+            //alert(value);
              $('#rateform".$model->id." input#rateinput".$model->id."').val(value);
             $('form#rateform".$model->id."').submit();
             $(this).rating('refresh', {disabled:true, showClear:false});

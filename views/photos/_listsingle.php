@@ -46,7 +46,7 @@ use yii\helpers\Url;
                   <h4 class="color-blue cancel-margin heading-strip-grey">Latest Photos</h4>
                   <div id='carousel-example-generic' class='carousel slide' data-ride='carousel'>
                       <!-- Indicators -->
-                      <ol class='carousel-indicators'>
+                      <ol class='carousel-indicators hidden'>
                           <li data-target='#carousel-example-generic<?=$model->id?>' data-slide-to='0' class='active'></li>
                           <li data-target='#carousel-example-generic<?=$model->id?>' data-slide-to='1'></li>
                           <li data-target='#carousel-example-generic<?=$model->id?>' data-slide-to='2'></li>
@@ -56,8 +56,16 @@ use yii\helpers\Url;
                       <div class='carousel-inner'>
                           <?php 
                           $i=0;
+                          $j = 0;
                           foreach(array_reverse($model->photos) as $photo){ ?>
-                          <?php $i++; ?>
+                          <?php 
+                          
+                          if(\app\models\Photos::isShared(Yii::$app->user->id,$photo->shared_with) == false && Yii::$app->user->id != $photo->user_id){
+                                continue;
+                          }
+                          if ($j++ > 6) break;
+                          $i++; 
+                            ?>
                           <div class="item <?= $i == 1 ? 'active' : '' ?>">
                               <img src="<?= $photo->url.$photo->filename ?>" alt='' />
                           </div>
@@ -66,10 +74,10 @@ use yii\helpers\Url;
                           
                       <!-- Controls -->
                       <a class='left carousel-control' href='#carousel-example-generic<?=$model->id?>' data-slide='prev'>
-                          <span class='glyphicon glyphicon-chevron-left'></span>
+                          <span class='glyphicon glyphicon-chevron-left hidden'></span>
                       </a>
                       <a class='right carousel-control' href='#carousel-example-generic<?=$model->id?>' data-slide='next'>
-                          <span class='glyphicon glyphicon-chevron-right'></span>
+                          <span class='glyphicon glyphicon-chevron-right hidden'></span>
                       </a>
                   </div>
                 </div><!-- photos semiwidget ends -->

@@ -60,7 +60,7 @@ class Photos extends \yii\db\ActiveRecord
         return '/kidcrossing/uploads/albums/';
     }
     /**
-     * get all items
+     * get all items of a user or all uploaded latest
      */
     public function getItems($id = null){
         $total = [];
@@ -69,8 +69,15 @@ class Photos extends \yii\db\ActiveRecord
         }else{
             $models = Photos::find()->where(['user_id'=>$id])->all();
         }
-       
+
+       $i = 0;
         foreach(array_reverse($models) as $model){
+            if(Photos::isShared(Yii::$app->user->id,$model->shared_with) == false && Yii::$app->user->id != $model->user_id){
+                continue;
+            }
+            if ($i++ > 30) break;
+            //var_dump($model->shared_with);
+            
         $items =   [
                 'url' => '@web/uploads/albums/'.$model->filename,
                 'src' => '@web/uploads/albums/'.$model->filename,
@@ -78,18 +85,11 @@ class Photos extends \yii\db\ActiveRecord
             ];
             array_push($total, $items);
         }
+        //die();
         return $total;
     }
-    
-    public function upload()
-    {
-        if ($this->validate()) { 
-            foreach ($this->filename as $file) {
-                $file->saveAs('uploads/albums/' . $file->baseName . '.' . $file->extension);
-            }
-            return true;
-        } else {
-            return false;
-        }
+    //check shared with
+    public function isShared($user_id,$shared_with){
+        return in_array($user_id, explode(',', $shared_with)) != false ? true : false;
     }
 }
