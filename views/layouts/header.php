@@ -77,7 +77,7 @@ $number_global = Notification::notificationCount($global,true);
                 <li class="dropdown notifications-menu">
                     <!-- Menu toggle button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="calendar_notify">
-                        <i class="fa fa-list-ol"></i>
+                        <i class="fa fa-book"></i>
                         <?php if($number_new_journals != 0){ ?>
                         <span class="label label-warning"><?=$number_new_journals ?></span>
                         <?php }?>
@@ -180,7 +180,7 @@ $number_global = Notification::notificationCount($global,true);
                                     } ?>
                                     <li>
                                     <div class="row panel-footer padding-top-sm">
-                                    <a href="<?= $global->type == 'wishlist' ? Url::toRoute([$type.'/view/','id' => $global->user_id,'wishlist' => $global->type ]): Url::toRoute([$type.'/view/','id' => $global->type_id,'global' => $global->type ]) ?>" class="alerted">
+                                    <a href="<?= $global->type == 'wishlist' || $global->type == 'photos' ? Url::toRoute([$type.'/view/','id' => $global->user_id,'wishlist' => $global->type ]): Url::toRoute([$type.'/view/','id' => $global->type_id,'global' => $global->type ]) ?>" class="alerted">
                                       <div class="col-xs-3">
                                              <img src="<?= $global->user->profile->image ? '../uploads/avatar/' . $global->user->profile->image : '../img/avatar.png' ?>" class="img-circle" width="50px" height="50px"/>
                                           </div>
@@ -193,8 +193,10 @@ $number_global = Notification::notificationCount($global,true);
                                                         echo "Added a wishlist Item";
                                                     }else if($global->type == 'activity'){
                                                         echo "added an Activity";
+                                                    }else if($global->type == 'photos'){
+                                                        echo "added an image to the album";
                                                     }else{
-                                                        echo "More";
+                                                        echo "uploaded something";
                                                     }
                                                 ?>
                                             </p><span class="font-small"><?= $global->date ?></span>

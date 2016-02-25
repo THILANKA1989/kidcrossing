@@ -89,6 +89,9 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface {
     public function getRatings(){
         return $this->hasMany(Rating::className(), ['user_id' => 'id']);
     }
+    public function getPhotos(){
+        return $this->hasMany(Photos::className(), ['user_id' => 'id']);
+    }
     /**
      * @inheritdoc
      */

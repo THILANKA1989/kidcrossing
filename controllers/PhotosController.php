@@ -16,6 +16,7 @@ use yii\data\ActiveDataProvider;
  */
 class PhotosController extends Controller
 {
+    
     public function behaviors()
     {
         return [
@@ -33,8 +34,9 @@ class PhotosController extends Controller
      * @return mixed
      */
     public function actionIndex()
-    {
+    {   $photos = Photos::find()->all();
         $model = new Photos();
+        
         $searchModel = new PhotosSearch();
          $dataProvider = new ActiveDataProvider([
             'query' => Yii::$app->user->identity->findFamily(true),
@@ -46,6 +48,7 @@ class PhotosController extends Controller
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'photos' => $photos,
         ]);
     }
 
@@ -56,10 +59,13 @@ class PhotosController extends Controller
      */
     public function actionView($id)
     {
+        
         $user = User::findOne(['id' => $id]);
+        Yii::$app->NotificationSaver->viewer($id);
         return $this->render('view', [
             'model' => $user,
         ]);
+
     }
 
     /**
@@ -70,15 +76,27 @@ class PhotosController extends Controller
     public function actionCreate()
     {
         $model = new Photos(); 
-        $model->user_id = Yii::$app->user->id;
+        $models = array();
         if ($model->load(Yii::$app->request->post()) ){ 
                 $model->shared_with =  implode(',',$model->shared_with);
-                $file = UploadedFile::getInstance($model, 'filename');
-                $model->filename = $file->name;
-            if($model->save()){
-                $path = Yii::getAlias('@uploads/member-images/' . $model->filename);
-                $file->saveAs($path);
-            }
+                $file = UploadedFile::getInstances($model, 'filename');
+                foreach($file as $filename){
+            
+                         $model1 = new Photos(); 
+                         $model1->user_id = Yii::$app->user->id;
+                         $model1->shared_with = $model->shared_with;
+                         $model1->filename = $filename->name;
+                         $path = Yii::getAlias('@uploads/albums/' . $model1->filename);
+                         if($model1->save()){
+                            $filename->saveAs($path);
+                         }
+                    
+   
+                }
+                Yii::$app->session->setFlash('success', 'Photos successfully posted.');
+                Yii::$app->NotificationSaver->notify($model1->filename,$model1->id,$model1->user->id,$model1->user->id,Yii::$app->controller->id,$model1->shared_with);
+            
+            $this->redirect('index');
         }
         return $this->renderAjax('create', [
             'model'=>$model,
@@ -132,4 +150,5 @@ class PhotosController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
 }

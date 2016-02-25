@@ -9,7 +9,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 ?>
   <!-- single user -->
-
+   <?php if(count($model->photos) != 0){ ?>
             <div class="col-md-4"><!-- single user -->
               <!-- Widget: user widget style 1 -->
               <div class="box box-widget widget-user">
@@ -42,34 +42,33 @@ use yii\helpers\Url;
                   <!-- /.row -->
                 </div>
                  <!-- photos semiwidget -->
-                <div class="col-md-12 semiwidget-white">
+                <div class="col-md-12 semiwidget-white setted-height">
                   <h4 class="color-blue cancel-margin heading-strip-grey">Latest Photos</h4>
                   <div id='carousel-example-generic' class='carousel slide' data-ride='carousel'>
                       <!-- Indicators -->
                       <ol class='carousel-indicators'>
-                          <li data-target='#carousel-example-generic' data-slide-to='0' class='active'></li>
-                          <li data-target='#carousel-example-generic' data-slide-to='1'></li>
-                          <li data-target='#carousel-example-generic' data-slide-to='2'></li>
+                          <li data-target='#carousel-example-generic<?=$model->id?>' data-slide-to='0' class='active'></li>
+                          <li data-target='#carousel-example-generic<?=$model->id?>' data-slide-to='1'></li>
+                          <li data-target='#carousel-example-generic<?=$model->id?>' data-slide-to='2'></li>
                       </ol>
                       
                       <!-- Wrapper for slides -->
                       <div class='carousel-inner'>
-                          <div class='item active'>
-                              <img src='http://placehold.it/400x200&text=slide1' alt='' />
+                          <?php 
+                          $i=0;
+                          foreach(array_reverse($model->photos) as $photo){ ?>
+                          <?php $i++; ?>
+                          <div class="item <?= $i == 1 ? 'active' : '' ?>">
+                              <img src="<?= $photo->url.$photo->filename ?>" alt='' />
                           </div>
-                          <div class='item'>
-                              <img src='http://placehold.it/400x200&text=slide2' alt='' />
-                          </div>
-                          <div class='item'>
-                              <img src='http://placehold.it/400x200&text=slide3' alt='' />
-                          </div>
+                          <?php } ?>
                       </div>
                           
                       <!-- Controls -->
-                      <a class='left carousel-control' href='#carousel-example-generic' data-slide='prev'>
+                      <a class='left carousel-control' href='#carousel-example-generic<?=$model->id?>' data-slide='prev'>
                           <span class='glyphicon glyphicon-chevron-left'></span>
                       </a>
-                      <a class='right carousel-control' href='#carousel-example-generic' data-slide='next'>
+                      <a class='right carousel-control' href='#carousel-example-generic<?=$model->id?>' data-slide='next'>
                           <span class='glyphicon glyphicon-chevron-right'></span>
                       </a>
                   </div>
@@ -83,3 +82,4 @@ use yii\helpers\Url;
               
               <!-- /.widget-user1 -->
             </div><!-- single user ends -->
+   <?php } ?>

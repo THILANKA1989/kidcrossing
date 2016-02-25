@@ -14,12 +14,12 @@ use yii\helpers\ArrayHelper;
         <div class="photos-form">
           <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
             <?=
-              $form->field($model, 'filename')->widget(FileInput::classname(), [
+              $form->field($model, 'filename[]')->widget(FileInput::classname(), [
                 'options' => ['accept' => 'image/*', 'multiple' => true],
                 'pluginOptions' => ['allowedFileExtensions' => ['jpg', 'gif', 'png']]
               ]);
             ?>
-          <?= $form->field($model, 'shared_with')->listBox( ArrayHelper::map(Yii::$app->user->identity->findFamily()->all(), 'id', 'fullname'), ['multiple' => true] ) ?>
+          <?= $form->field($model, 'shared_with')->listBox( ArrayHelper::map(Yii::$app->user->identity->findFamily(true)->all(), 'id', 'fullname'), ['multiple' => true] ) ?>
             <div class="form-group">
               <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
             </div>
