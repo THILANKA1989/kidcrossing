@@ -7,7 +7,6 @@ use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use app\models\Event;
 use app\models\EventSearch;
-use app\models\Notification;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
@@ -48,9 +47,9 @@ class EventController extends Controller {
         //$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
-                    'events' => Event::find()->where('FIND_IN_SET('.$id. ',"shared_with")>=0')->orWhere('user_id='.$id)->all(),
-                    //'searchModel' => $searchModel,
-                    //'dataProvider' => $dataProvider,
+                    'events' => Event::find()->where('FIND_IN_SET(' . $id . ',"shared_with")>=0')->orWhere('user_id=' . $id)->all(),
+                        //'searchModel' => $searchModel,
+                        //'dataProvider' => $dataProvider,
         ]);
     }
 
@@ -60,7 +59,7 @@ class EventController extends Controller {
      * @return mixed
      */
     public function actionView($id) {
-        Yii::$app->NotificationSaver->viewer($id);
+        Yii::$app->Notification->viewer($id);
         if (Yii::$app->request->isAjax) {
             return $this->renderAjax('view', [
                         'model' => $this->findModel($id)
@@ -84,11 +83,11 @@ class EventController extends Controller {
         $model->date = $date;
         if ($model->load(Yii::$app->request->post())) {
             //var_dump($model);
-            $model->shared_with = implode(',',$model->shared_with);
-            if ($model->save()){
-                Yii::$app->NotificationSaver->notify($model->title,$model->id,$model->user->id,$model->user->id,Yii::$app->controller->id,$model->shared_with);
+            $model->shared_with = implode(',', $model->shared_with);
+            if ($model->save()) {
+                Yii::$app->Notification->notify($model->title, $model, $model->user, Yii::$app->controller->id, $model->shared_with);
             }
-                return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['view', 'id' => $model->id]);
         } elseif (Yii::$app->request->isAjax) {
             return $this->renderAjax('_form', [
                         'model' => $model
@@ -109,10 +108,10 @@ class EventController extends Controller {
     public function actionUpdate($id) {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) ) {     
-            $model->shared_with = implode(',',$model->shared_with);
-            if($model->save())
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->shared_with = implode(',', $model->shared_with);
+            if ($model->save())
+                return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
                         'model' => $model,

@@ -9,13 +9,13 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\data\ActiveDataProvider;
+
 /**
  * ActivityController implements the CRUD actions for Activity model.
  */
-class ActivityController extends Controller
-{
-    public function behaviors()
-    {
+class ActivityController extends Controller {
+
+    public function behaviors() {
         return [
             'verbs' => [
                 'class' => VerbFilter::className(),
@@ -30,23 +30,22 @@ class ActivityController extends Controller
      * Lists all Activity models.
      * @return mixed
      */
-    public function actionIndex()
-    {
+    public function actionIndex() {
         $searchModel = new ActivitySearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $rating = new \app\models\Rating();
-         $activityProvider = new ActiveDataProvider([
+        $activityProvider = new ActiveDataProvider([
             'query' => Activity::find()->orderBy(['id' => SORT_DESC]),
-             'pagination' => [
+            'pagination' => [
                 'pageSize' => 8,
-             ],
-        ]);    
-        
+            ],
+        ]);
+
         return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-            'activityProvider' => $activityProvider,
-            'rating' => $rating,
+                    'searchModel' => $searchModel,
+                    'dataProvider' => $dataProvider,
+                    'activityProvider' => $activityProvider,
+                    'rating' => $rating,
         ]);
     }
 
@@ -55,13 +54,12 @@ class ActivityController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionView($id)
-    {
+    public function actionView($id) {
         $rate = new \app\models\Rating();
-        Yii::$app->NotificationSaver->viewer($id);
+        Yii::$app->Notification->viewer($id);
         return $this->render('view', [
-            'model' => $this->findModel($id),
-            'rate' => $rate,
+                    'model' => $this->findModel($id),
+                    'rate' => $rate,
         ]);
     }
 
@@ -70,27 +68,25 @@ class ActivityController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
-    {
+    public function actionCreate() {
         $model = new Activity();
         $model->date = Yii::$app->formatter->asDate('today', 'long');
         $model->user_id = Yii::$app->user->id;
-        $model->created_at =  date('Y-m-d h:i:s');        
-        
-        if ($model->load(Yii::$app->request->post())){ 
-            if($model->save()){
-                Yii::$app->NotificationSaver->notify($model->title,$model->id,$model->user->id,Yii::$app->user->id,Yii::$app->controller->id,'all');
+        $model->created_at = date('Y-m-d h:i:s');
+
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->save()) {
+                Yii::$app->Notification->notify($model->title, $model, $model->user, Yii::$app->controller->id, 'all');
                 Yii::$app->session->setFlash('success', 'Activity posted successfully.');
                 return $this->redirect(['index']);
             }
-        }else if(Yii::$app->request->isAjax){
-            return $this->renderAjax('_form',[
-                    'model' => $model
+        } else if (Yii::$app->request->isAjax) {
+            return $this->renderAjax('_form', [
+                        'model' => $model
             ]);
-        }
-        else {
+        } else {
             return $this->render('create', [
-                'model' => $model,
+                        'model' => $model,
             ]);
         }
     }
@@ -101,15 +97,14 @@ class ActivityController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionUpdate($id)
-    {
+    public function actionUpdate($id) {
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
-                'model' => $model,
+                        'model' => $model,
             ]);
         }
     }
@@ -120,8 +115,7 @@ class ActivityController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionDelete($id)
-    {
+    public function actionDelete($id) {
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
@@ -134,12 +128,12 @@ class ActivityController extends Controller
      * @return Activity the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id)
-    {
+    protected function findModel($id) {
         if (($model = Activity::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
 }

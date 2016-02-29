@@ -32,5 +32,7 @@ config/db.php
 #Runtime
 runtime
 
-#uploads
+#web
+web/assets
 web/uploads/
+

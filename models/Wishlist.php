@@ -18,21 +18,19 @@ use Yii;
  *
  * @property User $user
  */
-class Wishlist extends \yii\db\ActiveRecord
-{
+class Wishlist extends \yii\db\ActiveRecord {
+
     /**
      * @inheritdoc
      */
-    public static function tableName()
-    {
+    public static function tableName() {
         return 'wishlist';
     }
 
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
+    public function rules() {
         return [
             [['user_id', 'title', 'event', 'emoji', 'assigned_to', 'status', 'date'], 'required'],
             [['user_id', 'status'], 'integer'],
@@ -44,8 +42,7 @@ class Wishlist extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
-    public function attributeLabels()
-    {
+    public function attributeLabels() {
         return [
             'id' => 'ID',
             'user_id' => 'User ID',
@@ -61,46 +58,44 @@ class Wishlist extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getUser()
-    {
+    public function getUser() {
         return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
-    
-        
+
     public function getId() {
         return $this->id;
     }
-    
+
     public function getTitle() {
         return $this->title;
     }
-    
+
     /**
      * get user profile image
      */
-    public function getAssignedUser($id){
+    public function getAssignedUser($id) {
         $user = User::findOne(['id' => $id]);
         return $user->profile->image ? '../uploads/avatar/' . $user->profile->image : '../img/avatar.png';
     }
-    
+
     /**
      * get user fullimage
      */
-    public function getAssignedFullname($id){
+    public function getAssignedFullname($id) {
         $user = User::findOne(['id' => $id]);
-         return $user->profile ? $user->profile->first_name . ' ' . $user->profile->last_name : '';
+        return $user->profile ? $user->profile->first_name . ' ' . $user->profile->last_name : '';
     }
-    
-    public function getEmoticon($emo){
-        return "/kidcrossing/img/emoji/".$emo.".png";
+
+    public function getEmoticon() {
+        return "@web/img/emoji/".$this->emoji . ".png";
     }
-    
+
     /*
      * Get last wishlist item
      */
-    public function getLastWish($id){
+
+    public function getLastWish($id) {
         return Wishlist::find()->where(['user_id' => $id])->orderBy(['date' => SORT_DESC])->limit(1);
     }
 
-    
 }

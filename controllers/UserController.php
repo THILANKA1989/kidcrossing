@@ -5,7 +5,6 @@ namespace app\controllers;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
-
 use app\models\LoginForm;
 use app\models\Tempuser;
 use app\models\User;
@@ -14,12 +13,10 @@ use app\models\UserSearch;
 use app\models\Profile;
 use app\models\Journal;
 use app\models\JournalSearch;
-
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\web\UploadedFile;
 use yii\helpers\VarDumper;
-
 use yii\data\ActiveDataProvider;
 
 /**
@@ -37,10 +34,10 @@ class UserController extends Controller {
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout', 'index', 'view', 'profile', 'settings','child'],
+                'only' => ['logout', 'index', 'view', 'profile', 'settings', 'child'],
                 'rules' => [
                     [
-                        'actions' => ['logout', 'index', 'view', 'profile', 'settings','child'],
+                        'actions' => ['logout', 'index', 'view', 'profile', 'settings', 'child'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -217,7 +214,7 @@ class UserController extends Controller {
         if ($model->load(Yii::$app->request->post())) {
             $file = UploadedFile::getInstance($model, 'image');
             if ($file != null) {
-                $model->image = $file->name;
+                $model->image = time() . '.' . $file->extension; //$file->name;
                 $path = Yii::getAlias('@uploads/avatar/' . $model->image);
             } else {
                 $model->image = $image;
@@ -250,7 +247,7 @@ class UserController extends Controller {
         $profile->area = $model->area;
         $profile->city = $model->city;
         $profile->zipcode = $model->zipcode;
-        
+
         if (isset($_POST['User'], $_POST['Profile'])) {
             $user->attributes = $_POST['User'];
             $user->parent_id = Yii::$app->user->id;
@@ -269,36 +266,38 @@ class UserController extends Controller {
 
             Yii::$app->session->setFlash('success', 'Your Child\'s account is created successfully. ');
         }
-        
+
         $DataProvider = new ActiveDataProvider([
             'query' => Yii::$app->user->identity->findFamily(),
             'pagination' => [
                 'pageSize' => 20,
             ],
         ]);
-        
+
         return $this->render('settings', [
                     'user' => $user,
                     'profile' => $profile,
                     'dataProvider' => $DataProvider
         ]);
     }
-    
+
     /**
      * Display user dashboard
      */
-    public function actionDashboard(){
+    public function actionDashboard() {
         $events = User::newsFeed('events');
         $journals = User::newsFeed('journals');
         $photos = \app\models\Photos::find()->all();
-        $wishlists = \app\models\Wishlist::find()->where(['assigned_to' => Yii::$app->user->id, 'status' => 0])->all();
+        
+        $wishlists = new ActiveDataProvider([
+            'query' => \app\models\Wishlist::find()->where(['assigned_to' => Yii::$app->user->id, 'status' => 0])->orderBy('id')->limit(5),
+            'pagination' => false
+           
+        ]);
         $DataProvider = new ActiveDataProvider([
             'query' => Yii::$app->user->identity->findFamily(),
-            'pagination' => [
-                'pageSize' => 20,
-            ],
         ]);
-        
+
         return $this->render('dashboard', [
                     'dataProvider' => $DataProvider,
                     'events' => $events,
@@ -307,21 +306,21 @@ class UserController extends Controller {
                     'wishlists' => $wishlists,
         ]);
     }
-    
+
     /**
      * Display child dashboard by DTR
      */
-     public function actionChild(){
+    public function actionChild() {
         $user = Yii::$app->user->id;
         $model = User::findOne($user);
         $moodsProvider = new ActiveDataProvider([
-        		'query' => Mood::find()->select('mood')->where(['user_id'=> $user])->orderBy(['date'=> SORT_DESC,'time'=>SORT_DESC])->limit(1),
-        		'pagination' => false,
-        		]);
+            'query' => Mood::find()->select('mood')->where(['user_id' => $user])->orderBy(['date' => SORT_DESC, 'time' => SORT_DESC])->limit(1),
+            'pagination' => false,
+        ]);
         $journalProvider = new ActiveDataProvider([
             'query' => Journal::latestJournal($user)
-            ,'pagination' => false,
-        ]);    
+            , 'pagination' => false,
+        ]);
         $DataProvider = new ActiveDataProvider([
             'query' => Yii::$app->user->identity->findParents(),
             'pagination' => [
@@ -331,19 +330,20 @@ class UserController extends Controller {
         //get number 
         //create mood
         $moods = new Mood();
-       //VarDumper::dump($moodsProvider, 10000, true); die();
-        if(Yii::$app->user->identity->level == 3){
+        //VarDumper::dump($moodsProvider, 10000, true); die();
+        if (Yii::$app->user->identity->level == 3) {
             return $this->render('childdashboard', [
                         'dataProvider' => $DataProvider,
                         'journalProvider' => $journalProvider,
                         'moodsProvider' => $moodsProvider,
                         'moods' => $moods,
                         'model' => $model,
-                    ]);
-        }else{
+            ]);
+        } else {
             throw new \yii\web\NotFoundHttpException();
         }
-     }
+    }
+
     /**
      * Creates a new User model.
      * If creation is successful, the browser will be redirected to the 'view' page.

@@ -4,23 +4,21 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Journal;
-use app\models\Notification;
 use app\models\JournalSearch;
+use app\models\Comment;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
-use app\models\Comment;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 
 /**
  * JournalController implements the CRUD actions for Journal model.
  */
-class JournalController extends Controller
-{
-    public function behaviors()
-    {
+class JournalController extends Controller {
+
+    public function behaviors() {
         return [
             'access' => [
                 'class' => AccessControl::className(),
@@ -46,75 +44,69 @@ class JournalController extends Controller
      * Lists all Journal models.
      * @return mixed
      */
-    public function actionIndex()
-    {
+    public function actionIndex() {
         $searchModel = new JournalSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        
-        
+
+
         return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
+                    'searchModel' => $searchModel,
+                    'dataProvider' => $dataProvider,
         ]);
     }
-    
+
     /**
      * Displays a single Journal model.
      * @param integer $id
      * @return mixed
      */
-    public function actionView($id)
-    {
+    public function actionView($id) {
         //var_dump($notify); die(); 
         $searchModel = new JournalSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $model = $this->findModel($id);
-        $comment = new \app\models\Comment();
+        $comment = new Comment();
         $comment->user_id = \Yii::$app->user->id;
         $comment->journal_id = $id;
-        $query =  Comment::find()
+        $query = Comment::find()
                 ->where(['journal_id' => $id]);
-        $commentProvider = new ActiveDataProvider([            	
+        $commentProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
-        Yii::$app->NotificationSaver->viewer($id);
-        
-        if ($comment->load(Yii::$app->request->post()) ){
-                $comment->time = date('Y-m-d H:i:s');
-                
-            if($comment->save()){   
-                Yii::$app->NotificationSaver->notify($model->entry,$model->id,$model->user->id,Yii::$app->user->id,'comment',$model->shared_with);
+        Yii::$app->Notification->viewer($id);
+
+        if ($comment->load(Yii::$app->request->post())) {
+            $comment->time = date('Y-m-d H:i:s');
+
+            if ($comment->save()) {
+                Yii::$app->Notification->notify($model->entry, $model, $comment->user, 'comment', $model->shared_with.','.$model->user_id);
                 Yii::$app->session->setFlash('success', 'Comment posted successfully.');
                 return $this->render('view', [
-                    'model' => $model,
-                    'comment' => $comment,
-                    'dataProvider' => $dataProvider,
-                    'searchModel' => $searchModel,
-                    'commentProvider'=> $commentProvider,
+                            'model' => $model,
+                            'comment' => $comment,
+                            'dataProvider' => $dataProvider,
+                            'searchModel' => $searchModel,
+                            'commentProvider' => $commentProvider,
                 ]);
-            }else{
+            } else {
                 exit();
             }
-        }
-        
-        else if(Yii::$app->request->isAjax){
-            return $this->renderAjax('view',[
-            'model' => $model,
-            'comment' => $comment,
-            'dataProvider' => $dataProvider,
-            'searchModel' => $searchModel,
-            'commentProvider'=> $commentProvider,
-        ]);}
-        else{
+        } else if (Yii::$app->request->isAjax) {
+            return $this->renderAjax('view', [
+                        'model' => $model,
+                        'comment' => $comment,
+                        'dataProvider' => $dataProvider,
+                        'searchModel' => $searchModel,
+                        'commentProvider' => $commentProvider,
+            ]);
+        } else {
             return $this->render('view', [
-            'model' => $model,
-            'comment' => $comment,
-            'dataProvider' => $dataProvider,
-            'searchModel' => $searchModel,
-            'commentProvider'=> $commentProvider,
-            
-        ]);
-        
+                        'model' => $model,
+                        'comment' => $comment,
+                        'dataProvider' => $dataProvider,
+                        'searchModel' => $searchModel,
+                        'commentProvider' => $commentProvider,
+            ]);
         }
     }
 
@@ -123,34 +115,30 @@ class JournalController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
-    {
-        
+    public function actionCreate() {
+
         $model = new Journal();
         $model->date = Yii::$app->formatter->asDate('today', 'long');
         $model->user_id = Yii::$app->user->id;
-        
-        
-        if ($model->load(Yii::$app->request->post()) ){            
-            $model->shared_with =  implode(',',$model->shared_with);            
-            if($model->save()){
-                Yii::$app->NotificationSaver->notify($model->entry,$model->id,$model->user->id,Yii::$app->user->id,Yii::$app->controller->id,$model->shared_with);
-            } 
-                Yii::$app->session->setFlash('success', 'Journal successfully posted.');
-                return $this->redirect(['index']);
-        }else if(Yii::$app->request->isAjax){
-            return $this->renderAjax('_form',[
-                    'model' => $model
-            ]);
-        }
-        else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
+
+
+        if ($model->load(Yii::$app->request->post())) {
+            $model->shared_with = implode(',', $model->shared_with);
+            if ($model->save()) {
+                Yii::$app->Notification->notify($model->entry, $model, $model->user, Yii::$app->controller->id, $model->shared_with);
             }
+            Yii::$app->session->setFlash('success', 'Journal successfully posted.');
+            return $this->redirect(['index']);
+        } else if (Yii::$app->request->isAjax) {
+            return $this->renderAjax('_form', [
+                        'model' => $model
+            ]);
+        } else {
+            return $this->render('create', [
+                        'model' => $model,
+            ]);
         }
-    
-    
+    }
 
     /**
      * Updates an existing Journal model.
@@ -158,20 +146,18 @@ class JournalController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionUpdate($id)
-    {
+    public function actionUpdate($id) {
         $model = $this->findModel($id);
         $model->user_id = Yii::$app->user->id;
-       
-        if ($model->load(Yii::$app->request->post())){
-             $model->shared_with = json_encode($model->shared_with);    
-                
-            if($model->save()) 
-            return $this->redirect(['view', 'id' => $model->id]);
-            
+
+        if ($model->load(Yii::$app->request->post())) {
+            $model->shared_with = json_encode($model->shared_with);
+
+            if ($model->save())
+                return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
-                'model' => $model,
+                        'model' => $model,
             ]);
         }
     }
@@ -182,8 +168,7 @@ class JournalController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionDelete($id)
-    {
+    public function actionDelete($id) {
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
@@ -196,12 +181,12 @@ class JournalController extends Controller
      * @return Journal the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id)
-    {
+    protected function findModel($id) {
         if (($model = Journal::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
 }
