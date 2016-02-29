@@ -41,7 +41,7 @@ class WishlistSearch extends Wishlist
      */
     public function search($params)
     {
-        $query = Wishlist::find();
+        $query = Wishlist::find()->where(['user_id'=> Yii::$app->user->id])->orderBy(['id'=> SORT_DESC]);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,

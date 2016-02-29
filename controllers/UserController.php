@@ -288,7 +288,10 @@ class UserController extends Controller {
      * Display user dashboard
      */
     public function actionDashboard(){
-        
+        $events = User::newsFeed('events');
+        $journals = User::newsFeed('journals');
+        $photos = \app\models\Photos::find()->all();
+        $wishlists = \app\models\Wishlist::find()->where(['assigned_to' => Yii::$app->user->id, 'status' => 0])->all();
         $DataProvider = new ActiveDataProvider([
             'query' => Yii::$app->user->identity->findFamily(),
             'pagination' => [
@@ -297,7 +300,11 @@ class UserController extends Controller {
         ]);
         
         return $this->render('dashboard', [
-                    'dataProvider' => $DataProvider
+                    'dataProvider' => $DataProvider,
+                    'events' => $events,
+                    'journals' => $journals,
+                    'photos' => $photos,
+                    'wishlists' => $wishlists,
         ]);
     }
     
@@ -307,7 +314,6 @@ class UserController extends Controller {
      public function actionChild(){
         $user = Yii::$app->user->id;
         $model = User::findOne($user);
-        
         $moodsProvider = new ActiveDataProvider([
         		'query' => Mood::find()->select('mood')->where(['user_id'=> $user])->orderBy(['date'=> SORT_DESC,'time'=>SORT_DESC])->limit(1),
         		'pagination' => false,

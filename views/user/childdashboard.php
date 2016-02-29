@@ -127,7 +127,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         </div>
                         <div class="col-xs-8 card-grey">
                         <h4 class="color-blue fonts-bold"><?= $wishlist->title  ?></h4>
-                        <p class="color-black">From <?= $wishlist->getAssignedFullname(Yii::$app->user->id) ?></p>
+                        <p class="color-black">From <?= $wishlist->getAssignedFullname($wishlist->assigned_to) ?></p>
                         <a href="#" class="btn btn-danger">Add New +</a>
                       </div>
                     </div>
@@ -146,17 +146,24 @@ $this->params['breadcrumbs'][] = $this->title;
                           </ol>
                           
                           <!-- Wrapper for slides -->
-                          <div class="carousel-inner">
-                              <div class="item active">
-                                  <img src="http://placehold.it/400x200&amp;text=slide1" alt="">
-                              </div>
-                              <div class="item">
-                                  <img src="http://placehold.it/400x200&amp;text=slide2" alt="">
-                              </div>
-                              <div class="item">
-                                  <img src="http://placehold.it/400x200&amp;text=slide3" alt="">
-                              </div>
-                          </div>
+                          <div class='carousel-inner'>
+                                <?php 
+                                $i=0;
+                                $j = 0;
+                                foreach(array_reverse($model->photos) as $photo){ ?>
+                                <?php 
+
+                                if(\app\models\Photos::isShared(Yii::$app->user->id,$photo->shared_with) == false && Yii::$app->user->id != $photo->user_id){
+                                      continue;
+                                }
+                                if ($j++ > 6) break;
+                                $i++; 
+                                  ?>
+                                <div class="item <?= $i == 1 ? 'active' : '' ?>">
+                                    <img src="<?= $photo->url.$photo->filename ?>" alt='' />
+                                </div>
+                                <?php } ?>
+                            </div>
                               
                           <!-- Controls -->
                           <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">

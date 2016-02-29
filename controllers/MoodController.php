@@ -82,6 +82,7 @@ class MoodController extends Controller
         $model= User::findOne($id); 
         $date = date("Y-m-d");
         //var_dump($model->percentageMonthly); die();
+        Yii::$app->NotificationSaver->viewer($id);
         $moodProvider = new ActiveDataProvider([
             'query' => Mood::find()->select('mood')->where(['user_id' => $id])->orderBy(['date'=> SORT_DESC,'time' => SORT_DESC])->limit(1),
             'pagination' => false,
@@ -108,12 +109,13 @@ class MoodController extends Controller
            if ($model->save()) {
              //Yii::$app->session->setFlash('success', 'Mood successfully Set.');
              //return $this->redirect(['user/child']);  
-               
+             Yii::$app->NotificationSaver->notify($model->mood,$model->id,$model->user_id,Yii::$app->user->id,Yii::$app->controller->id);  
              echo "<div class='mood-title'>"."You are ".$model->mood." Now"."<span class='font-small pull-right label label-danger'>".(5-Mood::find()->where(['user_id' => Yii::$app->user->getId(), 'date' => date("Y-m-d")])->count())."</span>"."</div>";
-
+             
            }else{
                Yii::$app->session->setFlash('danger', 'Something Error');
            }
+           
         }else{
               echo "You are out of entries";
         } 

@@ -27,6 +27,7 @@ $id = (string)$model->id;
                 </div>
                <?php } ?>
                 <div class="grey-card fixed-margin-top">
+                  <div class="user"
                   <h3 class="text-center color-blue"><?= $model->title ?></h3>
                   <p class="text-center">from <?= $model->getAssignedFullname($model->assigned_to)?></p>
                   <img class="center-blocked" src="<?= $model->getEmoticon($model->emoji) ?>" width="120px"/>

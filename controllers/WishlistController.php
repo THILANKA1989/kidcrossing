@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\data\ActiveDataProvider;
+use yii\filters\AccessControl;
 /**
  * WishlistController implements the CRUD actions for Wishlist model.
  */
@@ -17,6 +18,17 @@ class WishlistController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['create', 'index', 'view', 'update', 'delete', 'Wishes'],
+                'rules' => [
+                    [
+                        'actions' => ['create', 'index', 'view', 'update', 'delete', 'Wishes'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -30,8 +42,10 @@ class WishlistController extends Controller
      * Lists all Wishlist models.
      * @return mixed
      */
-    public function actionIndex()
-    {   $model = Wishlist::find()->orderBy(['id'=> SORT_DESC])->all();
+    public function actionWishes()
+    {   
+
+        $model = Wishlist::find()->orderBy(['id'=> SORT_DESC])->all();
         $searchModel = new WishlistSearch();
         $dataProvider =  new ActiveDataProvider([
            'query' => Yii::$app->user->identity->findFamily(false),
@@ -41,7 +55,7 @@ class WishlistController extends Controller
         ]);
         
         
-        return $this->render('index', [
+        return $this->render('wishes', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
@@ -54,7 +68,7 @@ class WishlistController extends Controller
      */
     public function actionView($id)
     {
-        
+        $user = Wishlist::findOne(['user_id' => $id]);
         $model = new Wishlist();
         $searchModel = new WishlistSearch();
         $searchProvider = $searchModel->search(Yii::$app->request->queryParams);
@@ -68,6 +82,8 @@ class WishlistController extends Controller
         return $this->render('view', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'model' => $model,
+            'user' => $user,
         ]);
     }
 
@@ -110,18 +126,46 @@ class WishlistController extends Controller
     public function actionUpdate($id)
     {
         //var_dump($id); die();
-        $model = $this->findModel($id);
-        $model->status = 1;
-        if ( $model->save()) {
-            echo "<i class='pull-right color-green fa fa-check fa-2x align-v-middle'></i>";
-        } else {
-            echo "error";
-        }
-        return $this->renderAjax('update', [
+         $model = $this->findModel($id);
+        if(Yii::$app->request->isAjax){
+           
+            $model->status = 1;
+            if ( $model->save()) {
+                echo "<i class='pull-right color-green fa fa-check fa-2x align-v-middle'></i>";
+            } else {
+                echo "error";
+            }
+            return $this->renderAjax('update', [
                 'model' => $model,
             ]);
+        }else{
+          
+           if($model->load(Yii::$app->request->post())){
+                $model->date = date('Y-m-d h:i:s');
+                $model->user_id = Yii::$app->user->id;
+                $model->assigned_to =  implode(',',$model->assigned_to); 
+            if($model->save()){
+                Yii::$app->session->setFlash('success', 'Item successfully updated.');
+            }
+           }
+            return $this->render('update', [
+                'model' => $model,
+            ]);
+        }
     }
-
+    /**
+     * Edit an existing Wishlist models.
+     */
+    public function actionIndex(){
+        $searchModel = new WishlistSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        
+        
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
     /**
      * Deletes an existing Wishlist model.
      * If deletion is successful, the browser will be redirected to the 'index' page.

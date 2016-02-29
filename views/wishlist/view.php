@@ -9,8 +9,7 @@ use yii\widgets\ListView;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\WishlistSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-
-$this->title = 'Wishlists';
+$this->title = Yii::$app->user->identity->fullname."'s Wishlist items";
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="box box-primary">
@@ -26,6 +25,11 @@ $this->params['breadcrumbs'][] = $this->title;
                         'value' => Url::to(['/wishlist/create']),
                         'data-target' => '#modal',
                     ]);
+                   
+                   echo Html::a('Edit Items',['wishlist/index'],['class'=> 'pull-right btn btn-success color-white'])
+                 ?>
+            
+            <?php
                  ?>
         </div>
     </div>

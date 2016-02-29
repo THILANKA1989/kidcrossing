@@ -11,6 +11,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
 use yii\data\ActiveDataProvider;
+use yii\imagine\Image;
 /**
  * PhotosController implements the CRUD actions for Photos model.
  */
@@ -87,8 +88,11 @@ class PhotosController extends Controller
                          $model1->shared_with = $model->shared_with;
                          $model1->filename = $filename->name;
                          $path = Yii::getAlias('@uploads/albums/' . $model1->filename);
+                         
                          if($model1->save()){
                             $filename->saveAs($path);
+                            Image::thumbnail($path, 120, 120)
+                        ->save(Yii::getAlias('@uploads/albums/thumbs/'.$model1->filename), ['quality' => 50]);
                          }
                     
    

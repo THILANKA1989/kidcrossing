@@ -170,7 +170,7 @@ fieldset[disabled] .twitter-typeahead .tt-input {
     background-color: #eeeeee !important;
 }
 
-.tt-menu {
+.tt-dropdown-menu {
     position: absolute;
     top: 100%;
     left: 0;
@@ -192,7 +192,7 @@ fieldset[disabled] .twitter-typeahead .tt-input {
     *border-bottom-width: 2px;
 }
 
-.tt-menu .tt-suggestion {
+.tt-dropdown-menu .tt-suggestion {
     display: block;
     padding: 3px 20px;
     clear: both;
@@ -202,19 +202,17 @@ fieldset[disabled] .twitter-typeahead .tt-input {
     white-space: nowrap;
 }
 
-.tt-menu .tt-suggestion.tt-cursor,
-.tt-menu .tt-suggestion.tt-selectable:hover {
-    cursor: default;
+.tt-dropdown-menu .tt-suggestion.tt-cursor {
     text-decoration: none;
     outline: 0;
     background-color: #f5f5f5;
     color: #262626;
 }
 
-.tt-menu .tt-suggestion.tt-cursor a {
+.tt-dropdown-menu .tt-suggestion.tt-cursor a {
     color: #262626;
 }
 
-.tt-menu .tt-suggestion p {
+.tt-dropdown-menu .tt-suggestion p {
     margin: 0;
 }

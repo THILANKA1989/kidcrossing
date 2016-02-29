@@ -1,7 +1,7 @@
 <?php
 
 namespace app\models;
-
+use yii\helpers\Html;
 use Yii;
 
 /**
@@ -75,13 +75,17 @@ class Photos extends \yii\db\ActiveRecord
             if(Photos::isShared(Yii::$app->user->id,$model->shared_with) == false && Yii::$app->user->id != $model->user_id){
                 continue;
             }
-            if ($i++ > 30) break;
+            //var_dump(Yii::$app->controller->action->id); die();
+            if(Yii::$app->controller->action->id != 'view'){
+                 if ( $i++ > 30) break;
+            }
+           
             //var_dump($model->shared_with);
             
         $items =   [
                 'url' => '@web/uploads/albums/'.$model->filename,
-                'src' => '@web/uploads/albums/'.$model->filename,
-                'options' => array('title' => 'By '.$model->user->fullname , 'width' => '80px')
+                'src' => '@web/uploads/albums/thumbs/'.$model->filename,
+                'options' => array('title' => 'By '.$model->user->fullname.'   '.Html::a('Delete',['photos/delete/'.$model->id]), 'width' => '80px')
             ];
             array_push($total, $items);
         }

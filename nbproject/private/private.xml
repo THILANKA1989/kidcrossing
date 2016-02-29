@@ -3,12 +3,37 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/xampp/htdocs/kidcrossing/views/layouts/header.php</file>
+            <file>file:/C:/xampp/htdocs/kidcrossing/views/journal/index.php</file>
             <file>file:/C:/xampp/htdocs/kidcrossing/models/Wishlist.php</file>
             <file>file:/C:/xampp/htdocs/kidcrossing/components/NotificationSaver.php</file>
-            <file>file:/C:/xampp/htdocs/kidcrossing/models/Notification.php</file>
-            <file>file:/C:/xampp/htdocs/kidcrossing/views/user/_form.php</file>
+            <file>file:/C:/xampp/htdocs/kidcrossing/models/WishlistSearch.php</file>
+            <file>file:/C:/xampp/htdocs/kidcrossing/views/wishlist/_listwishes.php</file>
+            <file>file:/C:/xampp/htdocs/kidcrossing/views/photos/index.php</file>
+            <file>file:/C:/xampp/htdocs/kidcrossing/models/Mood.php</file>
+            <file>file:/C:/xampp/htdocs/kidcrossing/web/css/modified.css</file>
+            <file>file:/C:/xampp/htdocs/kidcrossing/views/wishlist/_listsingle.php</file>
+            <file>file:/C:/xampp/htdocs/kidcrossing/views/wishlist/_form.php</file>
+            <file>file:/C:/xampp/htdocs/kidcrossing/controllers/UserController.php</file>
+            <file>file:/C:/xampp/htdocs/kidcrossing/controllers/EventController.php</file>
+            <file>file:/C:/xampp/htdocs/kidcrossing/views/notification/index.php</file>
+            <file>file:/C:/xampp/htdocs/kidcrossing/controllers/JournalController.php</file>
+            <file>file:/C:/xampp/htdocs/kidcrossing/views/wishlist/view.php</file>
+            <file>file:/C:/xampp/htdocs/kidcrossing/views/journal/_form.php</file>
+            <file>file:/C:/xampp/htdocs/kidcrossing/views/activity/_form.php</file>
+            <file>file:/C:/xampp/htdocs/kidcrossing/controllers/PhotosController.php</file>
+            <file>file:/C:/xampp/htdocs/kidcrossing/views/user/profile.php</file>
+            <file>file:/C:/xampp/htdocs/kidcrossing/controllers/WishlistController.php</file>
+            <file>file:/C:/xampp/htdocs/kidcrossing/config/web.php</file>
+            <file>file:/C:/xampp/htdocs/kidcrossing/views/wishlist/index.php</file>
+            <file>file:/C:/xampp/htdocs/kidcrossing/views/wishlist/create.php</file>
+            <file>file:/C:/xampp/htdocs/kidcrossing/controllers/MoodController.php</file>
+            <file>file:/C:/xampp/htdocs/kidcrossing/views/activity/index.php</file>
+            <file>file:/C:/xampp/htdocs/kidcrossing/models/User.php</file>
+            <file>file:/C:/xampp/htdocs/kidcrossing/views/wishlist/wishes.php</file>
+            <file>file:/C:/xampp/htdocs/kidcrossing/views/photos/_form.php</file>
             <file>file:/C:/xampp/htdocs/kidcrossing/views/layouts/nav.php</file>
-            <file>file:/C:/xampp/htdocs/kidcrossing/views/user/index.php</file>
+            <file>file:/C:/xampp/htdocs/kidcrossing/views/event/index.php</file>
         </group>
     </open-files>
 </project-private>

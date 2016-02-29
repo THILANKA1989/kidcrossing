@@ -46,9 +46,9 @@ count(Yii::$app->user->identity->findParents()) == 2 ? $column = "col-md-6" :  $
                     <div class="col-md-12 semiwidget-grey">
                       <h4 class="color-blue cancel-margin heading-strip-white">Messages (3)</h4>
                       <div class="panel-white">
-                        <p class="color-grey padset-left"><a href="#">Keep It Simple Son, I was just Kidding!</a></p>
-                        <p class="color-grey padset-left"><a href="#">Your present is ready!</a></p>
-                        <p class="color-grey padset-left"><a href="#">Come home early!</a></p>
+                        <p class="color-grey padset-left listed-fonts animated-box"><a href="#">Keep It Simple Son, I was just Kidding!</a></p>
+                        <p class="color-grey padset-left listed-fonts animated-box"><a href="#">Your present is ready!</a></p>
+                        <p class="color-grey padset-left listed-fonts animated-box"><a href="#">Come home early!</a></p>
                       </div>
                     </div><!-- photos semiwidget ends -->
                      <!-- Events semiwidget -->
@@ -56,8 +56,8 @@ count(Yii::$app->user->identity->findParents()) == 2 ? $column = "col-md-6" :  $
                         <h4 class="color-blue cancel-margin heading-strip-grey">New Events (3)</h4>
                           <?php  
                             $i = 0;    
-                            foreach ($model->events as $model) {
-                                echo "<p class='color-blue fonts-bold'>".Html::a(" $model->title", ['event/'])."</p>";
+                            foreach (array_reverse($model->events) as $models) {
+                                echo "<p class='color-blue fonts-bold listed-fonts'>".Html::a(" $models->title", ['event/'])."</p>";
                                 if(++$i >2){ break;}
                             }?>
                     </div><!-- events semiwidget ends -->
@@ -74,17 +74,24 @@ count(Yii::$app->user->identity->findParents()) == 2 ? $column = "col-md-6" :  $
                           </ol>
                           
                           <!-- Wrapper for slides -->
-                          <div class="carousel-inner">
-                              <div class="item active">
-                                  <img src="http://placehold.it/400x200&amp;text=slide1" alt="">
-                              </div>
-                              <div class="item">
-                                  <img src="http://placehold.it/400x200&amp;text=slide2" alt="">
-                              </div>
-                              <div class="item">
-                                  <img src="http://placehold.it/400x200&amp;text=slide3" alt="">
-                              </div>
+                           <div class='carousel-inner'>
+                          <?php 
+                          $i=0;
+                          $j = 0;
+                          foreach(array_reverse($model->photos) as $photo){ ?>
+                          <?php 
+                          
+                          if(\app\models\Photos::isShared(Yii::$app->user->id,$photo->shared_with) == false && Yii::$app->user->id != $photo->user_id){
+                                continue;
+                          }
+                          if ($j++ > 6) break;
+                          $i++; 
+                            ?>
+                          <div class="item <?= $i == 1 ? 'active' : '' ?>">
+                              <img src="<?= $photo->url.$photo->filename ?>" alt='' />
                           </div>
+                          <?php } ?>
+                      </div>
                               
                           <!-- Controls -->
                           <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">

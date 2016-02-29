@@ -54,13 +54,14 @@ $(function () {
     }
   ];
 
-  selectFonticonsAd();
+  //selectFonticonsAd();
 
   // start the icon carousel
   $('#icon-carousel').carousel({
     interval: 5000
   });
 
+  $('[data-toggle="tooltip"]').tooltip();
   $('[data-toggle="popover"]').popover();
 
   function selectFonticonsAd() {

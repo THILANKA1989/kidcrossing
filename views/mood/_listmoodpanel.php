@@ -50,7 +50,7 @@ if(Mood::find()->where(['user_id' => Yii::$app->user->getId(), 'date' => $date])
                   <!-- /.row -->
                 </div>
                 <div class="semiwidget-grey">
-                    <h4 class="heading-strip-orange color-white">Summary of the last month</h4>
+                    <h4 class="heading-strip-orange color-white">Summary of the current month</h4>
                     <!-- graph -->
                   <div class="row">
                    <div class="col-md-12 padding-large style-box">

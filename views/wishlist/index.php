@@ -2,21 +2,36 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-use yii\helpers\Url;
-use yii\bootstrap\Modal;
-use yii\widgets\ListView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\WishlistSearch */
+/* @var $searchModel app\models\NotificationSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Wishlists';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Edit your Wishlist items';
 ?>
-<div class="row"> 
-     <?= ListView::widget([
-                                'dataProvider' => $dataProvider,
-                                'itemView' => '_listsingle',
-                                'summary'=>'',
-             ]); ?>
+<div class="notification-index">
+    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+
+    <p>
+        <?= Html::a('Create Notification', ['create'], ['class' => 'btn btn-success']) ?>
+    </p>
+
+    <?= GridView::widget([
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
+            'user.fullname',
+            'emoji:ntext',
+            'title:ntext',
+            'event',
+            'assigned_to',
+            // 'type_id',
+            // 'status',
+            // 'date',
+
+            ['class' => 'yii\grid\ActionColumn'],
+        ],
+    ]); ?>
+
 </div>

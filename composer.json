@@ -12,7 +12,7 @@
         "irc": "irc://irc.freenode.net/yii",
         "source": "https://github.com/yiisoft/yii2"
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "require": {
         "php": ">=5.4.0",
         "yiisoft/yii2": ">=2.0.5",
@@ -21,7 +21,9 @@
         "philippfrenzel/yii2fullcalendar": "*",
         "hscstudio/yii2-mailbox": "1.0",
         "stripe/stripe-php": "3.*",
-        "kartik-v/yii2-date-range": "*"
+        "kartik-v/yii2-date-range": "*",
+        "yiisoft/yii2-imagine": "~2.0.0",
+        "2amigos/yii2-gallery-widget": "~1.0"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

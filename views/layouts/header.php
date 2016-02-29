@@ -180,23 +180,25 @@ $number_global = Notification::notificationCount($global,true);
                                     } ?>
                                     <li>
                                     <div class="row panel-footer padding-top-sm">
-                                    <a href="<?= $global->type == 'wishlist' || $global->type == 'photos' ? Url::toRoute([$type.'/view/','id' => $global->user_id,'wishlist' => $global->type ]): Url::toRoute([$type.'/view/','id' => $global->type_id,'global' => $global->type ]) ?>" class="alerted">
+                                    <a href="<?= $global->type == 'wishlist' || $global->type == 'photos' || $global->type == 'mood' ? Url::toRoute([$type.'/view/','id' => $global->user_id,'wishlist' => $global->type ]): Url::toRoute([$type.'/view/','id' => $global->type_id,'global' => $global->type ]) ?>" class="alerted">
                                       <div class="col-xs-3">
-                                             <img src="<?= $global->user->profile->image ? '../uploads/avatar/' . $global->user->profile->image : '../img/avatar.png' ?>" class="img-circle" width="50px" height="50px"/>
+                                             <img src="<?= Url::to($global->user->avatar);?>" class="img-circle" width="50px" height="50px"/>
                                           </div>
                                         <div class="col-xs-9">
                                             <p class="fonts-bold color-blue cancel-margin"><?= $global->user->fullname ?> has 
                                                 <?php 
                                                     if($global->type == 'comment'){
-                                                        echo "Commented on a Journal";
+                                                        echo "commented on a Journal";
                                                     }else if($global->type == 'wishlist' ){
-                                                        echo "Added a wishlist Item";
+                                                        echo "added a wishlist Item";
                                                     }else if($global->type == 'activity'){
                                                         echo "added an Activity";
                                                     }else if($global->type == 'photos'){
-                                                        echo "added an image to the album";
+                                                        echo "added new image/images to the album";
+                                                    }else if($global->type == 'mood'){
+                                                        echo "updated Mood";
                                                     }else{
-                                                        echo "uploaded something";
+                                                        echo "Something happened";
                                                     }
                                                 ?>
                                             </p><span class="font-small"><?= $global->date ?></span>

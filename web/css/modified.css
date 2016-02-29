@@ -83,6 +83,18 @@ p{
 }
 /* ##Box Model */
 /* ###Boxes */
+.animated-box{
+    transition: all 0.4s ease;
+    -webkit-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.27);
+    -moz-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.27);
+    box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.27);
+}
+.animated-box:hover{
+    transform: scale(1.01);
+    -webkit-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0);
+    -moz-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0);
+    box-shadow: 0px 0px 9px 0px rgba(0,0,0,0);
+}
 .setted-height{
     height: 300px;
     overflow: hidden;
@@ -90,6 +102,7 @@ p{
     background-color: #fff;
     border-bottom: 10px solid #fff;
 }
+
 .gallery-item img{
     max-width: 180px !important;
     max-height:100px;
@@ -110,12 +123,22 @@ p{
     border: #ddd !important;
     margin-bottom: 10px !important;
     display: flex;
+    
 }
 
 .panel-event-box div img{
     max-height: 80px;
     max-width: 80px;
-
+}
+.listed-fonts{
+    background-color: #00A7D2;
+    padding: 5px;
+    border: 1px solid #FFFFFF;
+    color: aliceblue !important;
+    color: #fff !important;
+}
+.listed-fonts a{
+    color: #fff !important;
 }
 #moodbox{
     font-size: 34px;

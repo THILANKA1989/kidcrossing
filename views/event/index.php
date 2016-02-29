@@ -15,7 +15,9 @@ $evnt[] = array('title' => 'My Event',
     'allDay' => true);
 
 foreach ($events as $e) {
-
+    if(Yii::$app->findShared->isShared($e->shared_with,$e->user_id) == false){
+        continue;
+    }
     $evnt[] = [
         'id' => $e->id,
         'title' => $e->title,
@@ -24,6 +26,7 @@ foreach ($events as $e) {
         'allDay' => true
     ];
 }
+
 ?>
 
 <div class="box box-primary">
