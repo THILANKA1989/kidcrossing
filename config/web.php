@@ -8,7 +8,6 @@ $config = [
     'bootstrap' => ['log'],
     //'defaultRoute' => 'user',
     'modules' => [
-        
     ],
     'components' => [
         'request' => [
@@ -32,13 +31,21 @@ $config = [
             // send all mails to a file by default. You have to set
             // 'useFileTransport' to false and configure a transport
             // for the mailer to send real emails.
-            'useFileTransport' => true,
+            'useFileTransport' => false,
+            'transport' => [
+                'class' => 'Swift_SmtpTransport',
+                'host' => "smtp.mandrillapp.com",
+                'username' => 'livingdreams',
+                'password' => 'O8VHwtFR5JbqUmDl-uqBhQ',
+                'port' => '465',
+                'encryption' => 'ssl',
+            ]
         ],
         'Notification' => [
-                              'class' => 'app\components\NotificationSaver'
+            'class' => 'app\components\NotificationSaver'
         ],
         'findShared' => [
-                              'class' => 'app\components\findShared'
+            'class' => 'app\components\findShared'
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -49,7 +56,7 @@ $config = [
                 ],
             ],
         ],
-        'db' => require(__DIR__ . '/db.php'),        
+        'db' => require(__DIR__ . '/db.php'),
         'urlManager' => [
             'class' => 'yii\web\UrlManager',
             // Disable index.php
@@ -68,7 +75,7 @@ $config = [
 ];
 
 //Set uploads path
-Yii::setAlias('uploads', realpath(dirname(__FILE__).'/../'). '/web/uploads');
+Yii::setAlias('uploads', realpath(dirname(__FILE__) . '/../') . '/web/uploads');
 
 if (YII_ENV_DEV) {
     // configuration adjustments for 'dev' environment

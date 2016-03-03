@@ -65,7 +65,7 @@ use yii\helpers\Html;
             'items' => [
                 ['label' => '<a href="#"><i class="fa fa-users"></i> <span>Family Members</span></a>', 'options' => ['class' => 'treeview family-members-btn', 'url' => '#'], 'items' => $links],
                 ['label' => '<i class="fa fa-home"></i> <span>Dashboard</span>', 'url' => Yii::$app->user->identity->level != 3 ? ['/user/dashboard'] : ['/user/child']],
-                ['label' => '<i class="fa fa-book"></i> <span>Journals</span>', 'url' => ['/journal']],
+                ['label' => '<i class="fa fa-book"></i> <span>Journals</span>', 'url' => ['/journal/index']],
                 ['label' => '<i class="fa fa-calendar"></i> <span>Events</span>', 'url' => ['/event/index']],
                 Yii::$app->user->identity->level != 3 ? ['label' => '<i class="fa fa-smile-o"></i> <span>Moods</span>', 'url' => ['/mood/index']] : '' ,
                 Yii::$app->user->identity->level == 3 ? ['label' => '<i class="fa fa-list"></i> <span>WishList</span>', 'url' => ['/wishlist/view/'.Yii::$app->user->id]] : ['label' => '<i class="fa fa-list"></i> <span>WishList</span>', 'url' => ['/wishlist/wishes']],

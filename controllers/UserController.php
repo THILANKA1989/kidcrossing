@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
+use app\components\AccessRule;
 use app\models\LoginForm;
 use app\models\Tempuser;
 use app\models\User;
@@ -12,7 +13,6 @@ use app\models\Mood;
 use app\models\UserSearch;
 use app\models\Profile;
 use app\models\Journal;
-use app\models\JournalSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\web\UploadedFile;
@@ -34,12 +34,30 @@ class UserController extends Controller {
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout', 'index', 'view', 'profile', 'settings', 'child'],
+                'ruleConfig' => [
+                    'class' => AccessRule::className(),
+                ],
+                'only' => ['logout', 'index', 'view', 'create', 'update', 'delete', 'profile', 'settings', 'dashboard', 'child'],
                 'rules' => [
                     [
-                        'actions' => ['logout', 'index', 'view', 'profile', 'settings', 'child'],
+                        'actions' => ['logout', 'profile', 'settings',],
                         'allow' => true,
-                        'roles' => ['@'],
+                        'roles' => ['@'] //all
+                    ],
+                    [
+                        'actions' => ['index', 'view', 'create', 'update', 'delete', 'dashboard', 'child'],
+                        'allow' => true,
+                        'roles' => [0] //admin
+                    ],
+                    [
+                        'actions' => ['family', 'dashboard'],
+                        'allow' => true,
+                        'roles' => [1, 2] //parent
+                    ],
+                    [
+                        'actions' => ['child'],
+                        'allow' => true,
+                        'roles' => [3] //child
                     ],
                 ],
             ],
@@ -75,6 +93,7 @@ class UserController extends Controller {
     public function actionIndex() {
         $searchModel = new UserSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $user = $this->findModel(Yii::$app->user->id);
 
         return $this->render('index', [
                     'searchModel' => $searchModel,
@@ -153,7 +172,6 @@ class UserController extends Controller {
         //VarDumper::dump($customer, 1000, true);
         //$subscription = $customer->subscriptions->retrieve("sub_7iDICaGE4xV7Tp");
         //VarDumper::dump($subscription->jsonSerialize(), 1000, true);//$customer->subscriptions->all()
-
         return $this->render('payment', [
                     'model' => $model,
         ]);
@@ -185,10 +203,34 @@ class UserController extends Controller {
         $profile->city = $model->city;
         $profile->zipcode = $model->zipcode;
         $profile->save();
-        VarDumper::dump($model);
-        die('cp');
-        $model->save();
+        $model->save(false);
+        //VarDumper::dump($model, 1000, true);die('cp');        
+        Yii::$app->mailer->compose('@app/mail/templates/signup_parent', ['model' => $model])
+                ->setFrom(['noreply@kidcrossing.com' => 'Kid Crossing'])
+                ->setTo($model->email)
+                ->setSubject('Activate Your Account')
+                ->send();
+
         return $user->id;
+    }
+
+    /**
+     * Activate user by confirming email 
+     * @param type $token
+     */
+    public function actionActivate($token) {
+        if ($user = User::findIdentityByAccessToken($token)) {
+            if ($user->status == 1) {
+                $msg = "You have already activated your Account!";
+            } else {
+                $user->status = 1;
+                $user->save();
+                $msg = "You have successfully activated your Account. Thanky You!";
+            }
+        }else{
+            $msg = "You are an un authorised person!";
+        }
+            return $this->render('activate', ['message'=>$msg]);
     }
 
     /**
@@ -285,14 +327,10 @@ class UserController extends Controller {
      * Display user dashboard
      */
     public function actionDashboard() {
-        $events = User::newsFeed('events');
-        $journals = User::newsFeed('journals');
-        $photos = \app\models\Photos::find()->all();
-        
+
         $wishlists = new ActiveDataProvider([
             'query' => \app\models\Wishlist::find()->where(['assigned_to' => Yii::$app->user->id, 'status' => 0])->orderBy('id')->limit(5),
             'pagination' => false
-           
         ]);
         $DataProvider = new ActiveDataProvider([
             'query' => Yii::$app->user->identity->findFamily(),
@@ -300,9 +338,9 @@ class UserController extends Controller {
 
         return $this->render('dashboard', [
                     'dataProvider' => $DataProvider,
-                    'events' => $events,
-                    'journals' => $journals,
-                    'photos' => $photos,
+                    'events' => \app\models\Event::find()->orderBy(['date' => SORT_DESC])->all(),
+                    'journals' => Journal::find()->orderBy(['date' => SORT_DESC])->all(),
+                    'photos' => \app\models\Photos::find()->all(),
                     'wishlists' => $wishlists,
         ]);
     }
@@ -340,7 +378,7 @@ class UserController extends Controller {
                         'model' => $model,
             ]);
         } else {
-            throw new \yii\web\NotFoundHttpException();
+            throw new NotFoundHttpException();
         }
     }
 

@@ -17,13 +17,12 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="">
     <div class="row">
 
-            <!--<h1><?php //Html::encode($this->title) ?></h1>-->
-
         <?=
         ListView::widget([
             'dataProvider' => $dataProvider,
             'itemView' => '_listchild',
             'summary' => '',
+            'emptyText' => ''
         ]);
         ?>
 
@@ -175,6 +174,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'dataProvider' => $wishlists,
                             'itemView' => '_wishlist',
                             'summary' => '',
+                            'emptyText' => 'No Wishlist Found'
                         ]);
                         ?>
                     </div>
