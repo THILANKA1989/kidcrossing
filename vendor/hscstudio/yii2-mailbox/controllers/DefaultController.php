@@ -105,6 +105,8 @@ class DefaultController extends Controller
     public function actionView($id)
     {
 		$model = $this->findModel($id);
+                        Yii::$app->NotificationSaver->viewer($id);
+                
 		if($model->receiver==Yii::$app->user->id){
 			$model->readed = true;
 			$model->save();
@@ -126,6 +128,7 @@ class DefaultController extends Controller
 		]);
 
         if ($model->load(Yii::$app->request->post())) {
+                        $model->receiver =  implode(',',$model->receiver);  
 			$model->sender = Yii::$app->user->id;	
 			$receivers = $model->receiver;
 			if(count($receivers)>1){
@@ -139,12 +142,12 @@ class DefaultController extends Controller
 			}
 			else{
 				if ($model->save()){
-				 
+                                    Yii::$app->NotificationSaver->notify($model->subject,$model->id,$model->sender,Yii::$app->user->id,'message',$model->receiver);
 				}
 			}
             return $this->redirect(['index']);
         } else {
-            return $this->render('create', [
+            return $this->renderAjax('create', [
                 'model' => $model,
             ]);
         }

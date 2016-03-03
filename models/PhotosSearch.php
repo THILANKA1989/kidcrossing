@@ -41,10 +41,13 @@ class PhotosSearch extends Photos
      */
     public function search($params)
     {
-        $query = Photos::find();
+        $query = Photos::find()->orderBy(['id'=> SORT_DESC]);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => [
+                'pageSize' => 8,
+            ],
         ]);
 
         $this->load($params);

@@ -16,19 +16,10 @@ use yii\helpers\ArrayHelper;
 	<?php
 	$userClass = \Yii::$app->getUser()->identityClass;
 	$users = ArrayHelper::map(
-		$userClass::find()->where(['status'=>10])->asArray()->all(),
-		'id','username'
+		Yii::$app->user->identity->getOthers(), 'id', 'fullname'
 	);
 	echo '<div class="form-group">';
-	echo '<label class="control-label">Receiver</label>';
-	echo Select2::widget([
-		'name' => 'receivers',
-		'data' => $users,
-		'options' => [
-			'placeholder' => 'Select a receiver ...',
-			'multiple' => true
-		],
-	]);
+	echo $form->field($model, 'receiver')->listBox( ArrayHelper::map(Yii::$app->user->identity->getOthers(), 'id', 'fullname'), ['multiple' => true] ); 
 	echo '</div>';
 	?>
 	<?= $form->field($model, 'subject')->textInput(['maxlength' => 255]) ?>

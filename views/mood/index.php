@@ -39,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
        'columns' => [
                         ['class' => 'yii\grid\SerialColumn'],
                         //'id',
-                        ['attribute' => 'user_id',
+                        ['attribute' => 'fullname',
                             'label' => 'Posted By',
                         ],
                         ['attribute' => 'mood',

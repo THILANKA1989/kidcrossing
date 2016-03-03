@@ -67,24 +67,11 @@ $this->params['breadcrumbs'][] = $this->title;
 						}
 					}
 				],
-				[
-					'attribute' => 'receiver',
-					'value' => function($data){
-						$userClass = \Yii::$app->getUser()->identityClass;
-						$user = $userClass::find()
-							->where([
-								'id' => $data->receiver,
-								'status' => 10,
-							])
-							->one();
-						if($user){
-							return $user->username;
-						}
-						else{
-							return "-";
-						}
-					}
-				],
+				
+                                ['attribute' => 'sharedwith',
+                                    'label' => 'Sent To',
+                                    'format' => 'raw',
+                                ],
 				[
 					'attribute' => 'subject',
 					'format' => 'html',

@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\grid\GridView;
 use yii\bootstrap\Nav;
 use hscstudio\helpers\assets\LiveStampJsAsset;
@@ -46,7 +47,16 @@ $this->params['breadcrumbs'][] = $this->title;
 		<?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
 		<p>
-			<?= Html::a('Compose', ['create'], ['class' => 'btn btn-success']) ?>
+                    <!--<?= Html::a('Compose', ['create'], ['class' => 'btn btn-success']) ?>-->
+                    <?php
+                         echo
+                         Html::button('Compose',
+                                 [
+                             'class' => 'btn btn-info btn-ajax-modal',
+                             'value' => Url::to(['create']),
+                             'data-target' => '#modal',
+                         ]);
+                    ?>
 		</p>
 
 		<?= GridView::widget([
@@ -57,6 +67,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
 				//'id',
 				//'sender',
+                                ['attribute' => 'sharedwith',
+                                    'label' => 'Shared With',
+                                    'format' => 'raw',
+                                ],
 				[
 					'header' => '#',
 					'filter' => false,					
@@ -71,23 +85,9 @@ $this->params['breadcrumbs'][] = $this->title;
 						}
 					}
 				],
-				[
-					'attribute' => 'sender',
-					'value' => function($data)use($userClass){
-						$user = $userClass::find()
-							->where([
-								'id' => $data->sender,
-								'status' => 10,
-							])
-							->one();
-						if($user){
-							return $user->username;
-						}
-						else{
-							return "-";
-						}
-					}
-				],
+				['attribute' => 'fullname',
+                                    'label' => 'Sent By',
+                                ],
 				[
 					'attribute' => 'subject',
 					'format' => 'html',
@@ -120,3 +120,15 @@ $this->params['breadcrumbs'][] = $this->title;
 	</div>
 </div>
 </div>
+<?php $this->registerJs("$('.btn-ajax-modal').click(function (){
+    var elm = $(this),
+        target = elm.attr('data-target'),
+        url = elm.attr('value');
+
+    $(target).modal('show')
+        .find('#modalContent')
+        .load(url);
+});",
+        yii\web\View::POS_END,
+        'reg-modal');
+?>

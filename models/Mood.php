@@ -132,5 +132,12 @@ class Mood extends \yii\db\ActiveRecord
     public static function getMoodsBetweenDates($lower, $upper,$user_id = null){
         return Mood::find()->where(['and', 'date >= $lower', 'date <= $upper',['user_id' => $user_id]])->all();
     }
+     /*
+     * get moods fullname
+     */
+    public function getFullName() {
+        $model = User::findOne(['id'=> $this->user_id]);
+        return $model->profile ? $model->profile->first_name . ' ' . $model->profile->last_name : '';
+    }
     
 }

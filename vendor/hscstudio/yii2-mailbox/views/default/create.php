@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="mailbox-create">
 <div class="row">
-	<div class="col-md-3">
+	<!--<div class="col-md-3">
 		<div class="panel panel-default box box-default">
 		<div class="panel-body box-body">
 	<?php
@@ -30,8 +30,8 @@ $this->params['breadcrumbs'][] = $this->title;
 	?>
 		</div>
 		</div>
-	</div>
-	<div class="col-md-9">
+	</div>-->
+	<div class="col-md-12">
 		<div class="panel panel-default box box-default">
 		<div class="panel-heading box-header with-border">
 			<h3 class="panel-title box-title"><?= Html::encode($this->title) ?></h3>

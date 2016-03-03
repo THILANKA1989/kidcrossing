@@ -9,12 +9,13 @@ use yii\widgets\ActiveForm;
 
 $events = Notification::getUserNotifications('event')['events'];
 $journals = Notification::getUserNotifications('journal')['journals'];
+$messages = Notification::getUserNotifications('message')['message'];
 $global = Notification::getGlobalNotifications();
 //var_dump($journals); die();
 $number_new_events = Notification::notificationCount($events);
 $number_new_journals = Notification::notificationCount($journals);
 $number_global = Notification::notificationCount($global,true);
-
+$number_messages = Notification::notificationCount($messages);
 ?>
 <!-- Main Header -->
 <header class="main-header">
@@ -45,31 +46,38 @@ $number_global = Notification::notificationCount($global,true);
                     <!-- Menu toggle button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-envelope-o"></i>
-                        <span class="label label-success">4</span>
+                        <span class="label label-success"><?= $number_messages > 0 ? $number_messages : '' ?></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li class="header">You have 4 messages</li>
+                        <li class="header">You have <?=$number_messages?> messages</li>
                         <li>
                             <!-- inner menu: contains the messages -->
                             <ul class="menu">
                                 <li><!-- start message -->
-                                    <a href="#">
+                                     <?php foreach($messages as $message){ ?>
+                                       <?php if($message->user->id == Yii::$app->user->id ){
+                                        continue;
+                                    } ?>
+                                    <a href="<?= Url::toRoute(['/mailbox/default/view/','id' => $message->type_id,'notify' => $message->id ]) ?>">
                                         <div class="pull-left">
                                             <!-- User Image -->
                                             <img src="<?= Url::to('@web/img/user2-160x160.jpg') ?>" class="img-middle" alt="User Image">
                                         </div>
                                         <!-- Message title and timestamp -->
                                         <h4>
-                                            Support Team
-                                            <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                                            <?= $message->user->fullname ?>
+                                            <small><i class="fa fa-clock-o"></i> <?php ?></small>
                                         </h4>
                                         <!-- The message -->
-                                        <p>Why not buy a new awesome theme?</p>
+                                        <p><?= $message->description ?></p>
                                     </a>
+                                     <?php 
+                                        
+                                     } ?>
                                 </li><!-- end message -->
                             </ul><!-- /.menu -->
                         </li>
-                        <li class="footer"><a href="#">See All Messages</a></li>
+                        <li class="footer"><a href="<?=Url::toRoute(['//mailbox/default/'])  ?>">View all messages</a></li>
                     </ul>
                 </li><!-- /.messages-menu -->
                 <!-- journals Menu -->
@@ -169,7 +177,7 @@ $number_global = Notification::notificationCount($global,true);
                                     <?php if($global->user->id == Yii::$app->user->id ){
                                         continue;
                                     } ?>
-                                 <?php if($global->type == 'journal' || $global->type == 'event' ){
+                                 <?php if($global->type == 'journal' || $global->type == 'event' || $global->type == 'message' ){
                                         continue;
                                     } ?>
                                     <?php
@@ -198,7 +206,7 @@ $number_global = Notification::notificationCount($global,true);
                                                     }else if($global->type == 'mood'){
                                                         echo "updated Mood";
                                                     }else{
-                                                        echo "Something happened";
+                                                        echo " ";
                                                     }
                                                 ?>
                                             </p><span class="font-small"><?= $global->date ?></span>

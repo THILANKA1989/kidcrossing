@@ -79,18 +79,7 @@ class NotificationSaver extends Component {
                 $notify[$i]->status = 1;
                 $notify[$i]->save();
             }
-        }
-         if(Yii::$app->request->get('wishlist')){
-            $getid = Yii::$app->request->get('wishlist');
-            //$notification = new Notification();
-            $notify = \app\models\Notification::find()->where(['user_id' => $id,'type' => $getid,'shared_id' => Yii::$app->user->id, 'status' => 0])->all();
-            //var_dump($notify); die();
-            for($i=0;$i<sizeof($notify);$i++){
-                $notify[$i]->status = 1;
-                $notify[$i]->save();
-            }
-        }
-        
+        } 
     }
 }
 

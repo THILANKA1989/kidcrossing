@@ -39,7 +39,7 @@ use yii\helpers\ArrayHelper;
         ]). "</div>"
         ?>
         <?=     "<div class='col-md-6'>".
-                $form->field($model, 'shared_with')->listBox( ArrayHelper::map(Yii::$app->user->identity->findFamily(true)->all(), 'id', 'fullname'), ['multiple' => true] ) 
+                $form->field($model, 'shared_with')->listBox( ArrayHelper::map(Yii::$app->user->identity->getOthers(), 'id', 'fullname'), ['multiple' => true] ) 
                 . "</div>"
                 ?>
                 

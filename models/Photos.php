@@ -85,7 +85,7 @@ class Photos extends \yii\db\ActiveRecord
         $items =   [
                 'url' => '@web/uploads/albums/'.$model->filename,
                 'src' => '@web/uploads/albums/thumbs/'.$model->filename,
-                'options' => array('title' => 'By '.$model->user->fullname.'   '.Html::a('Delete',['photos/delete/'.$model->id]), 'width' => '80px')
+                'options' => array('title' => 'By '.$model->user->fullname, 'width' => '80px')
             ];
             array_push($total, $items);
         }
@@ -95,5 +95,15 @@ class Photos extends \yii\db\ActiveRecord
     //check shared with
     public function isShared($user_id,$shared_with){
         return in_array($user_id, explode(',', $shared_with)) != false ? true : false;
+    }
+    
+    //get Shared users
+    public function getSharedWith($withoutWrapper=false)
+    {
+       $shared_users = User::find()->where(['id'=> explode(",",$this->shared_with)])->all();
+       if($withoutWrapper)
+          return  implode(', ', yii\helpers\ArrayHelper::getColumn($shared_users, 'fullname'));
+       else
+       return "<span class='label label-success'>" . implode('</span> <span class="label label-success">', yii\helpers\ArrayHelper::getColumn($shared_users, 'fullname'))."</span>";
     }
 }

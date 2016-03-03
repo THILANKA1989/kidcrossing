@@ -44,8 +44,8 @@ class Mailbox extends \yii\db\ActiveRecord
     {
         return [
             [['sender', 'subject', 'content'], 'required'],
-            [['sender', 'receiver', 'readed', 'status', 'created_at', 'updated_at'], 'integer'],
-            [['content'], 'string'],
+            [['sender', 'readed', 'status', 'created_at', 'updated_at'], 'integer'],
+            [['content','receiver'], 'string'],
             [['subject'], 'string', 'max' => 255]
         ];
     }
@@ -66,5 +66,25 @@ class Mailbox extends \yii\db\ActiveRecord
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
         ];
+    }
+    
+      /*
+     * get shared users
+     */
+    public function getSharedWith($withoutWrapper=false)
+    {
+       $shared_users = \app\models\User::find()->where(['id'=> explode(",",$this->receiver)])->all();
+       if($withoutWrapper)
+          return  implode(', ', yii\helpers\ArrayHelper::getColumn($shared_users, 'fullname'));
+       else
+       return "<span class='label label-success'>" . implode('</span> <span class="label label-success">', yii\helpers\ArrayHelper::getColumn($shared_users, 'fullname'))."</span>";
+    }
+    
+      /*
+     * get moods fullname
+     */
+    public function getFullName() {
+        $model = \app\models\User::findOne(['id'=> $this->sender]);
+        return $model->profile ? $model->profile->first_name . ' ' . $model->profile->last_name : '';
     }
 }

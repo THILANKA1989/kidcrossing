@@ -44,7 +44,11 @@ $this->params['breadcrumbs'][] = $this->title;
 			'attributes' => [
 				'id',
 				'sender',
-				'receiver',
+				
+                                ['attribute' => 'sharedwith',
+                                    'label' => 'Sent To',
+                                    'format' => 'raw',
+                                ],
 				'subject',
 				'content:ntext',
 				'readed',

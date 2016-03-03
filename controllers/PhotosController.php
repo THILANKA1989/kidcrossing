@@ -60,11 +60,16 @@ class PhotosController extends Controller
      */
     public function actionView($id)
     {
-        
+        $photos = new Photos();
+        $searchModel = new PhotosSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $user = User::findOne(['id' => $id]);
         Yii::$app->NotificationSaver->viewer($id);
         return $this->render('view', [
             'model' => $user,
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'photos' => $photos,
         ]);
 
     }
@@ -135,7 +140,6 @@ class PhotosController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-
         return $this->redirect(['index']);
     }
 

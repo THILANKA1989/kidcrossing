@@ -70,7 +70,7 @@ use yii\helpers\Html;
                 Yii::$app->user->identity->level != 3 ? ['label' => '<i class="fa fa-smile-o"></i> <span>Moods</span>', 'url' => ['/mood/index']] : '' ,
                 Yii::$app->user->identity->level == 3 ? ['label' => '<i class="fa fa-list"></i> <span>WishList</span>', 'url' => ['/wishlist/view/'.Yii::$app->user->id]] : ['label' => '<i class="fa fa-list"></i> <span>WishList</span>', 'url' => ['/wishlist/wishes']],
                 ['label' => '<i class="fa fa-child"></i> <span>Activities</span>', 'url' => ['/activity/index']],
-                ['label' => '<i class="fa fa-envelope"></i> <span>Mailbox</span>', 'url' => ['/mailbox/index']],
+                ['label' => '<i class="fa fa-envelope"></i> <span>Mailbox</span>', 'url' => ['/mailbox/default/']],
                 //['label' => 'Contact', 'url' => ['/site/contact']],
                 Yii::$app->user->identity->level == 0 ? ['label' => '<i class="fa fa-users"></i> <span>Users</span>', 'url' => ['/user/index']] : '',
                 ['label' => '<i class="fa fa-camera"></i> <span>Photos</span>', 'url' => ['/photos/index']],

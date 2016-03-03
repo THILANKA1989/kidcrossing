@@ -83,6 +83,13 @@ p{
 }
 /* ##Box Model */
 /* ###Boxes */
+
+#collapseOne{
+    margin-top: 20px;
+}
+.content-header{
+    padding: 0 !important;
+}
 .animated-box{
     transition: all 0.4s ease;
     -webkit-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.27);

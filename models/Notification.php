@@ -84,10 +84,11 @@ class Notification extends \yii\db\ActiveRecord
     public function getUserNotifications($type = null){
         $events = Notification::find()->where(['type'=> $type,'status'=> 0,'shared_id'=> Yii::$app->user->id])->orderBy(['date'=> SORT_DESC])->all();
         $journals = Notification::find()->where(['type'=> $type,'status'=> 0,'shared_id'=> Yii::$app->user->id])->orderBy(['date'=> SORT_DESC])->all();
-        
+        $message = Notification::find()->where(['type'=> $type,'status'=> 0,'shared_id'=> Yii::$app->user->id])->orderBy(['date'=> SORT_DESC])->all();
         return [
             'events' => $events,
             'journals' => $journals,
+            'message' => $message,
         ];
     }
     
@@ -102,7 +103,7 @@ class Notification extends \yii\db\ActiveRecord
           }
       }else{
           for($i=0;$i<sizeof($notification);$i++){
-            if($notification[$i]->user->id == Yii::$app->user->id || $notification[$i]->type == 'journal' || $notification[$i]->type == 'event'){
+            if($notification[$i]->user->id == Yii::$app->user->id || $notification[$i]->type == 'journal' || $notification[$i]->type == 'event' || $notification[$i]->type == 'message'){
                 continue;
             }
             $counter++;

@@ -5,23 +5,21 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Mood;
+use app\models\Mailbox;
 
 /**
- * MoodSearch represents the model behind the search form about `app\models\Mood`.
+ * MailboxSearch represents the model behind the search form about `app\models\Mailbox`.
  */
-class MoodSearch extends Mood
+class MailboxSearch extends Mailbox
 {
     /**
      * @inheritdoc
      */
-    public $start_date;
-    public $end_date;
     public function rules()
     {
         return [
-            [['id', 'user_id'], 'integer'],
-            [['mood', 'date', 'time','start_date','end_date'], 'safe'],
+            [['id', 'sender', 'receiver', 'readed', 'status', 'created_at', 'updated_at'], 'integer'],
+            [['subject', 'content'], 'safe'],
         ];
     }
 
@@ -43,13 +41,12 @@ class MoodSearch extends Mood
      */
     public function search($params)
     {
-        
-        $query = Mood::find();
+        $query = Mailbox::find();
+
+        // add conditions that should always apply here
+
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
-            'pagination' => [
-                'pagesize' => 8,
-            ],
         ]);
 
         $this->load($params);
@@ -60,15 +57,20 @@ class MoodSearch extends Mood
             return $dataProvider;
         }
 
+        // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'date' => $this->date,
-            'time' => $this->time,
+            'sender' => $this->sender,
+            'receiver' => $this->receiver,
+            'readed' => $this->readed,
+            'status' => $this->status,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
         ]);
 
-        $query->andFilterWhere(['like', 'mood', $this->mood]);
-        $query->andFilterWhere(['>=', 'date', $this->start_date])
-      ->andFilterWhere(['<=', 'date', $this->end_date]);
+        $query->andFilterWhere(['like', 'subject', $this->subject])
+            ->andFilterWhere(['like', 'content', $this->content]);
+
         return $dataProvider;
     }
 }
